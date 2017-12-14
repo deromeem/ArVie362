@@ -11,10 +11,7 @@ $isAdmin = (in_array('17', $user->groups));		// sets flag when user group is '17
 	<?php echo JError::raiseWarning( 100, JText::_('COM_ARVIE_RESTRICTED_ACCESS') ); ?>
 <?php else : ?>
 
-	<h2><?php echo JText::_('COM_ARVIE_OPTIONS')." : ".JText::_('COM_ARVIE_UTILISATEURS')." - "; ?>
-		<a href="<?php echo JRoute::_('index.php?option=com_arvie&view=entreprises'); ?>">
-			<?php echo JText::_('COM_ARVIE_ENTREPRISES'); ?>
-		</a>
+	<h2><?php echo JText::_('COM_ARVIE_OPTIONS')." : ".JText::_('COM_ARVIE_UTILISATEURS'); ?>
 	</h2>
 
 	<?php echo $this->loadTemplate('items'); ?>

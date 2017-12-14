@@ -25,7 +25,7 @@
 		/>
 		<field name="mobile" type="text" label="COM_ARVIE_UTILISATEURS_MOBILE"
 			description="COM_ARVIE_UTILISATEURS_MOBILE"
-			size="40" class="inputbox" default="" required="false"
+			size="10" class="inputbox" default="" required="false"
 		/>
 		<field id="published" name="published" type="list"
 			label="JSTATUS"	description="JSTATUS"
