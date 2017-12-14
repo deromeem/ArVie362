@@ -47,10 +47,10 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 				</th>
 				<!-- <th class="title">Publié</th> -->
 				<th class="title">
-					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_GROUPES_GROUPES_PARENT'), 'groupe_parent_nom', $listDirn, $listOrder) ?>
+					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_GROUPES_GROUPE_PARENT'), 'groupe_parent_nom', $listDirn, $listOrder) ?>
 				</th>
 				<th class="title">
-					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_GROUPES_EST_GROUPE_INTERET'), 'est_groupe_interet', $listDirn, $listOrder) ?>
+					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_GROUPES_EST_GROUPE_INTERET_FRONTEND'), 'est_groupe_interet', $listDirn, $listOrder) ?>
 				</th>
 				<!-- <th class="title"><?php echo JHtml::_('grid.sort', 'Date', 'created', $listDirn, $listOrder) ?></th> -->
 			</tr>

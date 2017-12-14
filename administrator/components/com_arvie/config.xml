@@ -9,8 +9,8 @@
 			type="radio"
 			class="btn-group btn-group-yesno"
 			default="1"
-			label="COM_ARVIE_OPTIONS_SHOW_ENTREPRISES_NOM_LABEL"
-			description="COM_ARVIE_OPTIONS_SHOW_ENTREPRISES_NOM_DESCR">
+			label="COM_ARVIE_OPTIONS_SHOW_UTILISATEURS_NOM_LABEL"
+			description="COM_ARVIE_OPTIONS_SHOW_UTILIATEURS_NOM_DESCR">
 			<option value="1">JSHOW</option>
 			<option value="0">JHIDE</option>
 		</field>
@@ -19,8 +19,8 @@
 			type="radio"
 			class="btn-group btn-group-yesno"
 			default="1"
-			label="COM_ARVIE_OPTIONS_SHOW_ENTREPRISES_LOGO_LABEL"
-			description="COM_ARVIE_OPTIONS_SHOW_ENTREPRISES_LOGO_DESCR">
+			label="COM_ARVIE_OPTIONS_SHOW_UTILISATEURS_PHOTO_LABEL"
+			description="COM_ARVIE_OPTIONS_SHOW_UTILISATEURS_PHOTO_DESCR">
 			<option value="1">JYES</option>
 			<option value="0">JNO</option>
 		</field>
