@@ -7,7 +7,7 @@ JHtml::_('behavior.formvalidation');
 JHtml::_('formbehavior.chosen', 'select');
 
 $user = JFactory::getUser();               		// gets current user object
-$isAdmin = (in_array('17', $user->groups));		// sets flag when user group is '17' that is 'Arvie' 
+$isAdmin = (in_array('17', $user->groups));		// sets flag when user group is '10' that is 'ArVie' 
 ?>
 
 <?php if (!$isAdmin) : ?>
@@ -68,11 +68,7 @@ $isAdmin = (in_array('17', $user->groups));		// sets flag when user group is '17
 							</tbody>
 						</table>
 					</div>
-					
-					
-
-						<input type="hidden" name="task" value="" />
-						<input type="hidden" name="return" value="<?php echo $this->return_page; ?>" />
+				</div>
 				<?php echo JHtml::_('form.token'); ?>
 			</fieldset>
 		</form>

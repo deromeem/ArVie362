@@ -13,7 +13,7 @@ class ArvieModelDiscussion extends JModelItem
 		// Charge et mémorise l'état (state) de l'id depuis le contexte
 		$pk = $app->input->getInt('id');
 		$this->setState($this->_context.'.id', $pk);
-		// $this->setState('groupe.id', $pk);
+		// $this->setState('discussion.id', $pk);
 	}
 
 	public function getItem($pk = null)
@@ -28,8 +28,6 @@ class ArvieModelDiscussion extends JModelItem
 			$query->select('d.id, d.nom');
 			$query->from('#__arvie_discussions d');
 
-			// joint la table parent pour recuperer nom du groupe_parent
-			// $query->select('gp.nom AS groupe_parent_nom')->join('LEFT', '#__arvie_groupes AS gp ON gp.id=g.groupe_parent');
 		
 			$query->where('d.id = ' . (int) $pk);
 			$db->setQuery($query);

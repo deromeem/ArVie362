@@ -2,7 +2,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 $user = JFactory::getUser();               		// gets current user object
-$isAdmin = (in_array('17', $user->groups));		// sets flag when user group is '17' that is 'Arvie' 
+$isAdmin = (in_array('17', $user->groups));		// sets flag when user group is '17' that is 'Annuaire' 
 ?>
 
 <?php if (!$isAdmin) : ?>
@@ -13,7 +13,7 @@ $isAdmin = (in_array('17', $user->groups));		// sets flag when user group is '17
 			<h2><?php echo JText::_('COM_ARVIE_DISCUSSION'); ?></h2>
 		</div>
 		<div class="btn-group pull-right">
-			<a href="<?php echo JRoute::_('index.php?option=com_arvie&view=discussion'); ?>" class="btn" role="button">
+			<a href="<?php echo JRoute::_('index.php?option=com_arvie&view=discussions'); ?>" class="btn" role="button">
 				<span class="icon-cancel"></span></a>
 		</div>	
 		<div class="btn-group pull-right">

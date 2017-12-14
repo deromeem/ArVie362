@@ -13,7 +13,6 @@ class ArvieModelDiscussions extends JModelList
 			$config['filter_fields'] = array(
 				'id', 'd.id',
 				'nom', 'd.nom',
-				'alias', 'd.alias',		
 				'published', 'd.published',
 				'created', 'd.created',
 				'created_by', 'd.created_by',
@@ -53,11 +52,8 @@ class ArvieModelDiscussions extends JModelList
 	{
 		// construit la requ�te d'affichage de la liste
 		$query	= $this->_db->getQuery(true);
-		$query->select('d.id, d.nom, d.alias, d.published, d.created, d.created_by, d.modified, d.modified_by, d.hits');
+		$query->select('d.id, d.nom, d.published, d.created, d.created_by, d.modified, d.modified_by, d.hits');
 		$query->from('#__arvie_discussions d');
-
-		// joint la table parent
-		//$query->select('gp.nom AS groupe_parent_nom')->join('LEFT', '#__arvie_groupes AS gp ON g.groupe_parent=gp.id');	
 
 		// filtre de recherche rapide textuelle
 		$search = $this->getState('filter.search');
