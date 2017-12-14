@@ -5,28 +5,17 @@
 
 		<field name="asset_id" type="hidden" filter="unset" />
 		
-		<field name="nom" type="text" label="COM_ARVIE_UTILISATEURS_NOM"
-			description="COM_ARVIE_UTILISATEURS_NOM"
-			size="40" class="inputbox" default="" required="true"
-		/>
+        <field name="nom" type="text" label="COM_ARVIE_DISCUSSIONS_NOM"
+            description="COM_ARVIE_DISCUSSIONS_NOM"
+            size="40" class="inputbox" default="" required="true"
+        />        
 		<field name="alias" type="text"
 			label="JFIELD_ALIAS_LABEL"
 			description="JFIELD_ALIAS_DESC"
 			hint="JFIELD_ALIAS_PLACEHOLDER"
 			class="inputbox" size="45"
 		/>
-		<field name="prenom" type="text" label="COM_ARVIE_UTILISATEURS_PRENOM"
-			description="COM_ARVIE_UTILISATEURS_PRENOM"
-			size="40" class="inputbox" default="" required="true"
-		/>
-		<field name="email" type="text" label="COM_ARVIE_UTILISATEURS_EMAIL"
-			description="COM_ARVIE_UTILISATEURS_EMAIL"
-			size="40" class="inputbox" default="" required="false"
-		/>
-		<field name="mobile" type="text" label="COM_ARVIE_UTILISATEURS_MOBILE"
-			description="COM_ARVIE_UTILISATEURS_MOBILE"
-			size="10" class="inputbox" default="" required="false"
-		/>
+        
 		<field id="published" name="published" type="list"
 			label="JSTATUS"	description="JSTATUS"
 			class="chzn-color-state" size="1" default="1"
