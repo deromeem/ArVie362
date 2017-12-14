@@ -269,7 +269,7 @@ CREATE TABLE `#__arvie_utilisateurs` (
   `email` varchar(50) NOT NULL,
   `prenom` varchar(40) NOT NULL,
   `nom` varchar(40) NOT NULL,
-  `mobile` int(12) DEFAULT NULL,
+  `mobile` varchar(12) DEFAULT NULL,
   `date_naiss` date NOT NULL,
   `alias` varchar(255) NOT NULL,
   `published` tinyint(1) NOT NULL DEFAULT '0',
