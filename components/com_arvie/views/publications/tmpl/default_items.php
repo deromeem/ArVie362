@@ -42,15 +42,19 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 	<table class="table table-striped" id="articleList">
 		<thead>
 			<tr>
+			
 				<th class="title">
-					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_GROUPES_NOM'), 'nom', $listDirn, $listOrder) ?>
+					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_PUBLICATIONS_TITRE'), 'titre', $listDirn, $listOrder) ?>
+				</th>
+				<th class="title">
+					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_PUBLICATIONS_AUTEUR'), 'auteur', $listDirn, $listOrder) ?>
 				</th>
 				<!-- <th class="title">Publié</th> -->
 				<th class="title">
-					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_GROUPES_GROUPES_PARENT'), 'publication_parent_nom', $listDirn, $listOrder) ?>
+					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_PUBLICATIONS_TEXTE'), 'texte', $listDirn, $listOrder) ?>
 				</th>
 				<th class="title">
-					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_GROUPES_EST_GROUPE_INTERET'), 'est_publication_interet', $listDirn, $listOrder) ?>
+					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_PUBLICATIONS_DATE_PUBLI'), 'date_publi', $listDirn, $listOrder) ?>
 				</th>
 				<!-- <th class="title"><?php echo JHtml::_('grid.sort', 'Date', 'created', $listDirn, $listOrder) ?></th> -->
 			</tr>
@@ -60,14 +64,13 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 			<?php foreach($this->items as $i => $item) : ?>
 				<tr class="row<?php echo $i % 2; ?>">
 					<td>
-						<a href="<?php echo $uriCompoDetail.$item->id ?>"><?php echo $item->nom ?></a>
+						<a href="<?php echo $uriCompoDetail.$item->id ?>"><?php echo $item->titre ?></a>
 					</td>
 					<!-- <td><?php echo JHtml::_('jgrid.published', $item->published, $i, 'publications.', true); ?></td> -->
-					<td><?php echo $item->publication_parent_nom ?></td>
-					<td><?php if($item->est_publication_interet)
-										{echo 'Interêt';} 
-									else{echo 'Classe';}
-						?></td>
+					<td><?php echo $item->auteur_prenom; ?></td>
+					<td><?php echo $item->texte ?></td>
+					<td><?php echo $item->date_publi  ?></td>
+					
 					<!-- <td><?php echo JHtml::_('date', $item->created, 'j F Y'); ?></td> -->
 				</tr>			
 			<?php endforeach; ?>
