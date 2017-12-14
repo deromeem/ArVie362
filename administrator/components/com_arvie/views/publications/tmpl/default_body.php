@@ -24,11 +24,11 @@ if ($saveOrder)
 	</td>
 	<td align="small">
 		<a href="<?php echo JRoute::_('index.php?option=com_arvie&task=publication.edit&id='.(int) $item->parent); ?>">
-			<?php echo $item->publication_parent; ?>
+			<?php echo $item->parent_titre; ?>
 		</a>
 	</td>
 	<td align="small">
-		<a href="<?php echo JRoute::_('index.php?option=com_arvie&task=groupe.edit&id='.(int) $item->groupe); ?>">
+		<a href="<?php echo JRoute::_('index.php?option=com_arvie&task=publication.edit&id='.(int) $item->groupe); ?>">
 			<?php echo $item->groupes_nom; ?>
 		</a>
 	</td>
@@ -37,6 +37,9 @@ if ($saveOrder)
 	</td>
 	<td align="center">
 		<?php echo $item->texte; ?>
+	</td>
+	<td align="small">
+		<?php echo $item->est_public; ?>
 	</td>
 	<td width="5%" style="min-width:55px" align="center">
 		<?php echo JHtml::_('jgrid.published', $item->published, $i, 'publications.', true); ?>
