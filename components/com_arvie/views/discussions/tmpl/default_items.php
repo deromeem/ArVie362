@@ -43,15 +43,9 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 		<thead>
 			<tr>
 				<th class="title">
-					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_GROUPES_NOM'), 'nom', $listDirn, $listOrder) ?>
+					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_DISCUSSIONS_NOM'), 'nom', $listDirn, $listOrder) ?>
 				</th>
 				<!-- <th class="title">Publié</th> -->
-				<th class="title">
-					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_GROUPES_GROUPES_PARENT'), 'discussion_parent_nom', $listDirn, $listOrder) ?>
-				</th>
-				<th class="title">
-					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_GROUPES_EST_GROUPE_INTERET'), 'est_discussion_interet', $listDirn, $listOrder) ?>
-				</th>
 				<!-- <th class="title"><?php echo JHtml::_('grid.sort', 'Date', 'created', $listDirn, $listOrder) ?></th> -->
 			</tr>
 		</thead>
@@ -63,11 +57,6 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 						<a href="<?php echo $uriCompoDetail.$item->id ?>"><?php echo $item->nom ?></a>
 					</td>
 					<!-- <td><?php echo JHtml::_('jgrid.published', $item->published, $i, 'discussions.', true); ?></td> -->
-					<td><?php echo $item->discussion_parent_nom ?></td>
-					<td><?php if($item->est_discussion_interet)
-										{echo 'Interêt';} 
-									else{echo 'Classe';}
-						?></td>
 					<!-- <td><?php echo JHtml::_('date', $item->created, 'j F Y'); ?></td> -->
 				</tr>			
 			<?php endforeach; ?>
