@@ -22,6 +22,17 @@ CREATE TABLE `arvie_arvie_abonnements` (
   `hits` int(11) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Contenu de la table `arvie_arvie_abonnements`
+--
+
+INSERT INTO `arvie_arvie_abonnements` (`id`, `abonne`, `suivi`, `date`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
+(1, 6, 2, '2017-12-10 12:00:00', '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(2, 6, 3, '0000-00-00 00:00:00', '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(3, 6, 4, '0000-00-00 00:00:00', '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(4, 2, 3, '0000-00-00 00:00:00', '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(5, 2, 4, '0000-00-00 00:00:00', '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -86,11 +97,11 @@ CREATE TABLE `arvie_arvie_groupes` (
 
 INSERT INTO `arvie_arvie_groupes` (`id`, `groupe_parent`, `nom`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
 (1, NULL, 'Arvie', '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(2, 1, 'Louis Armand', '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(2, 1, 'Louis-Armand', '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
 (3, 2, 'BTS', '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
 (4, 3, 'SIO 1', '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(5, 1, 'sport', '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(6, 5, 'basket', '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(5, 1, 'Sport', '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(6, 5, 'Basket', '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
 (7, 3, 'SIO 2', '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
@@ -124,7 +135,6 @@ INSERT INTO `arvie_arvie_groupe_utilisateur_map` (`id`, `utilisateur`, `groupe`,
 (2, 3, 7, '0000-00-00 00:00:00', NULL, 3, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
 (3, 2, 7, '0000-00-00 00:00:00', NULL, 2, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
 (4, 4, 7, '0000-00-00 00:00:00', NULL, 4, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0);
-
 
 -- --------------------------------------------------------
 
@@ -249,7 +259,11 @@ CREATE TABLE `arvie_arvie_publications` (
 --
 
 INSERT INTO `arvie_arvie_publications` (`id`, `publication_parent`, `groupe`, `auteur`, `titre`, `texte`, `date_publi`, `est_public`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
-(1, NULL, 1, 1, 'Projet ArVie', 'Le projet ArVie est actuellement développé par les étudiants TSIO2 SLAM au Lycée Louis-Armand.\r\n\r\nLes contributions faites à domicile doivent rester exceptionnelles afin de respecter la dynamique de groupe.', '2017-12-07 11:46:00', 1, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0);
+(1, NULL, 1, 1, 'Projet ArVie', 'Le projet ArVie est actuellement développé par les étudiants TSIO2 SLAM au Lycée Louis-Armand.\r\n\r\nLes contributions faites à domicile doivent rester exceptionnelles afin de respecter la dynamique de groupe.', '2017-12-07 11:46:00', 1, '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(2, NULL, 6, 2, 'Champion', 'Je suis devenu champion du monde aujourd\'hui', '2017-12-14 00:00:00', 1, '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(3, NULL, 7, 6, 'Qui suis-je ?', 'Celui qui devinera mon identité gagne un bonbon ! :)', '2017-12-18 08:12:22', 1, '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(4, NULL, 7, 6, 'MAIS QUI A VOLE LE CLAVIER ET LA SOURIS', 'CELUI QUI A VOLE LE CLAVIER ET LA SOURIS EST PRIE DE LES RENDRE SVP ON VEUT RENDRE LES SALLES A NOS ETUDIANTS PREFERES (LA BTS SIO2, SURTOUT LES SLAMS)', '0000-00-00 00:00:00', 1, '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(5, NULL, 7, 4, 'Bonjour à tous', 'Bonjour je vous conseille à tous de dormir 8h par jour MINIMUM ce qui améliore vos synapses (c\'est ce que je fais perso et ça marche pas mal)', '2017-12-16 00:00:00', 1, '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -305,11 +319,12 @@ CREATE TABLE `arvie_arvie_utilisateurs` (
 --
 
 INSERT INTO `arvie_arvie_utilisateurs` (`id`, `email`, `prenom`, `nom`, `mobile`, `date_naiss`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
-(1, 'emmanuel.derome@gmail.com', 'Emmanuel', 'Derome', NULL, '1960-10-03', '', 1, '2017-10-19 16:32:12', '07', '2017-10-19 16:32:12', 416, 0),
-(2, 'f.salimou@hotmail.fr', 'Salimou', 'Fofana', NULL, '1998-03-01', '', 1, '2017-10-19 16:32:12', '06', '2017-10-19 16:32:12', 416, 0),
-(3, 'gregory.brugnet@gmail.com', 'Gregory', 'Brugnet', NULL, '1996-10-01', '', 1, '2017-10-19 16:32:12', '06', '2017-10-19 16:32:12', 416, 0),
-(4, 'n.peugnet@free.fr', 'Nicolas', 'Peugnet', NULL, '1996-05-09', '', 1, '2017-10-19 16:32:12', '06', '2017-10-19 16:32:12', 416, 0),
-(5, 'rahari.anja@gmail.com', 'Anja', 'Raharijaonarivelo', 0, '1997-06-15', 'raharijaonarivelo', '07', '2017-10-19 16:32:12', 416, '2017-11-16 15:58:09', 416, 0);
+(1, 'emmanuel.derome@gmail.com', 'Emmanuel', 'Derome', NULL, '1960-10-03', '', 1, '2017-10-19 16:32:12', 416, '2017-10-19 16:32:12', 416, 0),
+(2, 'f.salimou@hotmail.fr', 'Salimou', 'Fofana', NULL, '1998-03-01', '', 1, '2017-10-19 16:32:12', 416, '2017-10-19 16:32:12', 416, 0),
+(3, 'gregory.brugnet@gmail.com', 'Gregory', 'Brugnet', 0, '1996-10-01', 'brugnetzz', 1, '2017-10-19 16:32:12', 416, '2017-12-14 10:08:36', 417, 0),
+(4, 'n.peugnet@free.fr', 'Nicolas', 'Peugnet', NULL, '1996-05-09', '', 1, '2017-10-19 16:32:12', 416, '2017-10-19 16:32:12', 416, 0),
+(5, 'rahari.anja@gmail.com', 'Anja', 'Raharijaonarivelo', 0, '1997-06-15', 'raharijaonarivelo', 1, '2017-10-19 16:32:12', 416, '2017-11-16 15:58:09', 416, 0),
+(6, 'mdupond@arvie.org', 'Marcel', 'DUPOND', 0, '1990-04-05', 'dupond', 1, '2017-12-10 17:25:09', 416, '2017-12-10 17:25:09', 0, 0);
 
 -- --------------------------------------------------------
 
