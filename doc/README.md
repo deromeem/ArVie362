@@ -33,6 +33,7 @@ Les besoins du site ArVie sont les suivants…
 _(A compléter par **Allan**)_
 
 
+
 ## Organisation du projet ArVie
 
 ### Organisation générale du projet
@@ -46,11 +47,9 @@ Le projet ArVie a d'abord été décomposé en trois livrables principaux liés
 à l'architecture du framework Joomla retenu et présenté plus loin (cf.
 chapitre conception et architecture) :
 
-- Le site d'administration, avec le développement de la partie backend du composant com_arvie (extension Joomla spécialement développée pour le projet).
-
-- Le site public à accès réservé aux adhérents (directeur, professeurs, élèves, etc.) avec la configuration du CMS Joomla et le développement de la partie frontend du composant com_arvie.
-
-- Le développent de l'application mobile Android et de l'API associée.
+-   Le site d'administration, avec le développement de la partie backend du composant com_arvie (extension Joomla spécialement développée pour le projet).
+-   Le site public à accès réservé aux adhérents (directeur, professeurs, élèves, etc.) avec la configuration du CMS Joomla et le développement de la partie frontend du composant com_arvie.
+-   Le développent de l'application mobile Android et de l'API associée.
 
 
 ### Approche méthodologique
@@ -92,36 +91,36 @@ fonctionnelles) :
 
 **Backend :**
 
-| **Domaine**   | **Table**              | **MVC Liste** | **MVC Détail** |
-| ------------- | ---------------------- | ------------- | -------------- |
-| Utilisateurs  | utilisateurs           | Nicolas       | Allan          |
-|               | abonnements            | Khalil        | Khalil         |
-|               | parrains               | Nicolas       | Nicolas        |
-| Groupe        | groupes                | Salimou       | Salimou        |
-|               | groupe_utilisateur_map | Maxime        | Maxime         |
-|               | roles                  | Salimou       | Salimou        |
-|               | metiers                | Allan         | Allan          |
-|               | metier_groupe_map      | Nicolas       | Nicolas        |
-| Partage       | publications           | Kayumars      | Kayumars       |
-|               | evenements             | Gregory       | Gregory        |
-|               | utilisateur_even_map   | Gregory       | Gregory        |
-| Communication | discussions            | Ana           | Ana            |
-|               | utilisateur_discu_map  | Ana           | Ana            |
-|               | messages               | Jérémie       | Sakana         |
+| Domaine       | Table                  | MVC Liste | MVC Détail |
+| ------------- | ---------------------- | --------- | ---------- |
+| Utilisateurs  | utilisateurs           | Nicolas   | Allan      |
+|               | abonnements            | Khalil    | Khalil     |
+|               | parrains               | Nicolas   | Nicolas    |
+| Groupe        | groupes                | Salimou   | Salimou    |
+|               | groupe_utilisateur_map | Maxime    | Maxime     |
+|               | roles                  | Salimou   | Salimou    |
+|               | metiers                | Allan     | Allan      |
+|               | metier_groupe_map      | Nicolas   | Nicolas    |
+| Partage       | publications           | Kayumars  | Kayumars   |
+|               | evenements             | Gregory   | Gregory    |
+|               | utilisateur_even_map   | Gregory   | Gregory    |
+| Communication | discussions            | Ana       | Ana        |
+|               | utilisateur_discu_map  | Ana       | Ana        |
+|               | messages               | Jérémie   | Sakana     |
 
 
 **Frontend :**
 
-| **Domaine**   | **Table**    | **Direction** | **Agent** | **Prof.** | **Eleve** | **Ancien** |
-| ------------- | ------------ | ------------- | --------- | --------- | --------- | ---------- |
-| Utilisateur   | utilisateurs | Nicolas       | Maxime    |           |           |            |
-|               | abonnements  | Khalil        |           |           |           |            |
-|               | parrains     | Maxime        |           |           |           |            |
-| Groupe        | groupes      | Salimou       |           |           |           |            |
-| Partage       | publications | Kayumars      | Grégory   |           |           |            |
-|               | evenements   | Jérémie       |           |           |           |            |
-| Communication | discussions  | Allan         | Ana       |           |           |            |
-|               | messages     | Sakana        |           |           |           |            |
+| Domaine       | Table        | Direction | Agent   | Prof. | Eleve | Ancien |
+| ------------- | ------------ | --------- | ------- | ----- | ----- | ------ |
+| Utilisateur   | utilisateurs | Nicolas   | Maxime  |       |       |        |
+|               | abonnements  | Khalil    |         |       |       |        |
+|               | parrains     | Maxime    |         |       |       |        |
+| Groupe        | groupes      | Salimou   |         |       |       |        |
+| Partage       | publications | Kayumars  | Grégory |       |       |        |
+|               | evenements   | Jérémie   |         |       |       |        |
+| Communication | discussions  | Allan     | Ana     |       |       |        |
+|               | messages     | Sakana    |         |       |       |        |
 
 
 _(A compléter par **Sakana**)_
@@ -141,8 +140,8 @@ _(A compléter par **Nicolas**)_
 
 Le site ArVie se décompose en deux parties :
 
-- Le **backend ArVie** , site d'administration du site ArVie.
-- Le **frontend ArVie** , site ArVie constitué d'une partie publique et d'une partie à accès réservé aux utilisateurs enregistrés.
+-   Le **backend ArVie** , site d'administration du site ArVie.
+-   Le **frontend ArVie** , site ArVie constitué d'une partie publique et d'une partie à accès réservé aux utilisateurs enregistrés.
 
 Les présentes spécifications fonctionnelles définissent les acteurs, les
 diagrammes de cas d'utilisation et les diagrammes de séquence associés,
@@ -153,8 +152,8 @@ les interfaces utilisateurs et le modèle des données commun aux deux sites.
 
 Au sens UML, les acteurs concernés par le système ArVie sont les suivants :
 
-- Backend ArVie : Administrateur.
-- Frontend ArVie : Direction, Agent, Professeur, Elève et Ancien.
+-   Backend ArVie : Administrateur.
+-   Frontend ArVie : Direction, Agent, Professeur, Elève et Ancien.
 
 
 ### Diagramme de cas d'utilisation du backend ArVie
@@ -220,9 +219,8 @@ l'équipe projet ArVie a retenu le principe d'une architecture logicielle
 ouverte (architecture MVC : Modèle-Vue-Contrôleur) avec Framework/CMS
 Joomla 3.6 et un développement PHP en deux phases :
 
-1. Développement du backend ArVie et de la base de données « ArVie» sous la forme d'un composant « com_arvie » installable dans le CMS Joomla 3.5.
-
-2. Développement du frontend ArVie avec le composant « com_arvie » pour implémenter les fonctionnalités attendues des utilisateurs.
+1.  Développement du backend ArVie et de la base de données « ArVie» sous la forme d'un composant « com_arvie » installable dans le CMS Joomla 3.5.
+2.  Développement du frontend ArVie avec le composant « com_arvie » pour implémenter les fonctionnalités attendues des utilisateurs.
 
 La technologie Joomla a été choisie parmi les trois CMS (Content Management
 System : outil de gestion de contenu sur Internet) open-source et gratuits
@@ -251,15 +249,14 @@ _(A compléter par **Ana**)_
 
 L'environnement de développement et de test qui a été mis en place est le suivant :
 
-- Installation sur chaque PC étudiant de :
-	- ** XAMPP 5.6.15** (PHP 5.6.15, MySQL 5.0.11, Apache 2.4.7, phpMyAdmin 4.5.1)
-	- ** NotePad++ 7.2.2**
-	- ** Joomla 3.6**
-
-- Installation sur le serveur du labo SLAM :
-	- Machine virtuelle Debian 8.2
-	- Services Apache2, PHP et MySQL
-	- Logiciel phpMyAdmin
+-   Installation sur chaque PC étudiant de :
+    - ** XAMPP 5.6.15** (PHP 5.6.15, MySQL 5.0.11, Apache 2.4.7, phpMyAdmin 4.5.1)
+    - ** NotePad++ 7.2.2**
+    - ** Joomla 3.6**
+-   Installation sur le serveur du labo SLAM :
+    - Machine virtuelle Debian 8.2
+    - Services Apache2, PHP et MySQL
+    - Logiciel phpMyAdmin
 
 L'environnement de production choisi a été une plateforme mutualisée de
 l'hébergeur OVH.com (offre Pro sur serveur LAMP) dont les détails sont
@@ -278,9 +275,9 @@ maintenance et d'évolutivité du site par une organisation standardisée
 du code source. Le but d'une telle architecture est de structurer le code,
 pour chaque cas d'utilisation ou bloc fonctionnel, en trois parties :
 
-- Le **modèle** gère les données du site. Il récupère les informations dans la base de données, les organise et les assembles pour qu'elles puissent ensuite être traitées par le contrôleur et la vue. Cette partie contient donc les requêtes SQL organisées sous forme de fonctions PHP.
-- La **vue** gère l'affichage. Elle organise la façon dont les données sont affichées à l'écran.On y trouve essentiellement du code HTML mais aussi quelques boucles et conditions PHP très simples.
-- Le **contrôleur** gère la logique du code et les demandes utilisateurs. Le contrôleur récupère les données du modèle, les analyse/les traite, et renvoie les données à afficher à la vue. Le contrôleur contient exclusivement du code PHP, organisé sous forme de fonctions.
+-   Le **modèle** gère les données du site. Il récupère les informations dans la base de données, les organise et les assembles pour qu'elles puissent ensuite être traitées par le contrôleur et la vue. Cette partie contient donc les requêtes SQL organisées sous forme de fonctions PHP.
+-   La **vue** gère l'affichage. Elle organise la façon dont les données sont affichées à l'écran. On y trouve essentiellement du code HTML mais aussi quelques boucles et conditions PHP très simples.
+-   Le **contrôleur** gère la logique du code et les demandes utilisateurs. Le contrôleur récupère les données du modèle, les analyse/les traite, et renvoie les données à afficher à la vue. Le contrôleur contient exclusivement du code PHP, organisé sous forme de fonctions.
 
 L'architecture du composant com_arvie respecte l'arborescence et les
 règles de nommage définies pour la plateforme Joomla 3.6.
@@ -289,23 +286,23 @@ règles de nommage définies pour la plateforme Joomla 3.6.
 ### Architecture du backend de com_arvie
 
 L'arborescence des dossiers du backend du composant com_arvie (dossier
-www.ArVie.com/administrator/components/com_arvie) est la suivante :
+`www.ArVie.com/administrator/components/com_arvie`) est la suivante :
 
 _(A compléter par **Nicolas**)_
 
 
 Les règles de nommage des fichiers php des contrôleurs, modèles et vues sont les suivantes :
 
-- nom au pluriel pour les listes (ex : entreprises)
-- nom au singulier pour les formulaires de détail (ex : entreprise)
+-   nom au pluriel pour les listes (ex : entreprises)
+-   nom au singulier pour les formulaires de détail (ex : entreprise)
 
 Ainsi, le dossier **controllers** comprend les fichiers php suivants :
 
-- commande
-- commandes
-- entreprise
-- entreprises
-- …
+-   commande
+-   commandes
+-   entreprise
+-   entreprises
+-   …
 
 _(A compléter par **Nicolas**)_
 
@@ -387,15 +384,15 @@ _(A compléter par **Salimou**)_
 
 ## Intégration et tests d'intégration du site ArVie
 
-### Création du composant packagé com_arvie.zip
+### Création du composant packagé `com_arvie.zip`
 
-Il s'agit de créer un composant packagé **com_arvie.zip** installable
+Il s'agit de créer un composant packagé `com_arvie.zip` installable
 depuis le CMS Joomla 3.6 et contenant…
 
 _(A compléter par **Kayumars**)_
 
 
-### Test d'installation du composant packagé com_arvie.zip
+### Test d'installation du composant packagé `com_arvie.zip`
 
 _(A compléter par **Kayumars**)_
 
@@ -444,23 +441,19 @@ Le déploiement du site ArVie s'est fait sur une plateforme mutualisée LAMP
 hébergée chez OVH, après achat du nom de domaine disponible lla-sio.fr et
 de l'hébergement Pro pour un an (5,99 €HT/mois), de la façon suivante :
 
-1. Préparation des fichiers à télécharger :
-	- Export de la base de données ArVie complète au format SQL (CMS Joomla + extension com_arvoe).
-	- Copie du fichier ArVie.sql à la racine de l'arborescence des fichiers du site egs.com.
-
-2. Préparation de la plateforme d'hébergement :
-	- Création du sous domaine ArVie dans www.lla-sio.fr.
-	- Création du répertoire ArVie à la racine www du site (correspondant au sous-domaine).
-	- Création de la base de données sous MySQL.
-
-3. Téléchargement des fichiers :
-	- Téléchargement de l'arborescence des fichiers par FTP dans le répertoire www du serveur OVH.
-
-4. Installation de la base de données :
-	- Import de la base de données avec phpMyAdmin (serveur OVH).
-
-5. Tests :
-	- Test du site public à l'url : [www.lla-sio.fr/ArVie](http://www.lla-sio.fr/cp3d)
-	- Test du site public à l'url : [www.lla-sio.fr/ArVie/administrator](http://www.lla-sio.fr/cp3d/administrator)
+1.  Préparation des fichiers à télécharger :
+    -   Export de la base de données ArVie complète au format SQL (CMS Joomla + extension com_arvie).
+    -   Copie du fichier `ArVie.sql` à la racine de l'arborescence des fichiers du site egs.com.
+2.  Préparation de la plateforme d'hébergement :
+    -   Création du sous domaine ArVie dans www.lla-sio.fr.
+    -   Création du répertoire ArVie à la racine www du site (correspondant au sous-domaine).
+    -   Création de la base de données sous MySQL.
+3.  Téléchargement des fichiers :
+    -   Téléchargement de l'arborescence des fichiers par FTP dans le répertoire www du serveur OVH.
+4.  Installation de la base de données :
+    -   Import de la base de données avec phpMyAdmin (serveur OVH).
+5.  Tests :
+    -   Test du site public à l'url : [www.lla-sio.fr/ArVie](http://www.lla-sio.fr/cp3d)
+    -   Test du site public à l'url : [www.lla-sio.fr/ArVie/administrator](http://www.lla-sio.fr/cp3d/administrator)
 
 _(A compléter par **Jérémie**)_
