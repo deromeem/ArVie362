@@ -43,15 +43,16 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 		<thead>
 			<tr>
 				<th class="title">
-					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_GROUPES_NOM'), 'nom', $listDirn, $listOrder) ?>
+					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_ABONNEMENT_ABONNE'), 'abonne_nom', $listDirn, $listOrder) ?>
 				</th>
 				<!-- <th class="title">Publié</th> -->
 				<th class="title">
-					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_GROUPES_GROUPES_PARENT'), 'abonnement_parent_nom', $listDirn, $listOrder) ?>
+					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_ABONNEMENT_SUIVI'), 'suivi_nom', $listDirn, $listOrder) ?>
 				</th>
 				<th class="title">
-					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_GROUPES_EST_GROUPE_INTERET'), 'est_abonnement_interet', $listDirn, $listOrder) ?>
+					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_ABONNEMENT_DATE'), 'DATE', $listDirn, $listOrder) ?>
 				</th>
+
 				<!-- <th class="title"><?php echo JHtml::_('grid.sort', 'Date', 'created', $listDirn, $listOrder) ?></th> -->
 			</tr>
 		</thead>
@@ -60,15 +61,16 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 			<?php foreach($this->items as $i => $item) : ?>
 				<tr class="row<?php echo $i % 2; ?>">
 					<td>
-						<a href="<?php echo $uriCompoDetail.$item->id ?>"><?php echo $item->nom ?></a>
+						<a href="<?php echo $uriCompoDetail.$item->id ?>"><?php echo $item->abonne_nom ?></a>
 					</td>
-					<!-- <td><?php echo JHtml::_('jgrid.published', $item->published, $i, 'abonnements.', true); ?></td> -->
-					<td><?php echo $item->abonnement_parent_nom ?></td>
-					<td><?php if($item->est_abonnement_interet)
-										{echo 'Interêt';} 
-									else{echo 'Classe';}
-						?></td>
-					<!-- <td><?php echo JHtml::_('date', $item->created, 'j F Y'); ?></td> -->
+					<td>
+						<a href="<?php echo $uriCompoDetail.$item->id ?>"><?php echo $item->suivi_nom ?></a>
+					</td>
+					<td>
+						<a href="<?php echo $uriCompoDetail.$item->id ?>"><?php echo $item->date ?></a>
+					</td>
+
+					
 				</tr>			
 			<?php endforeach; ?>
 		</tbody>

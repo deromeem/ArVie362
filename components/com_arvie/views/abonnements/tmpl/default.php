@@ -11,6 +11,8 @@ $isAdmin = (in_array('17', $user->groups));		// sets flag when user group is '10
 <?php if (!$isAdmin) : ?>
 	<?php echo JError::raiseWarning( 100, JText::_('COM_ARVIE_RESTRICTED_ACCESS') ); ?>
 <?php else : ?>
+	<h2><?php echo JText::_('COM_ARVIE_OPTIONS')." : ".JText::_('COM_ARVIE_ABONNEMENTS'); ?>
+	</h2>
 
 	<?php echo $this->loadTemplate('items'); ?>
 
