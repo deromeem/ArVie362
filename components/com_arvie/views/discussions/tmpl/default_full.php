@@ -9,8 +9,8 @@ defined('_JEXEC') or die('Restricted access');
 	<table class="category">
 		<thead>
 			<tr>
-			<th class="title">Titre</th>
-			<th class="title">Publié</th>
+			<th class="title">Nom</th>
+			<th class="title">Admin</th>
 			<th class="title">Date</th>
 		</tr>
 		</thead>
@@ -18,8 +18,8 @@ defined('_JEXEC') or die('Restricted access');
 		<tbody>
 			<?php foreach($this->tickets as $i => $item) : ?>
 			<tr>
-				<td><?php echo $item->title ?></td>
-				<td><?php echo $item->published ?></td>
+				<td><?php echo $item->nom ?></td>
+				<td><?php echo $item->admiNom ?></td>
 				<td><?php echo $item->created ?></td>
 			</tr>			
 			<?php endforeach; ?>
