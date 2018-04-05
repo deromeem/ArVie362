@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 14 déc. 2017 à 11:40
+-- Généré le :  ven. 15 déc. 2017 à 17:33
 -- Version du serveur :  10.1.26-MariaDB
 -- Version de PHP :  7.1.9
 
@@ -260,11 +260,11 @@ CREATE TABLE `arvie_arvie_groupes` (
 
 INSERT INTO `arvie_arvie_groupes` (`id`, `groupe_parent`, `nom`, `est_groupe_interet`, `est_public`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
 (1, NULL, 'Arvie', 0, 0, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(2, 1, 'Louis Armand', 0, 0, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(2, 1, 'Louis-Armand', 0, 0, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
 (3, 2, 'BTS', 0, 0, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
 (4, 3, 'SIO 1', 0, 0, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(5, 1, 'sport', 0, 0, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(6, 5, 'basket', 0, 0, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(5, 1, 'Sport', 0, 0, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(6, 5, 'Basket', 0, 0, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
 (7, 3, 'SIO 2', 0, 0, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
@@ -288,6 +288,16 @@ CREATE TABLE `arvie_arvie_groupe_utilisateur_map` (
   `modified_by` int(11) NOT NULL,
   `hits` int(11) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `arvie_arvie_groupe_utilisateur_map`
+--
+
+INSERT INTO `arvie_arvie_groupe_utilisateur_map` (`id`, `utilisateur`, `groupe`, `date_deb`, `date_fin`, `role`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
+(1, 1, 2, '0000-00-00 00:00:00', NULL, 1, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(2, 3, 7, '0000-00-00 00:00:00', NULL, 3, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(3, 2, 7, '0000-00-00 00:00:00', NULL, 2, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(4, 4, 7, '0000-00-00 00:00:00', NULL, 4, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -332,8 +342,8 @@ CREATE TABLE `arvie_arvie_metiers` (
 --
 
 INSERT INTO `arvie_arvie_metiers` (`id`, `label`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
-(1, 'Informatique', '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(2, 'Economie', '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0);
+(1, 'Informatique', '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(2, 'Economie', '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -412,7 +422,11 @@ CREATE TABLE `arvie_arvie_publications` (
 --
 
 INSERT INTO `arvie_arvie_publications` (`id`, `publication_parent`, `groupe`, `auteur`, `titre`, `texte`, `date_publi`, `est_public`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
-(1, NULL, 1, 1, 'Projet ArVie', 'Le projet ArVie est actuellement développé par les étudiants TSIO2 SLAM au Lycée Louis-Armand.\r\n\r\nLes contributions faites à domicile doivent rester exceptionnelles afin de respecter la dynamique de groupe.', '2017-12-07 11:46:00', 1, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0);
+(1, NULL, 1, 1, 'Projet ArVie', 'Le projet ArVie est actuellement développé par les étudiants TSIO2 SLAM au Lycée Louis-Armand.\r\n\r\nLes contributions faites à domicile doivent rester exceptionnelles afin de respecter la dynamique de groupe.', '2017-12-07 11:46:00', 1, '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(2, NULL, 6, 2, 'Champion', 'Je suis devenu champion du monde aujourd\'hui', '2017-12-14 00:00:00', 1, '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(3, NULL, 7, 6, 'Qui suis-je ?', 'Celui qui devinera mon identité gagne un bonbon ! :)', '2017-12-18 08:12:22', 1, '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(4, NULL, 7, 6, 'MAIS QUI A VOLE LE CLAVIER ET LA SOURIS', 'CELUI QUI A VOLE LE CLAVIER ET LA SOURIS EST PRIE DE LES RENDRE SVP ON VEUT RENDRE LES SALLES A NOS ETUDIANTS PREFERES (LA BTS SIO2, SURTOUT LES SLAMS)', '0000-00-00 00:00:00', 1, '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(5, NULL, 7, 4, 'Bonjour à tous', 'Bonjour je vous conseille à tous de dormir 8h par jour MINIMUM ce qui améliore vos synapses (c\'est ce que je fais perso et ça marche pas mal)', '2017-12-16 00:00:00', 1, '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -432,6 +446,16 @@ CREATE TABLE `arvie_arvie_roles` (
   `hits` int(11) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `arvie_arvie_roles`
+--
+
+INSERT INTO `arvie_arvie_roles` (`id`, `label`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
+(1, 'Professeur', '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(2, 'Élève', '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(3, 'Délégué', '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(4, 'Suppléant', '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -443,7 +467,7 @@ CREATE TABLE `arvie_arvie_utilisateurs` (
   `email` varchar(50) NOT NULL,
   `prenom` varchar(40) NOT NULL,
   `nom` varchar(40) NOT NULL,
-  `mobile` int(12) DEFAULT NULL,
+  `mobile` varchar(40) DEFAULT NULL,
   `date_naiss` date NOT NULL,
   `alias` varchar(255) NOT NULL,
   `published` tinyint(1) NOT NULL DEFAULT '0',
@@ -461,10 +485,10 @@ CREATE TABLE `arvie_arvie_utilisateurs` (
 INSERT INTO `arvie_arvie_utilisateurs` (`id`, `email`, `prenom`, `nom`, `mobile`, `date_naiss`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
 (1, 'emmanuel.derome@gmail.com', 'Emmanuel', 'Derome', NULL, '1960-10-03', '', 1, '2017-10-19 16:32:12', 416, '2017-10-19 16:32:12', 416, 0),
 (2, 'f.salimou@hotmail.fr', 'Salimou', 'Fofana', NULL, '1998-03-01', '', 1, '2017-10-19 16:32:12', 416, '2017-10-19 16:32:12', 416, 0),
-(3, 'gregory.brugnet@gmail.com', 'Gregory', 'Brugnet', 0, '1996-10-01', 'brugnetzz', 1, '2017-10-19 16:32:12', 416, '2017-12-14 10:08:36', 417, 0),
+(3, 'gregory.brugnet@gmail.com', 'Gregory', 'Brugnet', '0', '1996-10-01', 'brugnetzz', 1, '2017-10-19 16:32:12', 416, '2017-12-14 10:08:36', 417, 0),
 (4, 'n.peugnet@free.fr', 'Nicolas', 'Peugnet', NULL, '1996-05-09', '', 1, '2017-10-19 16:32:12', 416, '2017-10-19 16:32:12', 416, 0),
-(5, 'rahari.anja@gmail.com', 'Anja', 'Raharijaonarivelo', 0, '1997-06-15', 'raharijaonarivelo', 1, '2017-10-19 16:32:12', 416, '2017-11-16 15:58:09', 416, 0),
-(6, 'mdupond@arvie.org', 'Marcel', 'DUPOND', 0, '1990-04-05', 'dupond', 1, '2017-12-10 17:25:09', 416, '2017-12-10 17:25:09', 0, 0);
+(5, 'rahari.anja@gmail.com', 'Anja', 'Raharijaonarivelo', '0', '1997-06-15', 'raharijaonarivelo', 1, '2017-10-19 16:32:12', 416, '2017-11-16 15:58:09', 416, 0),
+(6, 'mdupond@arvie.org', 'Marcel', 'DUPOND', '0', '1990-04-05', 'dupond', 1, '2017-12-10 17:25:09', 416, '2017-12-10 17:25:09', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1087,7 +1111,7 @@ INSERT INTO `arvie_extensions` (`extension_id`, `package_id`, `name`, `type`, `e
 (449, 0, 'plg_authentication_cookie', 'plugin', 'cookie', 'authentication', 0, 1, 1, 0, '{\"name\":\"plg_authentication_cookie\",\"type\":\"plugin\",\"creationDate\":\"July 2013\",\"author\":\"Joomla! Project\",\"copyright\":\"Copyright (C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"PLG_AUTH_COOKIE_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"cookie\"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (450, 0, 'plg_twofactorauth_yubikey', 'plugin', 'yubikey', 'twofactorauth', 0, 0, 1, 0, '{\"name\":\"plg_twofactorauth_yubikey\",\"type\":\"plugin\",\"creationDate\":\"September 2013\",\"author\":\"Joomla! Project\",\"copyright\":\"Copyright (C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.2.0\",\"description\":\"PLG_TWOFACTORAUTH_YUBIKEY_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"yubikey\"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (451, 0, 'plg_search_tags', 'plugin', 'tags', 'search', 0, 1, 1, 0, '{\"name\":\"plg_search_tags\",\"type\":\"plugin\",\"creationDate\":\"March 2014\",\"author\":\"Joomla! Project\",\"copyright\":\"Copyright (C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"PLG_SEARCH_TAGS_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"tags\"}', '{\"search_limit\":\"50\",\"show_tagged_items\":\"1\"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(452, 0, 'plg_system_updatenotification', 'plugin', 'updatenotification', 'system', 0, 1, 1, 0, '{\"name\":\"plg_system_updatenotification\",\"type\":\"plugin\",\"creationDate\":\"May 2015\",\"author\":\"Joomla! Project\",\"copyright\":\"Copyright (C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.5.0\",\"description\":\"PLG_SYSTEM_UPDATENOTIFICATION_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"updatenotification\"}', '{\"lastrun\":1513236016}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(452, 0, 'plg_system_updatenotification', 'plugin', 'updatenotification', 'system', 0, 1, 1, 0, '{\"name\":\"plg_system_updatenotification\",\"type\":\"plugin\",\"creationDate\":\"May 2015\",\"author\":\"Joomla! Project\",\"copyright\":\"Copyright (C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.5.0\",\"description\":\"PLG_SYSTEM_UPDATENOTIFICATION_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"updatenotification\"}', '{\"lastrun\":1513353555}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (453, 0, 'plg_editors-xtd_module', 'plugin', 'module', 'editors-xtd', 0, 1, 1, 0, '{\"name\":\"plg_editors-xtd_module\",\"type\":\"plugin\",\"creationDate\":\"October 2015\",\"author\":\"Joomla! Project\",\"copyright\":\"Copyright (C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.5.0\",\"description\":\"PLG_MODULE_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"module\"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (454, 0, 'plg_system_stats', 'plugin', 'stats', 'system', 0, 1, 1, 0, '{\"name\":\"plg_system_stats\",\"type\":\"plugin\",\"creationDate\":\"November 2013\",\"author\":\"Joomla! Project\",\"copyright\":\"Copyright (C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.5.0\",\"description\":\"PLG_SYSTEM_STATS_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"stats\"}', '{\"mode\":3,\"lastrun\":1510390090,\"unique_id\":\"199e5d050a00030cdab163a94dc8b4add88e1d04\",\"interval\":12}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (455, 0, 'plg_installer_packageinstaller', 'plugin', 'packageinstaller', 'installer', 0, 1, 1, 1, '{\"name\":\"plg_installer_packageinstaller\",\"type\":\"plugin\",\"creationDate\":\"May 2016\",\"author\":\"Joomla! Project\",\"copyright\":\"Copyright (C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.6.0\",\"description\":\"PLG_INSTALLER_PACKAGEINSTALLER_PLUGIN_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"packageinstaller\"}', '', '', '', 0, '0000-00-00 00:00:00', 1, 0),
@@ -2089,8 +2113,7 @@ CREATE TABLE `arvie_session` (
 --
 
 INSERT INTO `arvie_session` (`session_id`, `client_id`, `guest`, `time`, `data`, `userid`, `username`) VALUES
-('d6ujk2qjf53p3aovg90opb7m7l', 1, 0, '1513247495', 'joomla|s:652:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjoyOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjozOntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjM6e3M6NzoiY291bnRlciI7aTo1O3M6NToidG9rZW4iO3M6MzI6IlREUzA0a3ZoenhMN2VEZ04wQTVFQTFHYlI2b0N2QnZ1IjtzOjU6InRpbWVyIjtPOjg6InN0ZENsYXNzIjozOntzOjU6InN0YXJ0IjtpOjE1MTMyNDc0NjI7czo0OiJsYXN0IjtpOjE1MTMyNDc0ODc7czozOiJub3ciO2k6MTUxMzI0NzQ5NTt9fXM6ODoicmVnaXN0cnkiO086MjQ6Ikpvb21sYVxSZWdpc3RyeVxSZWdpc3RyeSI6Mjp7czo3OiIAKgBkYXRhIjtPOjg6InN0ZENsYXNzIjowOnt9czo5OiJzZXBhcmF0b3IiO3M6MToiLiI7fXM6NDoidXNlciI7Tzo1OiJKVXNlciI6MTp7czoyOiJpZCI7czozOiI0MTYiO319fXM6OToic2VwYXJhdG9yIjtzOjE6Ii4iO30=\";', 416, 'SLAM'),
-('jge1k0evut1vimpop6rbueff63', 0, 0, '1513247512', 'joomla|s:1096:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjoyOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjo0OntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjM6e3M6NzoiY291bnRlciI7aToyNztzOjU6InRpbWVyIjtPOjg6InN0ZENsYXNzIjozOntzOjU6InN0YXJ0IjtpOjE1MTMyNDQ5OTg7czo0OiJsYXN0IjtpOjE1MTMyNDY5NTc7czozOiJub3ciO2k6MTUxMzI0NzUxMjt9czo1OiJ0b2tlbiI7czozMjoianAwbDVlNVk2c0xUQXBaUEZqZGdjQVViMDBpeTNXYlMiO31zOjg6InJlZ2lzdHJ5IjtPOjI0OiJKb29tbGFcUmVnaXN0cnlcUmVnaXN0cnkiOjI6e3M6NzoiACoAZGF0YSI7Tzo4OiJzdGRDbGFzcyI6Mjp7czo1OiJ1c2VycyI7Tzo4OiJzdGRDbGFzcyI6MTp7czo1OiJsb2dpbiI7Tzo4OiJzdGRDbGFzcyI6MTp7czo0OiJmb3JtIjtPOjg6InN0ZENsYXNzIjoyOntzOjQ6ImRhdGEiO2E6MDp7fXM6NjoicmV0dXJuIjtzOjM1OiJodHRwOi8vbG9jYWxob3N0L2FydmllMzYyL2luZGV4LnBocCI7fX19czo5OiJjb21fYXJ2aWUiO086ODoic3RkQ2xhc3MiOjE6e3M6NDoiZWRpdCI7Tzo4OiJzdGRDbGFzcyI6MTp7czoxMToidXRpbGlzYXRldXIiO086ODoic3RkQ2xhc3MiOjE6e3M6NDoiZGF0YSI7Tjt9fX19czo5OiJzZXBhcmF0b3IiO3M6MToiLiI7fXM6NDoidXNlciI7Tzo1OiJKVXNlciI6MTp7czoyOiJpZCI7czozOiI0MTciO31zOjExOiJhcHBsaWNhdGlvbiI7Tzo4OiJzdGRDbGFzcyI6MTp7czo1OiJxdWV1ZSI7Tjt9fX1zOjk6InNlcGFyYXRvciI7czoxOiIuIjt9\";', 417, 'mdupond');
+('qib8nb0q7eh4iqus01c0itoss3', 1, 0, '1513355416', 'joomla|s:992:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjoyOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjozOntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjM6e3M6NzoiY291bnRlciI7aToxODtzOjU6InRva2VuIjtzOjMyOiI3ZE8wMnpnRTlmMGRmTDdjOUJXYWNuRjJFVVBwV2pkRiI7czo1OiJ0aW1lciI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJzdGFydCI7aToxNTEzMzU1MTc4O3M6NDoibGFzdCI7aToxNTEzMzU1Mzg4O3M6Mzoibm93IjtpOjE1MTMzNTU0MTY7fX1zOjg6InJlZ2lzdHJ5IjtPOjI0OiJKb29tbGFcUmVnaXN0cnlcUmVnaXN0cnkiOjI6e3M6NzoiACoAZGF0YSI7Tzo4OiJzdGRDbGFzcyI6MTp7czo5OiJjb21fYXJ2aWUiO086ODoic3RkQ2xhc3MiOjM6e3M6NzoibWV0aWVycyI7Tzo4OiJzdGRDbGFzcyI6MTp7czo4OiJvcmRlcmNvbCI7czo1OiJsYWJlbCI7fXM6ODoicGFycmFpbnMiO086ODoic3RkQ2xhc3MiOjE6e3M6ODoib3JkZXJjb2wiO3M6NzoiZmlsbGV1bCI7fXM6NDoiZWRpdCI7Tzo4OiJzdGRDbGFzcyI6MTp7czoxMToicHVibGljYXRpb24iO086ODoic3RkQ2xhc3MiOjI6e3M6MjoiaWQiO2E6MDp7fXM6NDoiZGF0YSI7Tjt9fX19czo5OiJzZXBhcmF0b3IiO3M6MToiLiI7fXM6NDoidXNlciI7Tzo1OiJKVXNlciI6MTp7czoyOiJpZCI7czozOiI0MTYiO319fXM6OToic2VwYXJhdG9yIjtzOjE6Ii4iO30=\";', 416, 'SLAM');
 
 -- --------------------------------------------------------
 
@@ -2295,7 +2318,7 @@ CREATE TABLE `arvie_update_sites` (
 --
 
 INSERT INTO `arvie_update_sites` (`update_site_id`, `name`, `type`, `location`, `enabled`, `last_check_timestamp`, `extra_query`) VALUES
-(1, 'Joomla! Core', 'collection', 'https://update.joomla.org/core/list.xml', 1, 1513237360, ''),
+(1, 'Joomla! Core', 'collection', 'https://update.joomla.org/core/list.xml', 1, 1513353585, ''),
 (2, 'Accredited Joomla! Translations', 'collection', 'https://update.joomla.org/language/translationlist_3.xml', 1, 0, ''),
 (3, 'Joomla! Update Component Update Site', 'extension', 'https://update.joomla.org/core/extensions/com_joomlaupdate.xml', 1, 0, '');
 
@@ -2387,7 +2410,7 @@ CREATE TABLE `arvie_users` (
 --
 
 INSERT INTO `arvie_users` (`id`, `name`, `username`, `email`, `password`, `block`, `sendEmail`, `registerDate`, `lastvisitDate`, `activation`, `params`, `lastResetTime`, `resetCount`, `otpKey`, `otep`, `requireReset`) VALUES
-(416, 'Super Utilisateur', 'SLAM', 'emmanuel.derome@gmail.com', '$2y$10$.3gLjjdoOIexzDzlyZFEFuZUKHtzOTMimdK.Adj85unSnx0gN/5f2', 0, 1, '2017-11-11 08:46:40', '2017-12-14 10:31:02', '0', '', '0000-00-00 00:00:00', 0, '', '', 0),
+(416, 'Super Utilisateur', 'SLAM', 'emmanuel.derome@gmail.com', '$2y$10$.3gLjjdoOIexzDzlyZFEFuZUKHtzOTMimdK.Adj85unSnx0gN/5f2', 0, 1, '2017-11-11 08:46:40', '2017-12-15 16:26:18', '0', '', '0000-00-00 00:00:00', 0, '', '', 0),
 (417, 'Marcel DUPOND', 'mdupond', 'mdupond@arvie.org', '$2y$10$qNixBrOwFditD9ZjCiyije6JZHlpuGdQM6RGSALtxyD/WO1nswCE2', 0, 0, '2017-11-11 09:07:41', '2017-12-14 09:50:12', '', '{\"admin_style\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"helpsite\":\"\",\"timezone\":\"\"}', '0000-00-00 00:00:00', 0, '', '', 0);
 
 -- --------------------------------------------------------
@@ -3330,7 +3353,7 @@ ALTER TABLE `arvie_arvie_groupes`
 -- AUTO_INCREMENT pour la table `arvie_arvie_groupe_utilisateur_map`
 --
 ALTER TABLE `arvie_arvie_groupe_utilisateur_map`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `arvie_arvie_messages`
@@ -3360,13 +3383,13 @@ ALTER TABLE `arvie_arvie_parrains`
 -- AUTO_INCREMENT pour la table `arvie_arvie_publications`
 --
 ALTER TABLE `arvie_arvie_publications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `arvie_arvie_roles`
 --
 ALTER TABLE `arvie_arvie_roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `arvie_arvie_utilisateurs`

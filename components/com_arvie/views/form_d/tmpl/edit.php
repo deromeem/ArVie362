@@ -76,8 +76,9 @@ $isAdmin = (in_array('17', $user->groups));		// sets flag when user group is '10
 							</tbody>
 						</table>
 					</div>
-						<input type="hidden" name="task" value="" />
-						<input type="hidden" name="return" value="<?php echo $this->return_page; ?>" />
+					<input type="hidden" name="task" value="" />
+					<input type="hidden" name="return" value="<?php echo $this->return_page; ?>" />
+				</div>
 				<?php echo JHtml::_('form.token'); ?>
 			</fieldset>
 		</form>

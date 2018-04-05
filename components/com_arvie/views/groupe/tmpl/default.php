@@ -34,7 +34,7 @@ $isAdmin = (in_array('17', $user->groups));		// sets flag when user group is '17
 				</tr>
 				<tr>
 					<td width="20%" class="nowrap right">
-						<span class="label"><?php echo JText::_('COM_ARVIE_GROUPES_GROUPES_PARENT'); ?></span>
+						<span class="label"><?php echo JText::_('COM_ARVIE_GROUPES_GROUPE_PARENT'); ?></span>
 					</td>
 					<td width="80%">
 						<?php echo $this->item->groupe_parent_nom ?>
@@ -42,7 +42,7 @@ $isAdmin = (in_array('17', $user->groups));		// sets flag when user group is '17
 				</tr>
 				<tr>
 					<td width="20%" class="nowrap right">
-						<span class="label"><?php echo JText::_('COM_ARVIE_GROUPES_EST_GROUPE_INTERET'); ?></span>
+						<span class="label"><?php echo JText::_('COM_ARVIE_GROUPES_EST_GROUPE_INTERET_FRONTEND'); ?></span>
 					</td>
 					<td width="80%">
 						<?php if($this->item->est_groupe_interet)
@@ -52,7 +52,7 @@ $isAdmin = (in_array('17', $user->groups));		// sets flag when user group is '17
 				</tr>
 				<tr>
 				<td width="20%" class="nowrap right">
-					<span class="label"><?php echo JText::_('COM_ARVIE_GROUPES_TYPE'); ?></span>
+					<span class="label"><?php echo JText::_('COM_ARVIE_GROUPES_EST_PUBLIC_FRONTEND'); ?></span>
 				</td>
 				<td width="80%">
 					<?php if($this->item->est_public)

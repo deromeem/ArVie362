@@ -19,8 +19,8 @@ JHtml::_('formbehavior.chosen', 'select');
       method="post" name="adminForm" id="arvie-form" class="form-validate">
 	  
 		<div class="control-group">
-			<div class="control-label"><?php echo $this->form->getLabel('alias'); ?></div>
-			<div class="controls"><?php echo $this->form->getInput('alias'); ?></div>
+			<div class="control-label"><?php echo $this->form->getLabel('id'); ?></div>
+			<div class="controls"><?php echo $this->form->getInput('id'); ?></div>
 		</div>
 		
 	

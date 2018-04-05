@@ -12,8 +12,8 @@
 
         <field name="publication_parent" type="sql" label="COM_ARVIE_PUBLICATIONS_PARENT" default="20"
             description="Parent"
-            query="SELECT id, publication_parent FROM #__arvie_publications ORDER BY publication_parent" 
-			key_field="id" value_field="id" required="false"
+            query="SELECT titre, publication_parent FROM #__arvie_publications ORDER BY publication_parent" 
+			key_field="publication_parent" value_field="titre" required="true"
         />
 
         <field name="groupe" type="sql" label="COM_ARVIE_PUBLICATIONS_GROUPE"
@@ -28,6 +28,16 @@
 			key_field="id" value_field="prenom" required="true"
         />
 		
+		<field name="est_public" type="radio" default="0" label="COM_ARVIE_PUBLICATIONS_EST_PUBLIC" description="Est public">
+  			<option value="0">Privé</option>
+  			<option value="1">Public</option>
+		</field>
+
+
+		<field name="titre" type="text" label="Titre"
+            description="Titre"
+            size="40" class="input-large-text" default="" required="false"
+        />
 
 		<field id="published" name="published" type="list"
 			label="JSTATUS"	description="JSTATUS"
@@ -63,7 +73,6 @@
 		/>
 		<field
 			name="texte" type="textarea" label="COM_ARVIE_PUBLICATIONS_TEXTE"
-			description="COM_ANNUAIRE_COMMENT"
 			class="inputbox"
 			filter="JComponentHelper::filterText"
 			rows="10" 

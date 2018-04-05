@@ -76,7 +76,7 @@ class ArvieViewGroupes extends JViewLegacy
 			'g.published' => JText::_('JSTATUS'),
 			'g.nom' => JText::_('COM_ARVIE_GROUPES_NOM'),
 			'g.id' => 'ID',
-			'gp.id' => JText::_('COM_ARVIE_GROUPES_PARENT'),
+			'gp.id' => JText::_('COM_ARVIE_GROUPES_GROUPE_PARENT'),
 			'g.created_by' => JText::_('COM_ARVIE_GROUPES_CREE_PAR'),
 		);
 	}

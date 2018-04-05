@@ -11,23 +11,23 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
         </th> 
 
         <th width="1%">
-                <?php echo JHtml::_('grid.sort', 'Nom', 'g.nom', $listDirn, $listOrder) ?>
+                <?php echo JHtml::_('grid.sort', 'COM_ARVIE_GROUPES_NOM', 'g.nom', $listDirn, $listOrder) ?>
         </th>
 
         <th width="2%">
-                <?php echo JHtml::_('grid.sort', 'Groupe parent', 'gp.nom', $listDirn, $listOrder) ?>
+                <?php echo JHtml::_('grid.sort', 'COM_ARVIE_GROUPES_GROUPE_PARENT', 'gp.nom', $listDirn, $listOrder) ?>
         </th>
 
         <th width="2%">
-                <?php echo JHtml::_('grid.sort', 'Est-un groupe interet', 'g.est_groupe_interet', $listDirn, $listOrder) ?>
+                <?php echo JHtml::_('grid.sort', 'COM_ARVIE_GROUPES_EST_GROUPE_INTERET_BACKEND', 'g.est_groupe_interet', $listDirn, $listOrder) ?>
         </th>
 
         <th width="2%">
-                <?php echo JHtml::_('grid.sort', 'Est public', 'g.est_public', $listDirn, $listOrder) ?>
+                <?php echo JHtml::_('grid.sort', 'COM_ARVIE_GROUPES_EST_PUBLIC_BACKEND', 'g.est_public', $listDirn, $listOrder) ?>
         </th>
 
         <th width="2%">
-                <?php echo JHtml::_('grid.sort', 'Crée par', 'u.name', $listDirn, $listOrder) ?>
+                <?php echo JHtml::_('grid.sort', 'COM_ARVIE_GROUPES_CREE_PAR', 'u.name', $listDirn, $listOrder) ?>
         </th>
 
         <th width="1%" style="min-width:55px" class="">
@@ -40,7 +40,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 			<?php echo JHtml::_('grid.sort', 'JGLOBAL_HITS', 'g.hits', $listDirn, $listOrder); ?>
 		</th>
 		<th width="1%" class="nowrap center hidden-phone">
-			<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'g.id', $listDirn, $listOrder); ?>
+			<?php echo JHtml::_('grid.sort', 'COM_ARVIE_GROUPES_ID', 'g.id', $listDirn, $listOrder); ?>
 		</th>
 	</tr>
 

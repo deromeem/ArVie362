@@ -11,7 +11,6 @@ class ArvieModelMessages extends JModelList
 			$config['filter_fields'] = array(
 				'id', 'm.id',
 				'auteur', 'm.auteur',
-				'nom_auteur', 'u.nom',
 				'discussion', 'm.discussion',
 				'contenu', 'm.contenu',
 				'alias', 'm.contact_id',                                
@@ -107,7 +106,7 @@ class ArvieModelMessages extends JModelList
 		$orderDirn = $this->state->get('list.direction', 'ASC');
 		$query->order($this->_db->escape($orderCol.' '.$orderDirn));
 
-		 echo nl2br(str_replace('#__','arvie_',$query));			// TEST/DEBUG
+		//  echo nl2br(str_replace('#__','arvie_',$query));			// TEST/DEBUG
 		return $query;
 	}
 }

@@ -43,14 +43,20 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 		<thead>
 			<tr>
 				<th class="title">
-					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_GROUPES_NOM'), 'nom', $listDirn, $listOrder) ?>
+					<?php echo JHtml::_('grid.sort', JText::_('Id'), 'id', $listDirn, $listOrder) ?>
 				</th>
 				<!-- <th class="title">Publié</th> -->
 				<th class="title">
-					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_GROUPES_GROUPES_PARENT'), 'message_parent_nom', $listDirn, $listOrder) ?>
+					<?php echo JHtml::_('grid.sort', JText::_('Auteur'), 'auteur', $listDirn, $listOrder) ?>
 				</th>
 				<th class="title">
-					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_GROUPES_EST_GROUPE_INTERET'), 'est_message_interet', $listDirn, $listOrder) ?>
+					<?php echo JHtml::_('grid.sort', JText::_('Discussion'), 'discussion', $listDirn, $listOrder) ?>
+				</th>
+				<th class="title">
+					<?php echo JHtml::_('grid.sort', JText::_('Contenu'), 'contenu', $listDirn, $listOrder) ?>
+				</th>
+				<th class="title">
+					<?php echo JHtml::_('grid.sort', JText::_('Alias'), 'alias', $listDirn, $listOrder) ?>
 				</th>
 				<!-- <th class="title"><?php echo JHtml::_('grid.sort', 'Date', 'created', $listDirn, $listOrder) ?></th> -->
 			</tr>
@@ -60,14 +66,17 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 			<?php foreach($this->items as $i => $item) : ?>
 				<tr class="row<?php echo $i % 2; ?>">
 					<td>
-						<a href="<?php echo $uriCompoDetail.$item->id ?>"><?php echo $item->nom ?></a>
+						<a href="<?php echo $uriCompoDetail.$item->id ?>"><?php echo $item->id ?></a>
+					</td>
+					<td>
+						<a href="<?php echo $uriCompoDetail.$item->id ?>"><?php echo $item->auteur ?></a>
+					</td>
+					<td>
+						<a href="<?php echo $uriCompoDetail.$item->id ?>"><?php echo $item->discussion ?></a>
 					</td>
 					<!-- <td><?php echo JHtml::_('jgrid.published', $item->published, $i, 'messages.', true); ?></td> -->
-					<td><?php echo $item->message_parent_nom ?></td>
-					<td><?php if($item->est_message_interet)
-										{echo 'Interêt';} 
-									else{echo 'Classe';}
-						?></td>
+					<td><?php echo $item->contenu ?></td>
+					<td><?php echo $item->alias ?></td>
 					<!-- <td><?php echo JHtml::_('date', $item->created, 'j F Y'); ?></td> -->
 				</tr>			
 			<?php endforeach; ?>
