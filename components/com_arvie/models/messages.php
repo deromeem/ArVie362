@@ -106,7 +106,7 @@ class ArvieModelMessages extends JModelList
 		$orderDirn = $this->state->get('list.direction', 'ASC');
 		$query->order($this->_db->escape($orderCol.' '.$orderDirn));
 
-		//  echo nl2br(str_replace('#__','arvie_',$query));			// TEST/DEBUG
+		// echo nl2br(str_replace('#__','arvie_',$query));			// TEST/DEBUG
 		return $query;
 	}
 }
