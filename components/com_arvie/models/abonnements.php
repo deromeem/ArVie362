@@ -3,7 +3,7 @@ defined('_JEXEC') or die('Restricted access');
  
 jimport('joomla.application.component.modellist');
  
-class ArvieModelDiscussions extends JModelList
+class ArvieModelAbonnements extends JModelList
 {
 	public function __construct($config = array())
 	{
@@ -11,14 +11,19 @@ class ArvieModelDiscussions extends JModelList
 		if (empty($config['filter_fields']))
 		{
 			$config['filter_fields'] = array(
-				'id', 'd.id',
-				'nom', 'd.nom',
-				'published', 'd.published',
-				'created', 'd.created',
-				'created_by', 'd.created_by',
-				'modified', 'd.modified',
-				'modified_by', 'd.modified_by',
-				'hits', 'd.hits'
+				'id', 'a.id',
+				'abonne', 'a.abonne',
+				'abonne_nom', 'ua.nom',
+				'suivi_nom', 'us.nom',
+				'suivi', 'a.suivi',
+				'date', 'a.date',
+				'alias', 'a.alias',
+				'published', 'a.published',
+				'created', 'a.created',
+				'created_by', 'a.created_by',
+				'modified', 'a.modified',
+				'modified_by', 'a.modified_by',
+				'hits', 'a.hits'
 			);
 		}
 		parent::__construct($config);
@@ -40,48 +45,57 @@ class ArvieModelDiscussions extends JModelList
 		$this->setState('list.ordering', $orderCol);
 
 		$listOrder = $app->input->get('filter_order_Dir', $direction);
-		$this->setState('list.direction', $listOrder);
-		
+		$this->setState('list.direction', $listOrder); 
+
 		$search = $this->getUserStateFromRequest($this->context.'.filter.search', 'filter_search');
 		$this->setState('filter.search', $search);
 
-		parent::populateState('nom', 'ASC');
+		parent::populateState('abonne_nom', 'ASC');
 	}
 
 	protected function _getListQuery()
 	{
 		// construit la requ�te d'affichage de la liste
 		$query	= $this->_db->getQuery(true);
-		$query->select('d.id, d.nom, d.published, d.created, d.created_by, d.modified, d.modified_by, d.hits');
-		$query->from('#__arvie_discussions d');
+		$query->select('a.id, a.date, a.abonne, a.suivi, a.alias, a.published, a.created, a.created_by, a.hits, a.modified, a.modified_by');
+		$query->from('#__arvie_abonnements AS a');
 
+		// jointure avec la table utilisateurs pour l'abonnée
+		$query->select('ua.nom AS abonne_nom')->join('LEFT', '#__arvie_utilisateurs AS ua ON ua.id=a.abonne');
+
+		// jointure avec la table utilisateurs pour le suivi
+		$query->select('us.nom AS suivi_nom')->join('LEFT', '#__arvie_utilisateurs AS us ON us.id=a.suivi');	
+		
 		// filtre de recherche rapide textuelle
 		$search = $this->getState('filter.search');
 		if (!empty($search)) {
 			// recherche prefix�e par 'id:'
 			if (stripos($search, 'id:') === 0) {
-				$query->where('d.id = '.(int) substr($search, 3));
+				$query->where('a.id = '.(int) substr($search, 3));
 			}
 			else {
 				// recherche textuelle classique (sans pr�fixe)
 				$search = $this->_db->Quote('%'.$this->_db->escape($search, true).'%');
 				// Compile les clauses de recherche
 				$searches	= array();
-				$searches[]	= 'd.nom LIKE '.$search;
+				$searches[]	= 'a.abonne LIKE '.$search;
+				$searches[]	= 'a.suivi LIKE '.$search;
+				$searches[]	= 'a.alias LIKE '.$search;
+				$searches[]	= 'a.date LIKE '.$search;
 				// Ajoute les clauses � la requ�te
 				$query->where('('.implode(' OR ', $searches).')');
 			}
 		}
-
+		
 		// filtre les �l�ments publi�s
-		$query->where('d.published=1');
+		$query->where('a.published=1');
 		
 		// tri des colonnes
-		$orderCol = $this->getState('list.ordering', 'nom');
+		$orderCol = $this->getState('list.ordering', 'abonne_nom');
 		$orderDirn = $this->getState('list.direction', 'ASC');
 		$query->order($this->_db->escape($orderCol.' '.$orderDirn));
 
-		// echo nl2br(str_replace('#__','arvie_',$query));			// TEST/DEBUG
+		//echo nl2br(str_replace('#__','arvie_',$query));			// TEST/DEBUG
 		return $query;
 	}
 }
