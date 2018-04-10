@@ -28,7 +28,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 		<div class="btn-group pull-left">
 			<button type="submit" class="btn" title="<?php echo JText::_('JSEARCH_FILTER');?>">
 				<i class="icon-search"></i></button>
-		</div>	
+		</div>
 		<div class="btn-group pull-left">
 			<a href="<?php echo JRoute::_('index.php?option=com_arvie&view=form_p&layout=edit'); ?>" class="btn" role="button"><span class="icon-plus"></span></a>
 		</div>	
@@ -42,21 +42,19 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 	<table class="table table-striped" id="articleList">
 		<thead>
 			<tr>
-			
 				<th class="title">
-					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_PUBLICATIONS_TITRE'), 'titre', $listDirn, $listOrder) ?>
+					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_PUBLICATIONS_AUTEUR_NOM'), 'p.auteur', $listDirn, $listOrder) ?>
 				</th>
 				<th class="title">
-					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_PUBLICATIONS_AUTEUR'), 'auteur', $listDirn, $listOrder) ?>
+					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_PUBLICATIONS_GROUPE'), 'p.groupe', $listDirn, $listOrder) ?>
 				</th>
 				<!-- <th class="title">Publié</th> -->
 				<th class="title">
-					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_PUBLICATIONS_TEXTE'), 'texte', $listDirn, $listOrder) ?>
+					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_PUBLICATIONS_TITRE'), 'p.titre', $listDirn, $listOrder) ?>
 				</th>
 				<th class="title">
-					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_PUBLICATIONS_DATE_PUBLI'), 'date_publi', $listDirn, $listOrder) ?>
+					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_PUBLICATIONS_DATE_PUBLI'), 'p.date_publi', $listDirn, $listOrder) ?>
 				</th>
-				<!-- <th class="title"><?php echo JHtml::_('grid.sort', 'Date', 'created', $listDirn, $listOrder) ?></th> -->
 			</tr>
 		</thead>
 
@@ -64,14 +62,17 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 			<?php foreach($this->items as $i => $item) : ?>
 				<tr class="row<?php echo $i % 2; ?>">
 					<td>
+						<a href="<?php echo $uriCompoDetail.$item->id ?>"><?php echo $item->auteur_prenom ?></a>
+					</td>
+					<td>
+						<a href="<?php echo $uriCompoDetail.$item->id ?>"><?php echo $item->groupes_nom ?></a>
+					</td>
+					<td>
 						<a href="<?php echo $uriCompoDetail.$item->id ?>"><?php echo $item->titre ?></a>
 					</td>
-					<!-- <td><?php echo JHtml::_('jgrid.published', $item->published, $i, 'publications.', true); ?></td> -->
-					<td><?php echo $item->auteur_prenom; ?></td>
-					<td><?php echo $item->texte ?></td>
-					<td><?php echo $item->date_publi  ?></td>
-					
-					<!-- <td><?php echo JHtml::_('date', $item->created, 'j F Y'); ?></td> -->
+					<td>
+						<a href="<?php echo $uriCompoDetail.$item->id ?>"><?php echo $item->date_publi ?></a>
+					</td>
 				</tr>			
 			<?php endforeach; ?>
 		</tbody>

@@ -12,10 +12,7 @@ $isDirector = (in_array('12', $user->groups));  // sets flag when user group is 
 	<?php echo JError::raiseWarning( 100, JText::_('COM_ARVIE_RESTRICTED_ACCESS') ); ?>
 <?php else : ?>
 
-<h2><?php echo JText::_('COM_ARVIE_OPTIONS')." : ".JText::_('COM_ARVIE_PUBLICATIONS')." - "; ?>
-		<a href="<?php echo JRoute::_('index.php?option=com_arvie&view=publications'); ?>">
-			<?php echo JText::_('COM_ARVIE_PUBLICATIONS'); ?>
-		</a>
+	<h2><?php echo JText::_('COM_ARVIE_OPTIONS')." : ".JText::_('COM_ARVIE_PUBLICATIONS'); ?>
 	</h2>
 
 	<?php echo $this->loadTemplate('items'); ?>

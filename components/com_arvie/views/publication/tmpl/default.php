@@ -46,7 +46,7 @@ $isDirector = (in_array('12', $user->groups));  // sets flag when user group is 
 						<span class="label"><?php echo JText::_('COM_ARVIE_PUBLICATIONS_GROUPE'); ?></span>
 					</td>
 					<td width="80%">
-						<?php echo $this->item->groupe ?>
+						<?php echo $this->item->groupes_nom ?>
 					</td>
 				</tr>
 				<tr>

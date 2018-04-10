@@ -12,7 +12,7 @@ class ArvieModelPublications extends JModelList
 		{
 			$config['filter_fields'] = array(
 				'id', 'p.id',
-				'groupe', 'p.groupe',
+				'groupes_nom', 'p.groupe',
 				'auteur', 'p.auteur',
 				'auteur_prenom', 'ap.auteur_prenom',
 				'parent', 'p.publication_parent',
@@ -58,9 +58,16 @@ class ArvieModelPublications extends JModelList
 		$query->select('p.id, p.publication_parent, p.groupe, p.auteur, p.titre, p.texte, p.date_publi, p.est_public, p.published, p.alias');
 		$query->from('#__arvie_publications p');
 
-		// joint la table utilisateur pour les auteurs
-		$query->select('ap.prenom AS auteur_prenom')->join('LEFT', '#__arvie_utilisateurs AS ap ON ap.id=p.auteur');
+		
+			// joint la table utilisateur pour les auteurs
+			$query->select('ap.prenom AS auteur_prenom')->join('LEFT', '#__arvie_utilisateurs AS ap ON ap.id=p.auteur');
+		
+			// joint la table groupes pour les groupes
+			$query->select('pp.nom AS groupes_nom')->join('LEFT', '#__arvie_groupes AS pp ON pp.id=p.groupe');
 
+			// joint la table publication pour les parent
+			$query->select('p.id AS parent_id')->join('LEFT', '#__arvie_publications AS op ON p.id=op.publication_parent');
+			
 		// filtre de recherche rapide textuelle
 		$search = $this->getState('filter.search');
 		if (!empty($search)) {
@@ -75,7 +82,7 @@ class ArvieModelPublications extends JModelList
 				$searches	= array();
 				$searches[]	= 'p.groupe LIKE '.$search;
 				$searches[]	= 'p.auteur LIKE '.$search;
-				$searches[]	= 'p.parent LIKE '.$search;
+				$searches[]	= 'p.publication_parent LIKE '.$search;
 				$searches[]	= 'p.texte LIKE '.$search;
 				$searches[]	= 'p.titre LIKE '.$search;
 				// Ajoute les clauses � la requ�te
