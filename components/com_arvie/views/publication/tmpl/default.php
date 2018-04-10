@@ -2,10 +2,11 @@
 defined('_JEXEC') or die('Restricted access');
 
 $user = JFactory::getUser();               		// gets current user object
-$isAdmin = (in_array('13', $user->groups));		// sets flag when user group is '13' that is 'Agent' 
+$isAdmin = (in_array('11', $user->groups));		// sets flag when user group is '11' that is 'ArVie Administrateur' 
+$isDirector = (in_array('12', $user->groups));  // sets flag when user group is '12' that is 'ArVie Direction'
 ?>
 
-<?php if (!$isAdmin) : ?>
+<?php if ( !$isAdmin && !$isDirector ) : ?>
 	<?php echo JError::raiseWarning( 100, JText::_('COM_ARVIE_RESTRICTED_ACCESS') ); ?>
 <?php else : ?>
 	<div class="form-inline form-inline-header">
@@ -37,7 +38,7 @@ $isAdmin = (in_array('13', $user->groups));		// sets flag when user group is '13
 						<span class="label"><?php echo JText::_('COM_ARVIE_PUBLICATIONS_PARENT'); ?></span>
 					</td>
 					<td width="80%">
-						<?php echo $this->item->parent ?>
+						<?php echo $this->item->publication_parent ?>
 					</td>
 				</tr>
 				<tr>
@@ -74,10 +75,10 @@ $isAdmin = (in_array('13', $user->groups));		// sets flag when user group is '13
 				</tr>
 				<tr>
 					<td width="20%" class="nowrap right">
-						<span class="label"><?php echo JText::_('COM_ARVIE_PUBLICATIONS_ESTPUBLIC'); ?></span>
+						<span class="label"><?php echo JText::_('COM_ARVIE_PUBLICATIONS_EST_PUBLIC'); ?></span>
 					</td>
 					<td width="80%">
-						<?php echo $this->item->estPublic ?>
+						<?php echo $this->item->est_public ?>
 					</td>
 				</tr>
 			</tbody>
