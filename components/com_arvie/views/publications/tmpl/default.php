@@ -4,7 +4,6 @@ defined('_JEXEC') or die('Restricted access');
 JHtml::_('behavior.framework'); 				// javascript Joomla object for grid.sort !
 
 $user = JFactory::getUser();               		// gets current user object
-//modifier le '17' en '10' pour passer des utilisateurs 'ANNUAIRE' a 'ARVIE'
 $isAdmin = (in_array('11', $user->groups));		// sets flag when user group is '11' that is 'ArVie Administrateur' 
 $isDirector = (in_array('12', $user->groups));  // sets flag when user group is '12' that is 'ArVie Direction'
 ?>
