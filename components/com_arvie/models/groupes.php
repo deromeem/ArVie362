@@ -47,6 +47,7 @@ class ArvieModelGroupes extends JModelList
 		$this->setState('filter.search', $search);
 
 		parent::populateState('nom', 'ASC');
+		
 	}
 
 	protected function _getListQuery()
@@ -77,15 +78,23 @@ class ArvieModelGroupes extends JModelList
 			}
 		}
 
-		// filtre les �l�ments publi�s
-		$query->where('g.published=1');
+		// filtre les éléments publiés
+		$app = JFactory::getApplication();
 		
+		// Charge et mémorise le type de groupe(interêt/classe) depuis le contexte
+		$egi = $app->input->getInt('estGroupeInteret');
+		$query->where('g.published=1');
+
+		if (isset($egi)){
+			$query->where('g.est_groupe_interet='.$egi);
+		}
+
 		// tri des colonnes
 		$orderCol = $this->getState('list.ordering', 'nom');
 		$orderDirn = $this->getState('list.direction', 'ASC');
 		$query->order($this->_db->escape($orderCol.' '.$orderDirn));
 
-		// echo nl2br(str_replace('#__','egs_',$query));			// TEST/DEBUG
+		// echo nl2br(str_replace('#__','arvie_',$query));			// TEST/DEBUG
 		return $query;
 	}
 }
