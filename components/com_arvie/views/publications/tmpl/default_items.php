@@ -43,7 +43,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 		<thead>
 			<tr>
 				<th class="title">
-					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_PUBLICATIONS_AUTEUR_NOM'), 'p.auteur', $listDirn, $listOrder) ?>
+					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_PUBLICATIONS_AUTEUR'), 'p.auteur', $listDirn, $listOrder) ?>
 				</th>
 				<th class="title">
 					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_PUBLICATIONS_GROUPE'), 'p.groupe', $listDirn, $listOrder) ?>

@@ -46,9 +46,9 @@ class ArvieViewRoles extends JViewLegacy
 		JToolBarHelper::title('Arvie : Roles');
 		
 		// affiche les boutons d'action
-		JToolBarHelper::addNew('role.add', 'Nouveau role');
-		JToolBarHelper::editList('role.edit', 'Modifier role');
-		JToolBarHelper::deleteList('Etes vous sur ?', 'roles.delete', 'Supprimer roles');
+		JToolBarHelper::addNew('role.add');
+		JToolBarHelper::editList('role.edit');
+		JToolBarHelper::deleteList('COM_ARVIE_DELETE_CONFIRM', 'roles.delete');
 		JToolbarHelper::publish('roles.publish', 'JTOOLBAR_PUBLISH', true);
 		JToolbarHelper::unpublish('roles.unpublish', 'JTOOLBAR_UNPUBLISH', true);
 		JToolbarHelper::archiveList('roles.archive');
@@ -73,9 +73,11 @@ class ArvieViewRoles extends JViewLegacy
 	{
 		// prépare l'affichage des colonnes de tri du calque
 		return array(
+			'r.label' => JText::_('COM_ARVIE_ROLES_LABEL'),
 			'r.published' => JText::_('JSTATUS'),
-			'r.label' => JText::_('COM_ARVIE_UTILISATEURS_NOM'),
-			'r.id' => 'ID',
+			'r.created' => JText::_('COM_ARVIE_CREATED_DATE'),
+			'r.hits' => JText::_('JGLOBAL_HITS'),
+			'r.id' => JText::_('JGRID_HEADING_ID')
 		);
 	}
 

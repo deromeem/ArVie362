@@ -19,25 +19,16 @@ if ($saveOrder)
 	</td>
 	<td class="wrap has-context">
 		<div class="pull-left">
-			<a href="<?php echo JRoute::_('index.php?option=com_arvie&task=metiers.edit&id='.(int) $item->id); ?>">
+			<a href="<?php echo JRoute::_('index.php?option=com_arvie&task=metier.edit&id='.(int) $item->id); ?>">
 				<?php echo $this->escape($item->label); ?>
 			</a>
-			<div class="small hidden-phone">
-				<?php // extrait description selon les paramètres de configuration
-				if ($this->paramDescShow) {
-					$desc = JFilterOutput::cleanText($item->activite);
-					echo substr($desc, 0, $this->paramDescSize);
-					echo (strlen($desc)>$this->paramDescSize?"...":"") ;
-				}
-				?>
-			</div>
 		</div>
 	</td>
 	<td align="center">
 		<?php echo JHtml::_('jgrid.published', $item->published, $i, 'metiers.', true); ?>
 	</td>
 	<td class="center hidden-phone">
-		<?php echo JHtml::_('date', $item->modified, $this->paramDateFmt); ?>
+		<?php echo JHtml::_('date', $item->created, $this->paramDateFmt); ?>
 	</td>
 	<td class="center hidden-tablet hidden-phone">
 			<?php echo (int) $item->hits; ?>

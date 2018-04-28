@@ -30,8 +30,7 @@
 			<option value="-2">
 				JTRASHED</option>
 		</field>
-		
-		
+				
 		<field
 			name="hits" type="text" label="JGLOBAL_HITS"
 			description="JGLOBAL_HITS"

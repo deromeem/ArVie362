@@ -6,7 +6,7 @@ class ArvieControllerMetier_groupe_map extends JControllerForm
         function display($cachable = false, $urlparams = false) 
         {
                 $input = JFactory::getApplication()->input;
-                $input->set('view', $input->getCmd('view', 'Metier'));
+                $input->set('view', $input->getCmd('view', 'Metier_groupe_map'));
 
                 parent::display($cachable, $urlparams);
         }

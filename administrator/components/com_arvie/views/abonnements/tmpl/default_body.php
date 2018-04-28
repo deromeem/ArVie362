@@ -37,10 +37,7 @@ if ($saveOrder)
 		<?php echo $item->nsuivi; ?>
 	</td>
 	<td align="small">
-		<?php echo $item->date; ?>
-	</td>
-	<td align="small">
-		<?php echo $item->alias; ?>
+		<?php echo JHtml::_('date', $item->date, $this->paramDateFmt); ?>
 	</td>
 	<td align="center">
 		<?php echo JHtml::_('jgrid.published', $item->published, $i, 'abonnements.', true); ?>
@@ -50,6 +47,9 @@ if ($saveOrder)
 	</td>
 	<td class="center hidden-tablet hidden-phone">
 		<?php echo (int) $item->hits; ?>
+	</td>
+	<td class="center hidden-phone">
+		<?php echo (int) $item->id; ?>
 	</td>
 </tr>
 <?php endforeach; ?>

@@ -23,20 +23,17 @@ if ($saveOrder)
 		</a>
 	</td>
 	<td align="small">
-		<a href="<?php echo JRoute::_('index.php?option=com_arvie&task=publication.edit&id='.(int) $item->parent); ?>">
-			<?php echo $item->parent_titre; ?>
+		<a href="<?php echo JRoute::_('index.php?option=com_arvie&task=publication.edit&id='.(int) $item->titre_parent); ?>">
+			<?php echo $item->titre_parent; ?>
 		</a>
 	</td>
 	<td align="small">
-		<a href="<?php echo JRoute::_('index.php?option=com_arvie&task=publication.edit&id='.(int) $item->groupe); ?>">
-			<?php echo $item->groupes_nom; ?>
+		<a href="<?php echo JRoute::_('index.php?option=com_arvie&task=publication.edit&id='.(int) $item->nom_groupe); ?>">
+			<?php echo $item->nom_groupe; ?>
 		</a>
 	</td>
 	<td align="small">
-		<?php echo $item->auteur_prenom; ?>
-	</td>
-	<td align="center">
-		<?php echo $item->texte; ?>
+		<?php echo $item->nom_auteur; ?>
 	</td>
 	<td align="small">
 		<?php echo $item->est_public; ?>
@@ -45,7 +42,7 @@ if ($saveOrder)
 		<?php echo JHtml::_('jgrid.published', $item->published, $i, 'publications.', true); ?>
 	</td>
 	<td class="nowrap center hidden-phone ">
-		<?php echo JHtml::_('date', $item->modified, $this->paramDateFmt); ?>
+		<?php echo JHtml::_('date', $item->date_publi, $this->paramDateFmt); ?>
 	</td>
 	<td class="nowrap center hidden-phone">
 			<?php echo (int) $item->hits; ?>

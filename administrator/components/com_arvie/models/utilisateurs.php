@@ -51,7 +51,6 @@ class ArvieModelUtilisateurs extends JModelList
 		// joint la table users
 		$query->select('ju.password')->join('LEFT', '#__users AS ju ON u.email = ju.email');
 
-
 		// filtre de recherche rapide textuel
 		$search = $this->getState('filter.search');
 		if (!empty($search)) {
@@ -66,7 +65,6 @@ class ArvieModelUtilisateurs extends JModelList
 				$searches	= array();
 				$searches[]	= 'u.nom LIKE '.$search;
 				$searches[]	= 'u.prenom LIKE '.$search;
-				//$searches[]	= 'u.fonction LIKE '.$search;
 				$searches[]	= 'u.email LIKE '.$search;
 				// Ajoute les clauses à la requête
 				$query->where('('.implode(' OR ', $searches).')');
@@ -88,7 +86,7 @@ class ArvieModelUtilisateurs extends JModelList
 		$orderDirn = $this->state->get('list.direction', 'ASC');
 		$query->order($this->_db->escape($orderCol.' '.$orderDirn));
 
-		// echo nl2br(str_replace('#__','egs_',$query));			// TEST/DEBUG
+		// echo nl2br(str_replace('#__','arvie_',$query));			// TEST/DEBUG
 		return $query;
 	}
 }

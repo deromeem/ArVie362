@@ -43,12 +43,12 @@ class ArvieViewgroupe_utilisateur_maps extends JViewLegacy
 	protected function addToolBar() 
 	{
 		// affiche le titre de la page
-		JToolBarHelper::title('Arvie : groupe_utilisateur_maps');
+		JToolBarHelper::title(JText::_('COM_ARVIE')." : ".JText::_('COM_ARVIE_GROUPE_UTILISATEUR_MAP'));
 		
 		// affiche les boutons d'action
-		JToolBarHelper::addNew('groupe_utilisateur_maps.add', 'Nouveau groupe_utilisateur_maps');
-		JToolBarHelper::editList('groupe_utilisateur_maps.edit', 'Modifier groupe_utilisateur_maps');
-		JToolBarHelper::deleteList('Etes vous sur ?', 'groupe_utilisateur_maps.delete', 'Supprimer groupe_utilisateur_maps');
+		JToolBarHelper::addNew('groupe_utilisateur_maps.add');
+		JToolBarHelper::editList('groupe_utilisateur_maps.edit');
+		JToolBarHelper::deleteList('COM_ARVIE_DELETE_CONFIRM', 'groupe_utilisateur_maps.delete');
 		JToolbarHelper::publish('groupe_utilisateur_maps.publish', 'JTOOLBAR_PUBLISH', true);
 		JToolbarHelper::unpublish('groupe_utilisateur_maps.unpublish', 'JTOOLBAR_UNPUBLISH', true);
 		JToolbarHelper::archiveList('groupe_utilisateur_maps.archive');
@@ -73,23 +73,14 @@ class ArvieViewgroupe_utilisateur_maps extends JViewLegacy
 	{
 		// prépare l'affichage des colonnes de tri du calque
 		return array(
+			'u.nom' => JText::_('COM_ARVIE_UTILISATEUR'),
+			'r.label' => JText::_('COM_ARVIE_ROLE'),
+			'g.nom' => JText::_('COM_ARVIE_GROUPE'),
 			'gum.published' => JText::_('JSTATUS'),
-			'u.prenom' => 'Prenom',
-			'gum.id' => 'ID',
-			'r.label' => 'Role',
-			'g.nom' => 'Groupe',
-
-			
-			'g.created_by' => JText::_('COM_ARVIE_GROUPES_CREE_PAR'),
+			'gum.created' => JText::_('COM_ARVIE_CREATED_DATE'),
+			'gum.hits' => JText::_('JGLOBAL_HITS'),
+			'gum.id' => JText::_('JGRID_HEADING_ID')
 		);
-	}
-
-	protected function displayParent($currParent) 
-	{
-		foreach ($this->groupe_utilisateur_maps as $groupe_utilisateur_maps) {
-			if($groupe_utilisateur_maps->id==$currParent) return $groupe_utilisateur_maps->nom;
-		}
-		return "N.C.";
 	}
 
 }

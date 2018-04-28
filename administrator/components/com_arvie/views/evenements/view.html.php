@@ -48,7 +48,7 @@ class ArvieViewEvenements extends JViewLegacy
 		// affiche les boutons d'action
 		JToolBarHelper::addNew('evenement.add');
 		JToolBarHelper::editList('evenement.edit');
-		JToolBarHelper::deleteList('Etes vous sûr ?', 'evenements.delete');
+		JToolBarHelper::deleteList('COM_ARVIE_DELETE_CONFIRM', 'evenements.delete');
 		JToolbarHelper::publish('evenements.publish', 'JTOOLBAR_PUBLISH', true);
 		JToolbarHelper::unpublish('evenements.unpublish', 'JTOOLBAR_UNPUBLISH', true);
 		JToolbarHelper::archiveList('evenements.archive');
@@ -73,9 +73,12 @@ class ArvieViewEvenements extends JViewLegacy
 	{
 		// prépare l'affichage des colonnes de tri du calque
 		return array(
-			'p.titre' => JText::_('COM_ARVIE_PUBLICATIONS_TITRE'),
+			'p.titre' => JText::_('COM_ARVIE_EVENEMENTS_TITRE'),
 			'e.date_event' => JText::_('COM_ARVIE_EVENEMENTS_DATE_EVENT'),
+			'e.lieu' => JText::_('COM_ARVIE_EVENEMENTS_LIEU'),
 			'e.published' => JText::_('JSTATUS'),
+			'e.modified' => JText::_('COM_ARVIE_MODIFIED_DATE'),
+			'e.hits' => JText::_('JGLOBAL_HITS'),
 			'e.id' => JText::_('JGRID_HEADING_ID')
 		);
 	}

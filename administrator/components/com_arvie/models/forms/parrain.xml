@@ -7,23 +7,23 @@
 
 		<field name="parrain" type="sql" default="0" label="COM_ARVIE_PARRAINS_PARRAIN" 
 			description="COM_ARVIE_PARRAINS_FILLEUL"
-			query="SELECT id, CONCAT(nom, ' ', prenom) AS nom FROM #__arvie_utilisateurs WHERE published=1 ORDER BY nom" 
+			query="SELECT id, CONCAT(nom, ' ', prenom) AS nom FROM #__arvie_utilisateurs ORDER BY nom" 
 			key_field="id" value_field="nom" required="true"
 		/>
 		<field name="filleul" type="sql" default="0" label="COM_ARVIE_PARRAINS_FILLEUL" 
 			description="COM_ARVIE_PARRAINS_FILLEUL"
-			query="SELECT id, CONCAT(nom, ' ', prenom) AS nom FROM #__arvie_utilisateurs WHERE published=1 ORDER BY nom" 
+			query="SELECT id, CONCAT(nom, ' ', prenom) AS nom FROM #__arvie_utilisateurs ORDER BY nom" 
 			key_field="id" value_field="nom" required="true"
 		/>
 		
         <field name="date_deb" type="calendar" label="COM_ARVIE_PARRAINS_DATE_DEB"
             description="COM_ARVIE_PARRAINS_DATE_DEB"
-            size="40" class="inputbox" default="" required="true"
+            size="40" class="inputbox" default="2017-09-07" required="true"
         />
 
         <field name="date_fin" type="calendar" label="COM_ARVIE_PARRAINS_DATE_FIN"
             description="COM_ARVIE_PARRAINS_DATE_FIN"
-            size="40" class="inputbox" default="" required="true"
+            size="40" class="inputbox" default="2018-07-06" required="true"
         />
 		
 		<field id="published" name="published" type="list"

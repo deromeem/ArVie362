@@ -5,15 +5,21 @@
 
 		<field name="asset_id" type="hidden" filter="unset" />
 		
-        <field name="id" type="text" label="COM_ARVIE_PUBLICATIONS_ID"
-            description="Id"
-            size="40" class="inputbox" default="" required="true"
+		<field name="titre" type="text" label="COM_ARVIE_PUBLICATIONS_TITRE"
+            description="Titre"
+            size="40" class="input-large-text" default="" required="true"
         />
+		<field name="alias" type="text"
+			label="JFIELD_ALIAS_LABEL"
+			description="JFIELD_ALIAS_DESC"
+			hint="JFIELD_ALIAS_PLACEHOLDER"
+			class="inputbox" size="45"
+		/>
 
         <field name="publication_parent" type="sql" label="COM_ARVIE_PUBLICATIONS_PARENT" default="20"
             description="Parent"
-            query="SELECT titre, publication_parent FROM #__arvie_publications ORDER BY publication_parent" 
-			key_field="publication_parent" value_field="titre" required="true"
+            query="SELECT id, titre FROM #__arvie_publications ORDER BY titre" 
+			key_field="id" value_field="titre" required="false"
         />
 
         <field name="groupe" type="sql" label="COM_ARVIE_PUBLICATIONS_GROUPE"
@@ -24,20 +30,26 @@
 
         <field name="auteur" type="sql" label="COM_ARVIE_PUBLICATIONS_AUTEUR"
             description="Auteur"
-            query="SELECT id, prenom FROM #__arvie_utilisateurs ORDER BY prenom" 
-			key_field="id" value_field="prenom" required="true"
+            query="SELECT id, nom FROM #__arvie_utilisateurs ORDER BY nom" 
+			key_field="id" value_field="nom" required="true"
+        />
+		<field
+			name="texte" type="editor" label="COM_ARVIE_PUBLICATIONS_TEXTE"
+			description="COM_ARVIE_PUBLICATIONS_TEXTE"
+			class="inputbox"
+			filter="JComponentHelper::filterText"
+			buttons="true"
+			hide="readmore,pagebreak"
+		/>		
+        <field name="date_publi" type="calendar" label="COM_ARVIE_PUBLICATIONS_DATE_PUBLI"
+            description="COM_ARVIE_PUBLICATIONS_DATE_PUBLI"
+        	size="40" class="inputbox" default="" required="true"
         />
 		
 		<field name="est_public" type="radio" default="0" label="COM_ARVIE_PUBLICATIONS_EST_PUBLIC" description="Est public">
   			<option value="0">Privé</option>
   			<option value="1">Public</option>
 		</field>
-
-
-		<field name="titre" type="text" label="Titre"
-            description="Titre"
-            size="40" class="input-large-text" default="" required="false"
-        />
 
 		<field id="published" name="published" type="list"
 			label="JSTATUS"	description="JSTATUS"
@@ -52,14 +64,12 @@
 			<option value="-2">
 				JTRASHED</option>
 		</field>
-		
-		
+				
 		<field
 			name="hits" type="text" label="JGLOBAL_HITS"
 			description="JGLOBAL_HITS"
 			size="6" class="readonly" readonly="true" filter="unset"
-		/>
-		
+		/>		
 		<field
 			name="created" type="calendar" label="JGLOBAL_FIELD_CREATED_LABEL"
 			description="JGLOBAL_FIELD_CREATED_LABEL"
@@ -70,13 +80,6 @@
 			name="created_by" type="user" label="JGLOBAL_FIELD_CREATED_BY_LABEL"
 			description="JGLOBAL_FIELD_CREATED_BY_LABEL"
 			class="inputbox" default=""
-		/>
-		<field
-			name="texte" type="textarea" label="COM_ARVIE_PUBLICATIONS_TEXTE"
-			class="inputbox"
-			filter="JComponentHelper::filterText"
-			rows="10" 
-			hide="readmore,pagebreak"
 		/>
 		<field
 			name="modified" type="calendar" label="JGLOBAL_FIELD_MODIFIED_LABEL"

@@ -14,7 +14,7 @@ class ArvieModelRoles extends JModelList
 				'published', 'r.published',
 				'alias','r.alias',
 				'hits', 'r.hits',
-				'fonction','r.fonction',
+				'created','r.created',
 				'modified', 'r.modified',
 				'commentaire','r.commentaire'
 			);
@@ -38,7 +38,7 @@ class ArvieModelRoles extends JModelList
 	{
 		// construit la requête d'affichage de la liste
 		$query = $this->_db->getQuery(true);
-		$query->select('r.id, r.label, r.published, r.hits, r.modified,r.alias');
+		$query->select('r.id, r.label, r.published, r.hits, r.created, r.modified,r.alias');
 		$query->from('#__arvie_roles r');
 
 		// filtre de recherche rapide textuel

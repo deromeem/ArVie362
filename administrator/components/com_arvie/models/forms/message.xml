@@ -5,14 +5,14 @@
 
 		<field name="asset_id" type="hidden" filter="unset" />
 		
-	    <field name="auteur" type="sql" default="" label="Auteur" 
-			description="COM_ARVIE_MESSAGE_AUTEUR"
+	    <field name="auteur" type="sql" default="" label="COM_ARVIE_MESSAGES_AUTEUR" 
+			description="COM_ARVIE_MESSAGES_AUTEUR"
 			query="SELECT id, nom FROM #__arvie_utilisateurs ORDER BY nom" 
 			key_field="id" value_field="nom" required="true"
 		/>
 
-		<field name="discussion" type="sql" default="" label="Discussion" 
-			description="COM_ARVIE_MESSAGE_DISCUSSION"
+		<field name="discussion" type="sql" default="" label="COM_ARVIE_MESSAGES_DISCUSSION" 
+			description="COM_ARVIE_MESSAGES_DISCUSSION"
 			query="SELECT id, nom FROM #__arvie_discussions ORDER BY nom" 
 			key_field="id" value_field="nom" required="true"
 		/>
@@ -25,8 +25,8 @@
 		/>
 
 		<field
-			name="contenu" type="editor" label="Contenu"
-			description="COM_ARVIE_MESSAGE_CONTENU"
+			name="contenu" type="editor" label="COM_ARVIE_MESSAGES_CONTENU"
+			description="COM_ARVIE_MESSAGES_CONTENU"
 			class="inputbox"
 			filter="JComponentHelper::filterText"
 			buttons="true"
@@ -53,7 +53,6 @@
 			size="22" class="inputbox" default=""
 			format="%Y-%m-%d %H:%M:%S" filter="user_utc"
 		/>
-
 		<field
 			name="created_by" type="user" label="JGLOBAL_FIELD_CREATED_BY_LABEL"
 			description="JGLOBAL_FIELD_CREATED_BY_LABEL"
@@ -64,19 +63,17 @@
 			description="JGLOBAL_FIELD_MODIFIED_LABEL"
 			size="22"  class="readonly" default="" readonly="true"
 			format="%Y-%m-%d %H:%M:%S" filter="user_utc"
-		/>
-		
+		/>		
 		<field
 			name="modified_by" type="user" label="JGLOBAL_FIELD_MODIFIED_BY_LABEL"
 			description="JGLOBAL_FIELD_MODIFIED_BY_DESC"
 			class="inputbox" default=""
 		/>
-
 		<field
 			name="hits" type="text" label="JGLOBAL_HITS"
 			description="JGLOBAL_HITS"
 			size="6" class="readonly" readonly="true" filter="unset"
 		/>
-		
+				
 	</fieldset>
 </form>

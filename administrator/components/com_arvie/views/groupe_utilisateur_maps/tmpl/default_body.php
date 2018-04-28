@@ -19,46 +19,28 @@ if ($saveOrder)
                 </td>
 		<td class="wrap has-context">
 			<div class="pull-left">
-				<a href="<?php echo JRoute::_('index.php?option=com_arvie&task=groupe_utilisateur_maps.edit&id='.(int) $item->id); ?>">
-					<?php echo $this->escape($item->id); ?>
+				<a href="<?php echo JRoute::_('index.php?option=com_arvie&task=groupe_utilisateur_map.edit&id='.(int) $item->id); ?>">
+					<?php echo $this->escape($item->utilisateur_nom); ?>
 				</a>
-				<div class="small hidden-phone">
-					<?php // extrait description selon les paramètres de configuration
-					if ($this->paramDescShow) {
-						$desc = JFilterOutput::cleanText($item->id);
-						echo substr($desc, 0, $this->paramDescSize);
-						echo (strlen($desc)>$this->paramDescSize?"...":"") ;
-					}
-					?>
-				</div>
 			</div>
                 </td>
-                <td align="small">
-                        <?php echo $item->utilisateur_prenom; ?>
-		</td>
-
 		<td align="small">
                         <?php echo $item->role_label; ?>
 		</td>
-
 		<td align="small">
                         <?php echo $item->groupe_nom; ?>
 		</td>
-
-		<td align="small">
-                        <?php echo $item->date_deb; ?>
-                </td>
-
-		<td align="small">
-                        <?php echo $item->date_fin; ?>
-                </td>
-
 		<td>
 			<?php echo JHtml::_('jgrid.published', $item->published, $i, 'groupe_utilisateur_maps.', true); ?>
 		</td>
-
-		<td class="hidden-tablet hidden-phone">
-				<?php echo (int) $item->hits; ?>
+		<td class="center hidden-phone">
+			<?php echo JHtml::_('date', $item->created, $this->paramDateFmt); ?>
+		</td>
+		<td class="center hidden-tablet hidden-phone">
+			<?php echo (int) $item->hits; ?>
+		</td>
+		<td class="center hidden-phone">
+			<?php echo (int) $item->id; ?>
 		</td>
         </tr>
 <?php endforeach; ?>

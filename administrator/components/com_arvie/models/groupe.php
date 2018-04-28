@@ -7,15 +7,15 @@ class ArvieModelGroupe extends JModelAdmin
 	protected $_context = 'groupe';
 	public $typeAlias = 'com_arvie.groupe';
 	
-	// Surcharges des m�thodes de la classe m�re pour :
+	// Surcharges des méthodes de la classe mère pour :
 	
-	// 1) d�finir la table de soutien � utiliser
+	// 1) définir la table de soutien à utiliser
 	public function getTable($type = 'groupe', $prefix = 'ArvieTable', $config = array()) 
 	{
 		return JTable::getInstance($type, $prefix, $config);
 	}
 
-	// 2) pr�ciser le chemin du contexte � utiliser pour charger le fichier XML d�crivant les champs de saisie
+	// 2) préciser le chemin du contexte à utiliser pour charger le fichier XML décrivant les champs de saisie
 	public function getForm($data = array(), $loadData = true) 
 	{
 		$form = $this->loadForm($this->typeAlias, $this->_context,
@@ -27,7 +27,7 @@ class ArvieModelGroupe extends JModelAdmin
 		return $form;
 	}
 
-	// 3) contr�ler qu'un tableau de donn�es n'est pas d�j� initialis� dans la session
+	// 3) contrôler qu'un tableau de données n'est pas déjà initialisé dans la session
 	protected function loadFormData() 
 	{
 		$data = JFactory::getApplication()->getUserState($this->_compo.'.edit.'.$this->_context.'.data', array());
@@ -38,7 +38,7 @@ class ArvieModelGroupe extends JModelAdmin
 		return $data;
 	}
 
-	// 4) pr�parer les donn�es avant la sauvegarde en base de donn�es par l'objet JTable
+	// 4) préparer les données avant la sauvegarde en base de données par l'objet JTable
 	protected function prepareTable($table)
 	{
 		$table->alias = JApplication::stringURLSafe($table->alias);

@@ -10,22 +10,21 @@
 			query="SELECT id, CONCAT(nom, ' ', prenom) AS nom FROM #__arvie_utilisateurs WHERE published=1 ORDER BY nom" 
             key_field="id" value_field="nom" required="true"
         />
-
         <field name="suivi" type="sql" label="COM_ARVIE_ABONNEMENTS_SUIVI"
             description="COM_ARVIE_ABONNEMENTS_SUIVI"
             query="SELECT id, CONCAT(nom, ' ', prenom) AS nom FROM #__arvie_utilisateurs WHERE published=1 ORDER BY nom" 
 			key_field="id" value_field="nom" required="true"
         />
-
         <field name="date" type="calendar" label="COM_ARVIE_ABONNEMENTS_DATE"
             description="COM_ARVIE_ABONNEMENTS_DATE"
         	size="40" class="inputbox" default="" required="true"
         />
-
-        <field name="alias" type="text" label="COM_ARVIE_ABONNEMENTS_ALIAS"
-            description="COM_ARVIE_ABONNEMENTS_ALIAS"
-            size="40" class="inputbox" default=" " required=""
-        />
+		<field name="alias" type="text"
+			label="JFIELD_ALIAS_LABEL"
+			description="JFIELD_ALIAS_DESC"
+			hint="JFIELD_ALIAS_PLACEHOLDER"
+			class="inputbox" size="45"
+		/>
 		
 		<field id="published" name="published" type="list"
 			label="JSTATUS"	description="JSTATUS"

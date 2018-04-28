@@ -11,15 +11,12 @@ class ArvieModelPublications extends JModelList
 			$config['filter_fields'] = array(
 				'id',             'p.id',
 				'titre',          'p.titre',
-				'parent',		  'p.publication_parent',
-				'groupe',         'p.groupe',
-				'groupes_nom',    'p.groupe',
-				'auteur_nom',     'p.auteur',
+				'parent',		  'pp.titre',
+				'groupe',         'g.nom',
+				'auteur',		  'u.nom',
 				'texte',          'p.texte',
-				'est_public',     'p.est_public',
 				'date_publi',     'p.date_publi',
-				'public',         'p.public',
-				'alias',          'p.alias',
+				'est_public',     'p.est_public',
 				'published',      'p.published',
 				'created',        'p.created',
 				'created_by',     'p.created_by',
@@ -43,24 +40,24 @@ class ArvieModelPublications extends JModelList
 		$published = $this->getUserStateFromRequest($this->context.'.filter.published', 'filter_published', '');
 		$this->setState('filter.published', $published);
 
-		//parent::populateState('nom', 'asc');
+		parent::populateState('p.titre', 'ASC');
 	}
 	
 	protected function getListQuery()
 	{
 		// construit la requête d'affichage de la liste
 		$query = $this->_db->getQuery(true);
-		$query->select('p.id, p.titre, p.publication_parent, p.est_public, p.groupe, p.auteur, p.texte, p.published, p.created, p.created_by, p.modified, p.modified_by, p.hits');
+		$query->select('p.id, p.titre, p.publication_parent, p.est_public, p.groupe, p.auteur, p.texte, p.date_publi, p.published, p.created, p.created_by, p.modified, p.modified_by, p.hits');
 		$query->from('#__arvie_publications p');
 		
-		// joint la table utilisateur pour les auteurs
-		$query->select('ap.prenom AS auteur_prenom')->join('LEFT', '#__arvie_utilisateurs AS ap ON ap.id=p.auteur');
+		// joint la table utilisateur pour l'auteur
+		$query->select('u.nom AS nom_auteur')->join('LEFT', '#__arvie_utilisateurs AS u ON u.id=p.auteur');
 		
-		// joint la table groupes pour les groupes
-		$query->select('pp.nom AS groupes_nom')->join('LEFT', '#__arvie_groupes AS pp ON pp.id=p.groupe');
+		// joint la table groupes
+		$query->select('g.nom AS nom_groupe')->join('LEFT', '#__arvie_groupes AS g ON g.id=p.groupe');
 
-		// joint la table publication pour les parent
-		$query->select('p.titre AS parent_titre')->join('LEFT', '#__arvie_publications AS op ON p.id=op.publication_parent');
+		// joint la table publication pour la publication parente
+		$query->select('pp.titre AS titre_parent')->join('LEFT', '#__arvie_publications AS pp ON pp.id=p.publication_parent');
 
 		// filtre de recherche rapide textuel
 		$search = $this->getState('filter.search');
@@ -74,10 +71,8 @@ class ArvieModelPublications extends JModelList
 				$search = $this->_db->Quote('%'.$this->_db->escape($search, true).'%');
 				// Compile les clauses de recherche
 				$searches	= array();
-				$searches[]	= 'p.parent LIKE '.$search;
-				$searches[]	= 'p.groupe LIKE '.$search;
-				//$searches[]	= 'u.fonction LIKE '.$search;
-				$searches[]	= 'p.auteur LIKE '.$search;
+				$searches[]	= 'p.titre LIKE '.$search;
+				$searches[]	= 'u.nom LIKE '.$search;
 				// Ajoute les clauses à la requête
 				$query->where('('.implode(' OR ', $searches).')');
 			}
@@ -98,7 +93,7 @@ class ArvieModelPublications extends JModelList
 		$orderDirn = $this->state->get('list.direction', 'ASC');
 		$query->order($this->_db->escape($orderCol.' '.$orderDirn));
 
-		// echo nl2br(str_replace('#__','egs_',$query));			// TEST/DEBUG
+		// echo nl2br(str_replace('#__','arvie_',$query));			// TEST/DEBUG
 		return $query;
 	}
 }

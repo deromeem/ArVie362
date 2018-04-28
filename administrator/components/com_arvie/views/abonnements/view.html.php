@@ -75,8 +75,11 @@ class ArvieViewAbonnements extends JViewLegacy
 		return array(
 			'a.abonne' => JText::_('COM_ARVIE_ABONNEMENTS_ABONNE'),
 			'a.suivi' => JText::_('COM_ARVIE_ABONNEMENTS_SUIVI'),
-			'a.published' => JText::_('JSTATUS')
-			//'u.id' => "ID"
+			'a.date' => JText::_('COM_ARVIE_ABONNEMENTS_DATE'),
+			'a.published' => JText::_('JSTATUS'),
+			'a.modified' => JText::_('COM_ARVIE_MODIFIED_DATE'),
+			'a.hits' => JText::_('JGLOBAL_HITS'),
+			'a.id' => JText::_('JGRID_HEADING_ID')
 		);
 	}
 }

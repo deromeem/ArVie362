@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  ven. 15 déc. 2017 à 17:33
+-- Généré le :  ven. 27 avr. 2018 à 15:16
 -- Version du serveur :  10.1.26-MariaDB
 -- Version de PHP :  7.1.9
 
@@ -177,11 +177,11 @@ CREATE TABLE `arvie_arvie_abonnements` (
   `suivi` int(11) NOT NULL,
   `date` datetime NOT NULL,
   `alias` varchar(255) NOT NULL,
-  `published` tinyint(1) NOT NULL DEFAULT '0',
-  `created` datetime NOT NULL,
-  `created_by` int(11) NOT NULL,
-  `modified` datetime NOT NULL,
-  `modified_by` int(11) NOT NULL,
+  `published` tinyint(1) NOT NULL DEFAULT '1',
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` int(11) NOT NULL DEFAULT '0',
+  `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` int(11) NOT NULL DEFAULT '0',
   `hits` int(11) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -190,11 +190,13 @@ CREATE TABLE `arvie_arvie_abonnements` (
 --
 
 INSERT INTO `arvie_arvie_abonnements` (`id`, `abonne`, `suivi`, `date`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
-(1, 6, 2, '2017-12-10 12:00:00', '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(2, 6, 3, '0000-00-00 00:00:00', '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(3, 6, 4, '0000-00-00 00:00:00', '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(4, 2, 3, '0000-00-00 00:00:00', '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(5, 2, 4, '0000-00-00 00:00:00', '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0);
+(1, 14, 2, '2017-12-10 00:00:00', '', 1, '2017-12-10 12:00:00', 0, '2018-04-27 09:49:59', 416, 0),
+(2, 14, 3, '2017-12-10 00:00:00', '', 1, '2017-12-10 12:00:00', 0, '2018-04-27 09:50:15', 416, 0),
+(3, 10, 4, '2017-12-10 00:00:00', '', 1, '2017-12-10 12:00:00', 0, '2018-04-27 09:50:34', 416, 0),
+(4, 2, 3, '2018-04-19 00:00:00', '', 1, '2018-04-19 00:00:00', 0, '2018-04-19 14:52:51', 416, 0),
+(5, 2, 4, '2018-04-19 00:00:00', '', 1, '2018-04-19 00:00:00', 0, '2018-04-19 14:53:04', 416, 0),
+(6, 5, 15, '2018-04-20 00:00:00', '', 1, '2018-04-19 14:59:22', 416, '0000-00-00 00:00:00', 0, 0),
+(7, 5, 3, '2018-04-20 00:00:00', '', 1, '2018-04-20 06:50:20', 416, '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -206,13 +208,22 @@ CREATE TABLE `arvie_arvie_discussions` (
   `id` int(11) NOT NULL,
   `nom` varchar(40) DEFAULT NULL,
   `alias` varchar(255) NOT NULL,
-  `published` tinyint(1) NOT NULL DEFAULT '0',
-  `created` datetime NOT NULL,
-  `created_by` int(11) NOT NULL,
-  `modified` datetime NOT NULL,
-  `modified_by` int(11) NOT NULL,
+  `published` tinyint(1) NOT NULL DEFAULT '1',
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` int(11) NOT NULL DEFAULT '0',
+  `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` int(11) NOT NULL DEFAULT '0',
   `hits` int(11) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `arvie_arvie_discussions`
+--
+
+INSERT INTO `arvie_arvie_discussions` (`id`, `nom`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
+(0, '-', '-', 0, '2018-04-17 18:37:31', 416, '2018-04-19 16:24:09', 416, 0),
+(1, 'Epreuves écrites du BTS-SIO 2018', 'epreuves-ecrites-du-bts-sio-2018', 1, '2018-04-17 18:37:31', 416, '2018-04-24 13:40:58', 416, 0),
+(2, 'Portfolio pour l\'épreuve E6', 'portfolio-pour-l-epreuve-e6', 1, '2018-04-20 06:47:52', 416, '2018-04-20 06:49:30', 416, 0);
 
 -- --------------------------------------------------------
 
@@ -222,16 +233,26 @@ CREATE TABLE `arvie_arvie_discussions` (
 
 CREATE TABLE `arvie_arvie_evenements` (
   `id` int(11) NOT NULL,
+  `publication` int(11) NOT NULL,
   `date_event` datetime NOT NULL,
   `lieu` varchar(50) NOT NULL,
   `alias` varchar(255) NOT NULL,
-  `published` tinyint(1) NOT NULL DEFAULT '0',
-  `created` datetime NOT NULL,
-  `created_by` int(11) NOT NULL,
-  `modified` datetime NOT NULL,
-  `modified_by` int(11) NOT NULL,
+  `published` tinyint(1) NOT NULL DEFAULT '1',
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` int(11) NOT NULL DEFAULT '0',
+  `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` int(11) NOT NULL DEFAULT '0',
   `hits` int(11) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `arvie_arvie_evenements`
+--
+
+INSERT INTO `arvie_arvie_evenements` (`id`, `publication`, `date_event`, `lieu`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
+(1, 1, '2017-10-12 00:00:00', 'Lycée Louis Armand', '', 1, '2017-10-12 00:00:00', 0, '2018-04-25 14:45:17', 416, 0),
+(2, 7, '2017-10-16 18:30:00', 'Mairie du XVe', '', 1, '2018-04-25 14:57:51', 416, '2018-04-25 15:02:26', 416, 0),
+(3, 8, '2018-04-12 12:00:00', 'Lycée Louis Armand', '', 1, '2018-04-25 17:45:04', 416, '2018-04-25 18:02:11', 416, 0);
 
 -- --------------------------------------------------------
 
@@ -246,11 +267,11 @@ CREATE TABLE `arvie_arvie_groupes` (
   `est_groupe_interet` tinyint(1) NOT NULL DEFAULT '0',
   `est_public` tinyint(1) NOT NULL DEFAULT '0',
   `alias` varchar(255) NOT NULL,
-  `published` tinyint(1) NOT NULL DEFAULT '0',
-  `created` datetime NOT NULL,
-  `created_by` int(11) NOT NULL,
-  `modified` datetime NOT NULL,
-  `modified_by` int(11) NOT NULL,
+  `published` tinyint(1) NOT NULL DEFAULT '1',
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` int(11) NOT NULL DEFAULT '0',
+  `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` int(11) NOT NULL DEFAULT '0',
   `hits` int(11) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -259,13 +280,16 @@ CREATE TABLE `arvie_arvie_groupes` (
 --
 
 INSERT INTO `arvie_arvie_groupes` (`id`, `groupe_parent`, `nom`, `est_groupe_interet`, `est_public`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
-(1, NULL, 'Arvie', 0, 0, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(2, 1, 'Louis-Armand', 0, 0, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(3, 2, 'BTS', 0, 0, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(4, 3, 'SIO 1', 0, 0, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(5, 1, 'Sport', 0, 0, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(6, 5, 'Basket', 0, 0, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(7, 3, 'SIO 2', 0, 0, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0);
+(0, 0, '-', 0, 0, '-', 0, '0000-00-00 00:00:00', 416, '2018-04-18 08:28:25', 416, 0),
+(1, 1, 'Arvie', 0, 0, 'arvie', 1, '0000-00-00 00:00:00', 416, '2018-04-18 08:28:25', 416, 0),
+(2, 1, 'Louis-Armand', 0, 0, 'louis-armand', 1, '0000-00-00 00:00:00', 416, '2018-04-18 08:28:50', 416, 0),
+(3, 2, 'BTS', 0, 0, 'bts', 1, '0000-00-00 00:00:00', 417, '2018-04-18 17:21:00', 416, 0),
+(4, 3, 'SIO 1', 0, 0, 'sio-1', 1, '0000-00-00 00:00:00', 417, '2018-04-18 08:29:19', 416, 0),
+(5, 1, 'Sport', 1, 0, 'sport', 1, '0000-00-00 00:00:00', 419, '2018-04-16 17:09:21', 416, 0),
+(6, 5, 'Basket', 1, 0, 'basket', 1, '0000-00-00 00:00:00', 419, '2018-04-16 17:09:46', 416, 0),
+(7, 3, 'SIO 2', 0, 0, 'sio-2', 1, '0000-00-00 00:00:00', 417, '2018-04-18 08:29:44', 416, 0),
+(8, 3, 'MUC 1', 0, 0, 'muc', 1, '2018-04-19 07:24:37', 417, '0000-00-00 00:00:00', 0, 0),
+(9, 3, 'MUC 2', 0, 0, 'muc-2', 1, '2018-04-19 07:53:31', 417, '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -277,15 +301,15 @@ CREATE TABLE `arvie_arvie_groupe_utilisateur_map` (
   `id` int(11) NOT NULL,
   `utilisateur` int(11) NOT NULL,
   `groupe` int(11) NOT NULL,
-  `date_deb` datetime NOT NULL,
+  `date_deb` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `date_fin` datetime DEFAULT NULL,
   `role` int(11) NOT NULL,
   `alias` varchar(255) NOT NULL,
-  `published` tinyint(1) NOT NULL DEFAULT '0',
-  `created` datetime NOT NULL,
-  `created_by` int(11) NOT NULL,
-  `modified` datetime NOT NULL,
-  `modified_by` int(11) NOT NULL,
+  `published` tinyint(1) NOT NULL DEFAULT '1',
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` int(11) NOT NULL DEFAULT '0',
+  `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` int(11) NOT NULL DEFAULT '0',
   `hits` int(11) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -294,10 +318,19 @@ CREATE TABLE `arvie_arvie_groupe_utilisateur_map` (
 --
 
 INSERT INTO `arvie_arvie_groupe_utilisateur_map` (`id`, `utilisateur`, `groupe`, `date_deb`, `date_fin`, `role`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
-(1, 1, 2, '0000-00-00 00:00:00', NULL, 1, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(2, 3, 7, '0000-00-00 00:00:00', NULL, 3, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(3, 2, 7, '0000-00-00 00:00:00', NULL, 2, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(4, 4, 7, '0000-00-00 00:00:00', NULL, 4, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0);
+(1, 1, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, '', 1, '2018-04-26 17:18:10', 0, '2018-04-26 16:08:39', 416, 0),
+(2, 3, 7, '0000-00-00 00:00:00', NULL, 3, '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(3, 2, 7, '0000-00-00 00:00:00', NULL, 2, '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(4, 4, 7, '0000-00-00 00:00:00', NULL, 4, '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(5, 6, 2, '2016-09-01 00:00:00', NULL, 5, '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(6, 7, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 6, '', 1, '2018-04-26 17:31:54', 0, '2018-04-26 15:32:02', 416, 0),
+(7, 8, 2, '2018-04-17 00:00:00', '0000-00-00 00:00:00', 1, '', 1, '2018-04-26 17:18:40', 0, '2018-04-26 15:18:44', 416, 0),
+(8, 9, 2, '2018-04-17 00:00:00', '0000-00-00 00:00:00', 1, '', 1, '2018-04-26 17:18:25', 0, '2018-04-26 15:18:28', 416, 0),
+(9, 10, 4, '2018-04-17 00:00:00', NULL, 3, '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(10, 11, 4, '2018-04-17 00:00:00', NULL, 2, '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(11, 12, 4, '2018-04-17 00:00:00', NULL, 2, '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(12, 14, 4, '0000-00-00 00:00:00', NULL, 4, '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(13, 15, 7, '0000-00-00 00:00:00', NULL, 2, '', 1, '2018-04-17 00:00:00', 0, '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -311,13 +344,24 @@ CREATE TABLE `arvie_arvie_messages` (
   `discussion` int(11) NOT NULL,
   `contenu` text NOT NULL,
   `alias` varchar(255) NOT NULL,
-  `published` tinyint(1) NOT NULL DEFAULT '0',
-  `created` datetime NOT NULL,
-  `created_by` int(11) NOT NULL,
-  `modified` datetime NOT NULL,
-  `modified_by` int(11) NOT NULL,
+  `published` tinyint(1) NOT NULL DEFAULT '1',
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` int(11) NOT NULL DEFAULT '0',
+  `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` int(11) NOT NULL DEFAULT '0',
   `hits` int(11) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `arvie_arvie_messages`
+--
+
+INSERT INTO `arvie_arvie_messages` (`id`, `auteur`, `discussion`, `contenu`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
+(1, 2, 2, 'Google site est une bonne solution pour créer son portfolio.', '', 1, '2018-04-22 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(2, 10, 2, 'J\'ai eu quelques soucis avec WordPress.', '', 1, '2018-04-22 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(3, 1, 2, 'Compte-tenu de votre connaissance de Joomla, l\'utilisation de ce CMS serait une bonne alternative.', '', 1, '2018-04-22 17:25:51', 416, '2018-04-26 15:47:51', 416, 0),
+(4, 9, 1, 'Prévoir d\'arriver 30 mn au moins avant les épreuves.', '', 1, '2018-04-23 14:35:01', 416, '2018-04-24 13:08:58', 416, 0),
+(5, 14, 1, 'N\'oubliez pas vos effaceurs, gommes et règles !', '', 1, '2018-04-25 13:50:28', 416, '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -329,11 +373,11 @@ CREATE TABLE `arvie_arvie_metiers` (
   `id` int(11) NOT NULL,
   `label` varchar(40) NOT NULL,
   `alias` varchar(255) NOT NULL,
-  `published` tinyint(1) NOT NULL DEFAULT '0',
-  `created` datetime NOT NULL,
-  `created_by` int(11) NOT NULL,
-  `modified` datetime NOT NULL,
-  `modified_by` int(11) NOT NULL,
+  `published` tinyint(1) NOT NULL DEFAULT '1',
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` int(11) NOT NULL DEFAULT '0',
+  `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` int(11) NOT NULL DEFAULT '0',
   `hits` int(11) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -342,8 +386,9 @@ CREATE TABLE `arvie_arvie_metiers` (
 --
 
 INSERT INTO `arvie_arvie_metiers` (`id`, `label`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
-(1, 'Informatique', '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(2, 'Economie', '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0);
+(0, '-', '-', 0, '2018-04-26 11:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(1, 'Informatique', '', 1, '2018-04-26 11:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(2, 'Economie', '', 1, '2018-04-26 11:00:00', 0, '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -356,11 +401,11 @@ CREATE TABLE `arvie_arvie_metier_groupe_map` (
   `metier` int(11) NOT NULL,
   `groupe` int(11) NOT NULL,
   `alias` varchar(255) NOT NULL,
-  `published` tinyint(1) NOT NULL DEFAULT '0',
-  `created` datetime NOT NULL,
-  `created_by` int(11) NOT NULL,
-  `modified` datetime NOT NULL,
-  `modified_by` int(11) NOT NULL,
+  `published` tinyint(1) NOT NULL DEFAULT '1',
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` int(11) NOT NULL DEFAULT '0',
+  `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` int(11) NOT NULL DEFAULT '0',
   `hits` int(11) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -369,8 +414,8 @@ CREATE TABLE `arvie_arvie_metier_groupe_map` (
 --
 
 INSERT INTO `arvie_arvie_metier_groupe_map` (`id`, `metier`, `groupe`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
-(1, 1, 4, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(2, 1, 7, '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0);
+(1, 1, 4, '', 1, '0000-00-00 00:00:00', 0, '2018-04-27 09:28:06', 416, 0),
+(2, 1, 7, '', 1, '0000-00-00 00:00:00', 0, '2018-04-27 09:28:20', 416, 0);
 
 -- --------------------------------------------------------
 
@@ -382,16 +427,25 @@ CREATE TABLE `arvie_arvie_parrains` (
   `id` int(11) NOT NULL,
   `parrain` int(11) NOT NULL,
   `filleul` int(11) NOT NULL,
-  `date_deb` date NOT NULL,
-  `date_fin` date NOT NULL,
+  `date_deb` date NOT NULL DEFAULT '0000-00-00',
+  `date_fin` date NOT NULL DEFAULT '0000-00-00',
   `alias` varchar(255) NOT NULL,
-  `published` tinyint(1) NOT NULL DEFAULT '0',
-  `created` datetime NOT NULL,
-  `created_by` int(11) NOT NULL,
-  `modified` datetime NOT NULL,
-  `modified_by` int(11) NOT NULL,
+  `published` tinyint(1) NOT NULL DEFAULT '1',
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` int(11) NOT NULL DEFAULT '0',
+  `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` int(11) NOT NULL DEFAULT '0',
   `hits` int(11) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `arvie_arvie_parrains`
+--
+
+INSERT INTO `arvie_arvie_parrains` (`id`, `parrain`, `filleul`, `date_deb`, `date_fin`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
+(1, 3, 14, '2017-09-07', '2018-07-06', '', 1, '2018-04-24 00:00:00', 0, '2018-04-27 09:47:11', 416, 0),
+(2, 2, 12, '2017-09-07', '2018-07-06', '', 1, '2018-04-27 09:43:41', 416, '0000-00-00 00:00:00', 0, 0),
+(3, 4, 10, '2017-09-07', '2018-07-06', '', 1, '2018-04-27 09:46:51', 416, '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -401,19 +455,19 @@ CREATE TABLE `arvie_arvie_parrains` (
 
 CREATE TABLE `arvie_arvie_publications` (
   `id` int(11) NOT NULL,
-  `publication_parent` int(11) DEFAULT NULL,
-  `groupe` int(11) NOT NULL,
-  `auteur` int(11) NOT NULL,
+  `publication_parent` int(11) DEFAULT '0',
+  `groupe` int(11) NOT NULL DEFAULT '1',
+  `auteur` int(11) NOT NULL DEFAULT '1',
   `titre` varchar(255) NOT NULL,
   `texte` text NOT NULL,
-  `date_publi` datetime NOT NULL,
+  `date_publi` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `est_public` tinyint(1) NOT NULL DEFAULT '0',
   `alias` varchar(255) NOT NULL,
-  `published` tinyint(1) NOT NULL DEFAULT '0',
-  `created` datetime NOT NULL,
-  `created_by` int(11) NOT NULL,
-  `modified` datetime NOT NULL,
-  `modified_by` int(11) NOT NULL,
+  `published` tinyint(1) NOT NULL DEFAULT '1',
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` int(11) NOT NULL DEFAULT '0',
+  `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` int(11) NOT NULL DEFAULT '0',
   `hits` int(11) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -422,11 +476,15 @@ CREATE TABLE `arvie_arvie_publications` (
 --
 
 INSERT INTO `arvie_arvie_publications` (`id`, `publication_parent`, `groupe`, `auteur`, `titre`, `texte`, `date_publi`, `est_public`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
-(1, NULL, 1, 1, 'Projet ArVie', 'Le projet ArVie est actuellement développé par les étudiants TSIO2 SLAM au Lycée Louis-Armand.\r\n\r\nLes contributions faites à domicile doivent rester exceptionnelles afin de respecter la dynamique de groupe.', '2017-12-07 11:46:00', 1, '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(2, NULL, 6, 2, 'Champion', 'Je suis devenu champion du monde aujourd\'hui', '2017-12-14 00:00:00', 1, '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(3, NULL, 7, 6, 'Qui suis-je ?', 'Celui qui devinera mon identité gagne un bonbon ! :)', '2017-12-18 08:12:22', 1, '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(4, NULL, 7, 6, 'MAIS QUI A VOLE LE CLAVIER ET LA SOURIS', 'CELUI QUI A VOLE LE CLAVIER ET LA SOURIS EST PRIE DE LES RENDRE SVP ON VEUT RENDRE LES SALLES A NOS ETUDIANTS PREFERES (LA BTS SIO2, SURTOUT LES SLAMS)', '0000-00-00 00:00:00', 1, '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(5, NULL, 7, 4, 'Bonjour à tous', 'Bonjour je vous conseille à tous de dormir 8h par jour MINIMUM ce qui améliore vos synapses (c\'est ce que je fais perso et ça marche pas mal)', '2017-12-16 00:00:00', 1, '', 1, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0);
+(0, NULL, 1, 1, '-', '', '0000-00-00 00:00:00', 0, '', 0, '2018-04-20 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(1, 0, 1, 1, 'Projet ArVie', '<p>Le projet ArVie est actuellement développé par les étudiants TSIO2 SLAM au Lycée Louis-Armand.</p>', '2017-10-05 00:00:00', 1, '', 1, '0000-00-00 00:00:00', 0, '2018-04-24 14:43:19', 416, 0),
+(2, 0, 6, 2, 'Champion de basket', '<p>Je suis devenu champion du monde aujourd\'hui.</p>', '2017-12-14 00:00:00', 1, '', 1, '0000-00-00 00:00:00', 0, '2018-04-20 13:29:40', 416, 0),
+(3, 1, 7, 2, 'Soutien en PHP', '<p>Je propose d\'aider ceux qui ont des problèmes en PHP.</p>', '2017-12-18 00:00:00', 1, '', 1, '0000-00-00 00:00:00', 0, '2018-04-27 10:02:13', 416, 0),
+(4, 1, 7, 3, 'Les souris disparaissent', '<p>Une souris a disparue en salle SIO2.</p>', '2018-04-02 00:00:00', 1, '', 1, '2018-04-24 15:46:57', 0, '2018-04-27 09:56:53', 416, 0),
+(5, 1, 7, 4, 'Bien dormir', '<p>Bonjour je vous conseille à tous de dormir 8h par jour MINIMUM ce qui améliore vos synapses (c\'est ce que je fais perso et ça marche pas mal)</p>', '2017-12-16 00:00:00', 1, '', 1, '0000-00-00 00:00:00', 0, '2018-04-27 09:56:07', 416, 0),
+(6, 0, 4, 10, 'Recherche de stage TSIO1', '<p>Comment s\'organiser pour la recherche de stage.</p>', '2018-04-02 00:00:00', 0, '', 1, '2018-04-20 09:39:55', 416, '2018-04-27 09:54:05', 416, 0),
+(7, 0, 1, 6, 'Remise des diplômes BTS', '<p>Remise des diplômes BTS à la mairie du XVe.</p>', '2017-09-21 00:00:00', 0, '', 1, '2018-04-25 14:56:40', 416, '0000-00-00 00:00:00', 0, 0),
+(8, 0, 5, 3, 'Rencontre sportive', '<p>Un rencontre sportive est organisée au lycée Louis-Armand. Elle est ouverte à tous les lycéen et étudiants de BTS.</p>', '2018-04-09 00:00:00', 0, '', 1, '2018-04-25 17:43:37', 416, '2018-04-25 17:44:23', 416, 0);
 
 -- --------------------------------------------------------
 
@@ -438,11 +496,11 @@ CREATE TABLE `arvie_arvie_roles` (
   `id` int(11) NOT NULL,
   `label` varchar(50) NOT NULL,
   `alias` varchar(255) NOT NULL,
-  `published` tinyint(1) NOT NULL DEFAULT '0',
-  `created` datetime NOT NULL,
-  `created_by` int(11) NOT NULL,
-  `modified` datetime NOT NULL,
-  `modified_by` int(11) NOT NULL,
+  `published` tinyint(1) NOT NULL DEFAULT '1',
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` int(11) NOT NULL DEFAULT '0',
+  `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` int(11) NOT NULL DEFAULT '0',
   `hits` int(11) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -451,10 +509,13 @@ CREATE TABLE `arvie_arvie_roles` (
 --
 
 INSERT INTO `arvie_arvie_roles` (`id`, `label`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
-(1, 'Professeur', '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(2, 'Élève', '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(3, 'Délégué', '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0),
-(4, 'Suppléant', '', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0);
+(0, '-', '-', 0, '2018-04-26 11:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(1, 'Professeur', '', 1, '2018-04-26 11:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(2, 'Élève', '', 1, '2018-04-26 11:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(3, 'Délégué', '', 1, '2018-04-26 11:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(4, 'Suppléant', '', 1, '2018-04-26 11:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(5, 'Proviseur', '', 1, '2018-04-16 17:45:43', 416, '0000-00-00 00:00:00', 0, 0),
+(6, 'Chef de travaux', '', 1, '2018-04-17 09:19:43', 416, '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -470,11 +531,11 @@ CREATE TABLE `arvie_arvie_utilisateurs` (
   `mobile` varchar(40) DEFAULT NULL,
   `date_naiss` date NOT NULL,
   `alias` varchar(255) NOT NULL,
-  `published` tinyint(1) NOT NULL DEFAULT '0',
-  `created` datetime NOT NULL,
-  `created_by` int(11) NOT NULL,
-  `modified` datetime NOT NULL,
-  `modified_by` int(11) NOT NULL,
+  `published` tinyint(1) NOT NULL DEFAULT '1',
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` int(11) NOT NULL DEFAULT '0',
+  `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` int(11) NOT NULL DEFAULT '0',
   `hits` int(11) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -483,12 +544,21 @@ CREATE TABLE `arvie_arvie_utilisateurs` (
 --
 
 INSERT INTO `arvie_arvie_utilisateurs` (`id`, `email`, `prenom`, `nom`, `mobile`, `date_naiss`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
-(1, 'emmanuel.derome@gmail.com', 'Emmanuel', 'Derome', NULL, '1960-10-03', '', 1, '2017-10-19 16:32:12', 416, '2017-10-19 16:32:12', 416, 0),
-(2, 'f.salimou@hotmail.fr', 'Salimou', 'Fofana', NULL, '1998-03-01', '', 1, '2017-10-19 16:32:12', 416, '2017-10-19 16:32:12', 416, 0),
-(3, 'gregory.brugnet@gmail.com', 'Gregory', 'Brugnet', '0', '1996-10-01', 'brugnetzz', 1, '2017-10-19 16:32:12', 416, '2017-12-14 10:08:36', 417, 0),
-(4, 'n.peugnet@free.fr', 'Nicolas', 'Peugnet', NULL, '1996-05-09', '', 1, '2017-10-19 16:32:12', 416, '2017-10-19 16:32:12', 416, 0),
-(5, 'rahari.anja@gmail.com', 'Anja', 'Raharijaonarivelo', '0', '1997-06-15', 'raharijaonarivelo', 1, '2017-10-19 16:32:12', 416, '2017-11-16 15:58:09', 416, 0),
-(6, 'mdupond@arvie.org', 'Marcel', 'DUPOND', '0', '1990-04-05', 'dupond', 1, '2017-12-10 17:25:09', 416, '2017-12-10 17:25:09', 0, 0);
+(0, 'noname@arvie.org', '-', '-', '', '1980-04-01', 'ingrid-note', 0, '2017-10-19 16:32:12', 416, '2018-04-16 18:01:39', 416, 0),
+(1, 'inote@arvie.org', 'Ivan', 'NOTE', '', '1980-04-01', 'ingrid-note', 1, '2017-10-19 16:32:12', 416, '2018-04-20 09:27:52', 416, 0),
+(2, 'jcode@arvie.org', 'Jean', 'CODE', '', '1998-03-01', 'code', 1, '2017-10-19 16:32:12', 416, '2018-04-16 17:41:13', 416, 0),
+(3, 'phochon@arvie.org', 'Paul', 'HOCHON', '', '1996-10-01', 'brugnetzz', 1, '2017-10-19 16:32:12', 416, '2018-04-17 09:14:04', 416, 0),
+(4, 'mtudor@arvie.org', 'Marie', 'TUDOR', '', '1996-05-09', 'dros', 1, '2017-10-19 16:32:12', 416, '2018-04-17 09:13:35', 416, 0),
+(5, 'ibarbier@arvie.org', 'Iris', 'BARBIER', '', '1999-02-17', 'barbier', 1, '2018-04-17 09:38:03', 416, '2018-04-27 13:14:24', 417, 0),
+(6, 'hboss@arvie.org', 'Hugo', 'BOSS', '', '1955-10-05', 'dupond', 1, '2017-12-10 17:25:09', 416, '2018-04-16 17:44:18', 416, 0),
+(7, 'abrun@arvie.org', 'André', 'BRUN', '', '1971-12-16', 'brun', 1, '2018-04-17 09:16:00', 416, '2018-04-17 00:00:00', 0, 0),
+(8, 'apages@arvie.org', 'Albert', 'PAGES', '', '1979-09-02', 'pages', 1, '2018-04-17 09:23:12', 416, '2018-04-17 09:24:57', 416, 0),
+(9, 'jferrand@arvie.org', 'Julie', 'FERRAND', '', '1968-05-01', 'ferrand', 1, '2018-04-17 09:24:17', 416, '2018-04-20 09:31:15', 416, 0),
+(10, 'mtresor@arvie.org', 'Marius', 'TRESOR', '', '1998-03-17', 'tresor', 1, '2018-04-17 09:35:12', 416, '2018-04-17 09:36:23', 416, 0),
+(11, 'alesmains@arvie.org', 'Angel', 'LESMAINS', '', '1998-08-11', 'lesmains', 1, '2018-04-17 09:36:05', 416, '2018-04-17 00:00:00', 0, 0),
+(12, 'vmoulin@arvie.org', 'Victor', 'MOULIN', '', '1999-06-18', 'moulin', 1, '2018-04-17 09:37:14', 416, '2018-04-17 00:00:00', 0, 0),
+(14, 'sfrais@arvie.org', 'Sami', 'FRAIS', '', '1998-04-09', 'frais', 1, '2018-04-17 10:08:25', 416, '2018-04-17 00:00:00', 0, 0),
+(15, 'kboulez@arvie.org', 'Karima', 'BOULEZ', '', '1999-04-17', 'boulez', 1, '2018-04-17 00:00:00', 0, '2018-04-17 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -502,13 +572,23 @@ CREATE TABLE `arvie_arvie_utilisateur_discu_map` (
   `discussion` int(11) NOT NULL,
   `est_admin` tinyint(1) NOT NULL DEFAULT '0',
   `alias` varchar(255) NOT NULL,
-  `published` tinyint(1) NOT NULL DEFAULT '0',
-  `created` datetime NOT NULL,
-  `created_by` int(11) NOT NULL,
-  `modified` datetime NOT NULL,
-  `modified_by` int(11) NOT NULL,
+  `published` tinyint(1) NOT NULL DEFAULT '1',
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` int(11) NOT NULL DEFAULT '0',
+  `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` int(11) NOT NULL DEFAULT '0',
   `hits` int(11) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `arvie_arvie_utilisateur_discu_map`
+--
+
+INSERT INTO `arvie_arvie_utilisateur_discu_map` (`id`, `utilisateur`, `discussion`, `est_admin`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
+(1, 1, 1, 0, '', 1, '2018-04-26 13:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(2, 2, 2, 0, '', 1, '2018-04-26 13:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(3, 3, 2, 0, '', 1, '2018-04-27 10:19:24', 416, '0000-00-00 00:00:00', 0, 0),
+(4, 4, 2, 0, '', 1, '2018-04-27 10:19:46', 416, '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -521,13 +601,22 @@ CREATE TABLE `arvie_arvie_utilisateur_even_map` (
   `participant` int(11) NOT NULL,
   `evenement` int(11) NOT NULL,
   `alias` varchar(255) NOT NULL,
-  `published` tinyint(1) NOT NULL DEFAULT '0',
-  `created` datetime NOT NULL,
-  `created_by` int(11) NOT NULL,
-  `modified` datetime NOT NULL,
-  `modified_by` int(11) NOT NULL,
+  `published` tinyint(1) NOT NULL DEFAULT '1',
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` int(11) NOT NULL DEFAULT '0',
+  `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` int(11) NOT NULL DEFAULT '0',
   `hits` int(11) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `arvie_arvie_utilisateur_even_map`
+--
+
+INSERT INTO `arvie_arvie_utilisateur_even_map` (`id`, `participant`, `evenement`, `alias`, `published`, `created`, `created_by`, `modified`, `modified_by`, `hits`) VALUES
+(1, 10, 3, '', 1, '2018-04-27 10:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(2, 14, 2, '', 1, '2018-04-27 10:00:00', 0, '0000-00-00 00:00:00', 0, 0),
+(3, 3, 3, '', 1, '2018-04-27 10:20:30', 416, '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -551,7 +640,7 @@ CREATE TABLE `arvie_assets` (
 --
 
 INSERT INTO `arvie_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `title`, `rules`) VALUES
-(1, 0, 0, 129, 0, 'root.1', 'Root Asset', '{\"core.login.site\":{\"6\":1,\"2\":1},\"core.login.admin\":{\"6\":1},\"core.login.offline\":{\"6\":1},\"core.admin\":{\"8\":1},\"core.manage\":{\"7\":1},\"core.create\":{\"6\":1,\"3\":1},\"core.delete\":{\"6\":1},\"core.edit\":{\"6\":1,\"4\":1},\"core.edit.state\":{\"6\":1,\"5\":1},\"core.edit.own\":{\"6\":1,\"3\":1}}'),
+(1, 0, 0, 137, 0, 'root.1', 'Root Asset', '{\"core.login.site\":{\"6\":1,\"2\":1},\"core.login.admin\":{\"6\":1},\"core.login.offline\":{\"6\":1},\"core.admin\":{\"8\":1},\"core.manage\":{\"7\":1},\"core.create\":{\"6\":1,\"3\":1},\"core.delete\":{\"6\":1},\"core.edit\":{\"6\":1,\"4\":1},\"core.edit.state\":{\"6\":1,\"5\":1},\"core.edit.own\":{\"6\":1,\"3\":1}}'),
 (2, 1, 1, 2, 1, 'com_admin', 'com_admin', '{}'),
 (3, 1, 3, 6, 1, 'com_banners', 'com_banners', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"6\":1}}'),
 (4, 1, 7, 8, 1, 'com_cache', 'com_cache', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"7\":1}}'),
@@ -566,56 +655,60 @@ INSERT INTO `arvie_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `t
 (13, 1, 39, 40, 1, 'com_mailto', 'com_mailto', '{}'),
 (14, 1, 41, 42, 1, 'com_massmail', 'com_massmail', '{}'),
 (15, 1, 43, 44, 1, 'com_media', 'com_media', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"6\":1},\"core.create\":{\"3\":1},\"core.delete\":{\"5\":1}}'),
-(16, 1, 45, 52, 1, 'com_menus', 'com_menus', '{\"core.admin\":{\"7\":1}}'),
-(17, 1, 53, 54, 1, 'com_messages', 'com_messages', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"7\":1}}'),
-(18, 1, 55, 94, 1, 'com_modules', 'com_modules', '{\"core.admin\":{\"7\":1}}'),
-(19, 1, 95, 98, 1, 'com_newsfeeds', 'com_newsfeeds', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"6\":1}}'),
-(20, 1, 99, 100, 1, 'com_plugins', 'com_plugins', '{\"core.admin\":{\"7\":1}}'),
-(21, 1, 101, 102, 1, 'com_redirect', 'com_redirect', '{\"core.admin\":{\"7\":1}}'),
-(22, 1, 103, 104, 1, 'com_search', 'com_search', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"6\":1}}'),
-(23, 1, 105, 106, 1, 'com_templates', 'com_templates', '{\"core.admin\":{\"7\":1}}'),
-(24, 1, 107, 110, 1, 'com_users', 'com_users', '{\"core.admin\":{\"7\":1}}'),
-(26, 1, 111, 112, 1, 'com_wrapper', 'com_wrapper', '{}'),
+(16, 1, 45, 56, 1, 'com_menus', 'com_menus', '{\"core.admin\":{\"7\":1}}'),
+(17, 1, 57, 58, 1, 'com_messages', 'com_messages', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"7\":1}}'),
+(18, 1, 59, 102, 1, 'com_modules', 'com_modules', '{\"core.admin\":{\"7\":1}}'),
+(19, 1, 103, 106, 1, 'com_newsfeeds', 'com_newsfeeds', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"6\":1}}'),
+(20, 1, 107, 108, 1, 'com_plugins', 'com_plugins', '{\"core.admin\":{\"7\":1}}'),
+(21, 1, 109, 110, 1, 'com_redirect', 'com_redirect', '{\"core.admin\":{\"7\":1}}'),
+(22, 1, 111, 112, 1, 'com_search', 'com_search', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"6\":1}}'),
+(23, 1, 113, 114, 1, 'com_templates', 'com_templates', '{\"core.admin\":{\"7\":1}}'),
+(24, 1, 115, 118, 1, 'com_users', 'com_users', '{\"core.admin\":{\"7\":1}}'),
+(26, 1, 119, 120, 1, 'com_wrapper', 'com_wrapper', '{}'),
 (27, 8, 18, 29, 2, 'com_content.category.2', 'Non catégorisé', '{}'),
 (28, 3, 4, 5, 2, 'com_banners.category.3', 'Non catégorisé', '{}'),
 (29, 7, 14, 15, 2, 'com_contact.category.4', 'Non catégorisé', '{}'),
-(30, 19, 96, 97, 2, 'com_newsfeeds.category.5', 'Non catégorisé', '{}'),
-(32, 24, 108, 109, 2, 'com_users.category.7', 'Non catégorisé', '{}'),
-(33, 1, 113, 114, 1, 'com_finder', 'com_finder', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"6\":1}}'),
-(34, 1, 115, 116, 1, 'com_joomlaupdate', 'com_joomlaupdate', '{}'),
-(35, 1, 117, 118, 1, 'com_tags', 'com_tags', '{}'),
-(36, 1, 119, 120, 1, 'com_contenthistory', 'com_contenthistory', '{}'),
-(37, 1, 121, 122, 1, 'com_ajax', 'com_ajax', '{}'),
-(38, 1, 123, 124, 1, 'com_postinstall', 'com_postinstall', '{}'),
-(39, 18, 56, 57, 2, 'com_modules.module.1', 'Menu principal', '{}'),
-(40, 18, 58, 59, 2, 'com_modules.module.2', 'Login', '{}'),
-(41, 18, 60, 61, 2, 'com_modules.module.3', 'Popular Articles', '{}'),
-(42, 18, 62, 63, 2, 'com_modules.module.4', 'Recently Added Articles', '{}'),
-(43, 18, 64, 65, 2, 'com_modules.module.8', 'Toolbar', '{}'),
-(44, 18, 66, 67, 2, 'com_modules.module.9', 'Quick Icons', '{}'),
-(45, 18, 68, 69, 2, 'com_modules.module.10', 'Logged-in Users', '{}'),
-(46, 18, 70, 71, 2, 'com_modules.module.12', 'Admin Menu', '{}'),
-(47, 18, 72, 73, 2, 'com_modules.module.13', 'Admin Submenu', '{}'),
-(48, 18, 74, 75, 2, 'com_modules.module.14', 'User Status', '{}'),
-(49, 18, 76, 77, 2, 'com_modules.module.15', 'Title', '{}'),
-(50, 18, 78, 79, 2, 'com_modules.module.16', 'Login Form', '{}'),
-(51, 18, 80, 81, 2, 'com_modules.module.17', 'Breadcrumbs', '{}'),
-(52, 18, 82, 83, 2, 'com_modules.module.79', 'Multilanguage status', '{}'),
-(53, 18, 84, 85, 2, 'com_modules.module.86', 'Joomla Version', '{}'),
+(30, 19, 104, 105, 2, 'com_newsfeeds.category.5', 'Non catégorisé', '{}'),
+(32, 24, 116, 117, 2, 'com_users.category.7', 'Non catégorisé', '{}'),
+(33, 1, 121, 122, 1, 'com_finder', 'com_finder', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"6\":1}}'),
+(34, 1, 123, 124, 1, 'com_joomlaupdate', 'com_joomlaupdate', '{}'),
+(35, 1, 125, 126, 1, 'com_tags', 'com_tags', '{}'),
+(36, 1, 127, 128, 1, 'com_contenthistory', 'com_contenthistory', '{}'),
+(37, 1, 129, 130, 1, 'com_ajax', 'com_ajax', '{}'),
+(38, 1, 131, 132, 1, 'com_postinstall', 'com_postinstall', '{}'),
+(39, 18, 60, 61, 2, 'com_modules.module.1', 'Menu principal', '{}'),
+(40, 18, 62, 63, 2, 'com_modules.module.2', 'Login', '{}'),
+(41, 18, 64, 65, 2, 'com_modules.module.3', 'Popular Articles', '{}'),
+(42, 18, 66, 67, 2, 'com_modules.module.4', 'Recently Added Articles', '{}'),
+(43, 18, 68, 69, 2, 'com_modules.module.8', 'Toolbar', '{}'),
+(44, 18, 70, 71, 2, 'com_modules.module.9', 'Quick Icons', '{}'),
+(45, 18, 72, 73, 2, 'com_modules.module.10', 'Logged-in Users', '{}'),
+(46, 18, 74, 75, 2, 'com_modules.module.12', 'Admin Menu', '{}'),
+(47, 18, 76, 77, 2, 'com_modules.module.13', 'Admin Submenu', '{}'),
+(48, 18, 78, 79, 2, 'com_modules.module.14', 'User Status', '{}'),
+(49, 18, 80, 81, 2, 'com_modules.module.15', 'Title', '{}'),
+(50, 18, 82, 83, 2, 'com_modules.module.16', 'Login Form', '{}'),
+(51, 18, 84, 85, 2, 'com_modules.module.17', 'Breadcrumbs', '{}'),
+(52, 18, 86, 87, 2, 'com_modules.module.79', 'Multilanguage status', '{}'),
+(53, 18, 88, 89, 2, 'com_modules.module.86', 'Joomla Version', '{}'),
 (54, 16, 46, 47, 2, 'com_menus.menu.1', 'Main Menu', '{}'),
-(55, 18, 86, 87, 2, 'com_modules.module.87', 'Sample Data', '{}'),
+(55, 18, 90, 91, 2, 'com_modules.module.87', 'Sample Data', '{}'),
 (56, 27, 19, 20, 3, 'com_content.article.1', 'Bienvenue', '{}'),
 (57, 27, 21, 22, 3, 'com_content.article.2', 'Publications', '{}'),
 (58, 27, 23, 24, 3, 'com_content.article.3', 'Discussions', '{}'),
 (59, 27, 25, 26, 3, 'com_content.article.4', 'BTS-SIO', '{}'),
 (60, 27, 27, 28, 3, 'com_content.article.5', 'Louis-Armand', '{}'),
-(61, 1, 125, 126, 1, 'com_annuaire', 'com_annuaire', '{\"core.create\":{\"17\":1},\"core.edit\":{\"17\":1},\"core.edit.state\":{\"17\":1},\"core.edit.own\":{\"17\":1}}'),
+(61, 1, 133, 134, 1, 'com_annuaire', 'com_annuaire', '{\"core.create\":{\"17\":1},\"core.edit\":{\"17\":1},\"core.edit.state\":{\"17\":1},\"core.edit.own\":{\"17\":1}}'),
 (62, 16, 48, 49, 2, 'com_menus.menu.2', 'Menu Annuaire', '{}'),
-(63, 18, 88, 89, 2, 'com_modules.module.88', 'Annuaire', '{}'),
-(64, 18, 90, 91, 2, 'com_modules.module.89', 'Annuaire', '{}'),
-(67, 1, 127, 128, 1, 'com_arvie', 'com_arvie', '{\"core.create\":{\"10\":1},\"core.edit\":{\"10\":1}}'),
+(63, 18, 92, 93, 2, 'com_modules.module.88', 'Annuaire', '{}'),
+(64, 18, 94, 95, 2, 'com_modules.module.89', 'Annuaire', '{}'),
+(67, 1, 135, 136, 1, 'com_arvie', 'com_arvie', '{\"core.create\":{\"10\":1},\"core.edit\":{\"10\":1}}'),
 (68, 16, 50, 51, 2, 'com_menus.menu.3', 'Menu Arvie Direction', '{}'),
-(69, 18, 92, 93, 2, 'com_modules.module.90', 'Espace directeur', '{\"core.delete\":[],\"core.edit\":[],\"core.edit.state\":[],\"module.edit.frontend\":[]}');
+(69, 18, 96, 97, 2, 'com_modules.module.90', 'Espace directeur', '{\"core.delete\":[],\"core.edit\":[],\"core.edit.state\":[],\"module.edit.frontend\":[]}'),
+(70, 16, 52, 53, 2, 'com_menus.menu.4', 'Menu Arvie Professeur', '{}'),
+(71, 16, 54, 55, 2, 'com_menus.menu.5', 'Menu Arvie Elève', '{}'),
+(72, 18, 98, 99, 2, 'com_modules.module.91', 'Espace professeur', '{\"core.delete\":[],\"core.edit\":[],\"core.edit.state\":[],\"module.edit.frontend\":[]}'),
+(73, 18, 100, 101, 2, 'com_modules.module.92', 'Espace élève', '{\"core.delete\":[],\"core.edit\":[],\"core.edit.state\":[],\"module.edit.frontend\":[]}');
 
 -- --------------------------------------------------------
 
@@ -859,11 +952,11 @@ CREATE TABLE `arvie_content` (
 --
 
 INSERT INTO `arvie_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `fulltext`, `state`, `catid`, `created`, `created_by`, `created_by_alias`, `modified`, `modified_by`, `checked_out`, `checked_out_time`, `publish_up`, `publish_down`, `images`, `urls`, `attribs`, `version`, `ordering`, `metakey`, `metadesc`, `access`, `hits`, `metadata`, `featured`, `language`, `xreference`) VALUES
-(1, 56, 'Bienvenue', 'bienvenue', '<p>Bienvenue sur le site école réalisé par les étudiants en BTS-SIO option SLAM en 2e année qu Lycée Louis Armand (Paris 15e).</p>\r\n<p>ArVie est un réseau social destiné aux élèves, étudiants, professeurs, personnels et anciens des lycées Louis-Armand et François-Villon.</p>\r\n<p>Il est accessible depuis ce site ArVie.org et depuis l\'application Android ArVie.</p>', '', 1, 2, '2017-11-11 09:11:26', 416, '', '2017-11-11 10:30:07', 416, 0, '0000-00-00 00:00:00', '2017-11-11 09:11:26', '0000-00-00 00:00:00', '{\"image_intro\":\"\",\"float_intro\":\"\",\"image_intro_alt\":\"\",\"image_intro_caption\":\"\",\"image_fulltext\":\"\",\"float_fulltext\":\"\",\"image_fulltext_alt\":\"\",\"image_fulltext_caption\":\"\"}', '{\"urla\":false,\"urlatext\":\"\",\"targeta\":\"\",\"urlb\":false,\"urlbtext\":\"\",\"targetb\":\"\",\"urlc\":false,\"urlctext\":\"\",\"targetc\":\"\"}', '{\"article_layout\":\"\",\"show_title\":\"\",\"link_titles\":\"\",\"show_tags\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_vote\":\"\",\"show_hits\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"alternative_readmore\":\"\",\"article_page_title\":\"\",\"show_publishing_options\":\"\",\"show_article_options\":\"\",\"show_urls_images_backend\":\"\",\"show_urls_images_frontend\":\"\"}', 2, 4, '', '', 1, 58, '{\"robots\":\"\",\"author\":\"\",\"rights\":\"\",\"xreference\":\"\"}', 0, '*', ''),
-(2, 57, 'Publications', 'publications', '<p>Cette page présente les publications et événements des lycées LA et FV.</p>\r\n<p>La création de publications ou d\'événements est réservée aux utilisateurs enregistrés et membres d\'un groupe (direction, agent, professeur, élève ou ancien).</p>', '', 1, 2, '2017-11-11 09:19:16', 416, '', '2017-11-11 09:27:41', 416, 0, '0000-00-00 00:00:00', '2017-11-11 09:19:16', '0000-00-00 00:00:00', '{\"image_intro\":\"\",\"float_intro\":\"\",\"image_intro_alt\":\"\",\"image_intro_caption\":\"\",\"image_fulltext\":\"\",\"float_fulltext\":\"\",\"image_fulltext_alt\":\"\",\"image_fulltext_caption\":\"\"}', '{\"urla\":false,\"urlatext\":\"\",\"targeta\":\"\",\"urlb\":false,\"urlbtext\":\"\",\"targetb\":\"\",\"urlc\":false,\"urlctext\":\"\",\"targetc\":\"\"}', '{\"article_layout\":\"\",\"show_title\":\"\",\"link_titles\":\"\",\"show_tags\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_vote\":\"\",\"show_hits\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"alternative_readmore\":\"\",\"article_page_title\":\"\",\"show_publishing_options\":\"\",\"show_article_options\":\"\",\"show_urls_images_backend\":\"\",\"show_urls_images_frontend\":\"\"}', 2, 3, '', '', 1, 9, '{\"robots\":\"\",\"author\":\"\",\"rights\":\"\",\"xreference\":\"\"}', 0, '*', ''),
-(3, 58, 'Discussions', 'discussions', '<p>Cette page est aux utilisateurs enregistrés et membres d\'un groupe (direction, agent, professeur, élève ou ancien).</p>\r\n<p>Elle présente les discussions en cours et permet d\'y participer ou d\'en créer de nouvelles</p>', '', 1, 2, '2017-11-11 09:26:26', 416, '', '2017-11-11 09:26:26', 0, 0, '0000-00-00 00:00:00', '2017-11-11 09:26:26', '0000-00-00 00:00:00', '{\"image_intro\":\"\",\"float_intro\":\"\",\"image_intro_alt\":\"\",\"image_intro_caption\":\"\",\"image_fulltext\":\"\",\"float_fulltext\":\"\",\"image_fulltext_alt\":\"\",\"image_fulltext_caption\":\"\"}', '{\"urla\":false,\"urlatext\":\"\",\"targeta\":\"\",\"urlb\":false,\"urlbtext\":\"\",\"targetb\":\"\",\"urlc\":false,\"urlctext\":\"\",\"targetc\":\"\"}', '{\"article_layout\":\"\",\"show_title\":\"\",\"link_titles\":\"\",\"show_tags\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_vote\":\"\",\"show_hits\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"alternative_readmore\":\"\",\"article_page_title\":\"\",\"show_publishing_options\":\"\",\"show_article_options\":\"\",\"show_urls_images_backend\":\"\",\"show_urls_images_frontend\":\"\"}', 1, 2, '', '', 2, 1, '{\"robots\":\"\",\"author\":\"\",\"rights\":\"\",\"xreference\":\"\"}', 0, '*', ''),
-(4, 59, 'BTS-SIO', 'bts-sio', '<p>Le BTS-SIO, rénové en 2011, forme en deux ans des techniciens supérieurs en informatique...</p>', '', 1, 2, '2017-11-11 09:29:38', 416, '', '2017-11-11 09:29:38', 0, 0, '0000-00-00 00:00:00', '2017-11-11 09:29:38', '0000-00-00 00:00:00', '{\"image_intro\":\"\",\"float_intro\":\"\",\"image_intro_alt\":\"\",\"image_intro_caption\":\"\",\"image_fulltext\":\"\",\"float_fulltext\":\"\",\"image_fulltext_alt\":\"\",\"image_fulltext_caption\":\"\"}', '{\"urla\":false,\"urlatext\":\"\",\"targeta\":\"\",\"urlb\":false,\"urlbtext\":\"\",\"targetb\":\"\",\"urlc\":false,\"urlctext\":\"\",\"targetc\":\"\"}', '{\"article_layout\":\"\",\"show_title\":\"\",\"link_titles\":\"\",\"show_tags\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_vote\":\"\",\"show_hits\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"alternative_readmore\":\"\",\"article_page_title\":\"\",\"show_publishing_options\":\"\",\"show_article_options\":\"\",\"show_urls_images_backend\":\"\",\"show_urls_images_frontend\":\"\"}', 1, 1, '', '', 1, 5, '{\"robots\":\"\",\"author\":\"\",\"rights\":\"\",\"xreference\":\"\"}', 0, '*', ''),
-(5, 60, 'Louis-Armand', 'louis-armand', '<p><span>Dans le sud de PARIS, au 321 rue Lecourbe 75015 PARIS, le lycée polyvalent Louis Armand offre aux élèves de seconde générale un parcours diversifié :</span></p>\r\n<p><span>Voie générale : BAC ES, BAC S-SI, BAC S-SVT.</span></p>\r\n<p><span>Voie technologique : BAC STI2D et BAC STMG.</span></p>\r\n<p><span>Voie professionnelle : BAC PRO Systèmes Electroniques et Numériques / BAC PRO ELEEC (Electrotechnique-Energie-Equipements Communicants).</span></p>\r\n<p><span>Après le BAC, vous pouvez poursuivre vos études supérieures chez nous :</span></p>\r\n<p><span>BTS MUC - BTS PME/PMI - BTS systèmes numériques - BTS électrotechnique - BTS Service Informatique aux Organisations.</span></p>', '', 1, 2, '2017-11-11 09:32:07', 416, '', '2017-11-11 09:32:07', 0, 0, '0000-00-00 00:00:00', '2017-11-11 09:32:07', '0000-00-00 00:00:00', '{\"image_intro\":\"\",\"float_intro\":\"\",\"image_intro_alt\":\"\",\"image_intro_caption\":\"\",\"image_fulltext\":\"\",\"float_fulltext\":\"\",\"image_fulltext_alt\":\"\",\"image_fulltext_caption\":\"\"}', '{\"urla\":false,\"urlatext\":\"\",\"targeta\":\"\",\"urlb\":false,\"urlbtext\":\"\",\"targetb\":\"\",\"urlc\":false,\"urlctext\":\"\",\"targetc\":\"\"}', '{\"article_layout\":\"\",\"show_title\":\"\",\"link_titles\":\"\",\"show_tags\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_vote\":\"\",\"show_hits\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"alternative_readmore\":\"\",\"article_page_title\":\"\",\"show_publishing_options\":\"\",\"show_article_options\":\"\",\"show_urls_images_backend\":\"\",\"show_urls_images_frontend\":\"\"}', 1, 0, '', '', 1, 7, '{\"robots\":\"\",\"author\":\"\",\"rights\":\"\",\"xreference\":\"\"}', 0, '*', '');
+(1, 56, 'Bienvenue', 'bienvenue', '<p>Bienvenue sur le site école réalisé par les étudiants en BTS-SIO option SLAM en 2e année qu Lycée Louis Armand (Paris 15e).</p>\r\n<p>ArVie est un réseau social destiné aux élèves, étudiants, professeurs, personnels et anciens des lycées Louis-Armand et François-Villon.</p>\r\n<p>Il est accessible depuis ce site ArVie.org et depuis l\'application Android ArVie.</p>', '', 1, 2, '2017-11-11 09:11:26', 416, '', '2017-11-11 10:30:07', 416, 0, '0000-00-00 00:00:00', '2017-11-11 09:11:26', '0000-00-00 00:00:00', '{\"image_intro\":\"\",\"float_intro\":\"\",\"image_intro_alt\":\"\",\"image_intro_caption\":\"\",\"image_fulltext\":\"\",\"float_fulltext\":\"\",\"image_fulltext_alt\":\"\",\"image_fulltext_caption\":\"\"}', '{\"urla\":false,\"urlatext\":\"\",\"targeta\":\"\",\"urlb\":false,\"urlbtext\":\"\",\"targetb\":\"\",\"urlc\":false,\"urlctext\":\"\",\"targetc\":\"\"}', '{\"article_layout\":\"\",\"show_title\":\"\",\"link_titles\":\"\",\"show_tags\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_vote\":\"\",\"show_hits\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"alternative_readmore\":\"\",\"article_page_title\":\"\",\"show_publishing_options\":\"\",\"show_article_options\":\"\",\"show_urls_images_backend\":\"\",\"show_urls_images_frontend\":\"\"}', 2, 4, '', '', 1, 104, '{\"robots\":\"\",\"author\":\"\",\"rights\":\"\",\"xreference\":\"\"}', 0, '*', ''),
+(2, 57, 'Publications', 'publications', '<p>Cette page présente les publications et événements des lycées LA et FV.</p>\r\n<p>La création de publications ou d\'événements est réservée aux utilisateurs enregistrés et membres d\'un groupe (direction, agent, professeur, élève ou ancien).</p>', '', 1, 2, '2017-11-11 09:19:16', 416, '', '2017-11-11 09:27:41', 416, 0, '0000-00-00 00:00:00', '2017-11-11 09:19:16', '0000-00-00 00:00:00', '{\"image_intro\":\"\",\"float_intro\":\"\",\"image_intro_alt\":\"\",\"image_intro_caption\":\"\",\"image_fulltext\":\"\",\"float_fulltext\":\"\",\"image_fulltext_alt\":\"\",\"image_fulltext_caption\":\"\"}', '{\"urla\":false,\"urlatext\":\"\",\"targeta\":\"\",\"urlb\":false,\"urlbtext\":\"\",\"targetb\":\"\",\"urlc\":false,\"urlctext\":\"\",\"targetc\":\"\"}', '{\"article_layout\":\"\",\"show_title\":\"\",\"link_titles\":\"\",\"show_tags\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_vote\":\"\",\"show_hits\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"alternative_readmore\":\"\",\"article_page_title\":\"\",\"show_publishing_options\":\"\",\"show_article_options\":\"\",\"show_urls_images_backend\":\"\",\"show_urls_images_frontend\":\"\"}', 2, 3, '', '', 1, 19, '{\"robots\":\"\",\"author\":\"\",\"rights\":\"\",\"xreference\":\"\"}', 0, '*', ''),
+(3, 58, 'Discussions', 'discussions', '<p>Cette page est aux utilisateurs enregistrés et membres d\'un groupe (direction, agent, professeur, élève ou ancien).</p>\r\n<p>Elle présente les discussions en cours et permet d\'y participer ou d\'en créer de nouvelles</p>', '', 1, 2, '2017-11-11 09:26:26', 416, '', '2017-11-11 09:26:26', 0, 0, '0000-00-00 00:00:00', '2017-11-11 09:26:26', '0000-00-00 00:00:00', '{\"image_intro\":\"\",\"float_intro\":\"\",\"image_intro_alt\":\"\",\"image_intro_caption\":\"\",\"image_fulltext\":\"\",\"float_fulltext\":\"\",\"image_fulltext_alt\":\"\",\"image_fulltext_caption\":\"\"}', '{\"urla\":false,\"urlatext\":\"\",\"targeta\":\"\",\"urlb\":false,\"urlbtext\":\"\",\"targetb\":\"\",\"urlc\":false,\"urlctext\":\"\",\"targetc\":\"\"}', '{\"article_layout\":\"\",\"show_title\":\"\",\"link_titles\":\"\",\"show_tags\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_vote\":\"\",\"show_hits\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"alternative_readmore\":\"\",\"article_page_title\":\"\",\"show_publishing_options\":\"\",\"show_article_options\":\"\",\"show_urls_images_backend\":\"\",\"show_urls_images_frontend\":\"\"}', 1, 2, '', '', 2, 3, '{\"robots\":\"\",\"author\":\"\",\"rights\":\"\",\"xreference\":\"\"}', 0, '*', ''),
+(4, 59, 'BTS-SIO', 'bts-sio', '<p>Le BTS-SIO, rénové en 2011, forme en deux ans des techniciens supérieurs en informatique...</p>', '', 1, 2, '2017-11-11 09:29:38', 416, '', '2017-11-11 09:29:38', 0, 0, '0000-00-00 00:00:00', '2017-11-11 09:29:38', '0000-00-00 00:00:00', '{\"image_intro\":\"\",\"float_intro\":\"\",\"image_intro_alt\":\"\",\"image_intro_caption\":\"\",\"image_fulltext\":\"\",\"float_fulltext\":\"\",\"image_fulltext_alt\":\"\",\"image_fulltext_caption\":\"\"}', '{\"urla\":false,\"urlatext\":\"\",\"targeta\":\"\",\"urlb\":false,\"urlbtext\":\"\",\"targetb\":\"\",\"urlc\":false,\"urlctext\":\"\",\"targetc\":\"\"}', '{\"article_layout\":\"\",\"show_title\":\"\",\"link_titles\":\"\",\"show_tags\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_vote\":\"\",\"show_hits\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"alternative_readmore\":\"\",\"article_page_title\":\"\",\"show_publishing_options\":\"\",\"show_article_options\":\"\",\"show_urls_images_backend\":\"\",\"show_urls_images_frontend\":\"\"}', 1, 1, '', '', 1, 10, '{\"robots\":\"\",\"author\":\"\",\"rights\":\"\",\"xreference\":\"\"}', 0, '*', ''),
+(5, 60, 'Louis-Armand', 'louis-armand', '<p><span>Dans le sud de PARIS, au 321 rue Lecourbe 75015 PARIS, le lycée polyvalent Louis Armand offre aux élèves de seconde générale un parcours diversifié :</span></p>\r\n<p><span>Voie générale : BAC ES, BAC S-SI, BAC S-SVT.</span></p>\r\n<p><span>Voie technologique : BAC STI2D et BAC STMG.</span></p>\r\n<p><span>Voie professionnelle : BAC PRO Systèmes Electroniques et Numériques / BAC PRO ELEEC (Electrotechnique-Energie-Equipements Communicants).</span></p>\r\n<p><span>Après le BAC, vous pouvez poursuivre vos études supérieures chez nous :</span></p>\r\n<p><span>BTS MUC - BTS PME/PMI - BTS systèmes numériques - BTS électrotechnique - BTS Service Informatique aux Organisations.</span></p>', '', 1, 2, '2017-11-11 09:32:07', 416, '', '2017-11-11 09:32:07', 0, 0, '0000-00-00 00:00:00', '2017-11-11 09:32:07', '0000-00-00 00:00:00', '{\"image_intro\":\"\",\"float_intro\":\"\",\"image_intro_alt\":\"\",\"image_intro_caption\":\"\",\"image_fulltext\":\"\",\"float_fulltext\":\"\",\"image_fulltext_alt\":\"\",\"image_fulltext_caption\":\"\"}', '{\"urla\":false,\"urlatext\":\"\",\"targeta\":\"\",\"urlb\":false,\"urlbtext\":\"\",\"targetb\":\"\",\"urlc\":false,\"urlctext\":\"\",\"targetc\":\"\"}', '{\"article_layout\":\"\",\"show_title\":\"\",\"link_titles\":\"\",\"show_tags\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_vote\":\"\",\"show_hits\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"alternative_readmore\":\"\",\"article_page_title\":\"\",\"show_publishing_options\":\"\",\"show_article_options\":\"\",\"show_urls_images_backend\":\"\",\"show_urls_images_frontend\":\"\"}', 1, 0, '', '', 1, 8, '{\"robots\":\"\",\"author\":\"\",\"rights\":\"\",\"xreference\":\"\"}', 0, '*', '');
 
 -- --------------------------------------------------------
 
@@ -1006,7 +1099,7 @@ INSERT INTO `arvie_extensions` (`extension_id`, `package_id`, `name`, `type`, `e
 (22, 0, 'com_content', 'component', 'com_content', '', 1, 1, 0, 1, '{\"name\":\"com_content\",\"type\":\"component\",\"creationDate\":\"April 2006\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"COM_CONTENT_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"content\"}', '{\"article_layout\":\"_:default\",\"show_title\":\"1\",\"link_titles\":\"1\",\"show_intro\":\"1\",\"info_block_position\":\"0\",\"info_block_show_title\":\"1\",\"show_category\":\"0\",\"link_category\":\"1\",\"show_parent_category\":\"0\",\"link_parent_category\":\"0\",\"show_associations\":\"0\",\"flags\":\"1\",\"show_author\":\"0\",\"link_author\":\"0\",\"show_create_date\":\"0\",\"show_modify_date\":\"0\",\"show_publish_date\":\"0\",\"show_item_navigation\":\"0\",\"show_vote\":\"0\",\"show_readmore\":\"1\",\"show_readmore_title\":\"1\",\"readmore_limit\":\"100\",\"show_tags\":\"1\",\"show_icons\":\"1\",\"show_print_icon\":\"0\",\"show_email_icon\":\"0\",\"show_hits\":\"0\",\"show_noauth\":\"0\",\"urls_position\":\"0\",\"captcha\":\"\",\"show_publishing_options\":\"1\",\"show_article_options\":\"1\",\"save_history\":\"1\",\"history_limit\":10,\"show_urls_images_frontend\":\"0\",\"show_urls_images_backend\":\"1\",\"targeta\":0,\"targetb\":0,\"targetc\":0,\"float_intro\":\"left\",\"float_fulltext\":\"left\",\"category_layout\":\"_:blog\",\"show_category_heading_title_text\":\"1\",\"show_category_title\":\"0\",\"show_description\":\"0\",\"show_description_image\":\"0\",\"maxLevel\":\"1\",\"show_empty_categories\":\"0\",\"show_no_articles\":\"1\",\"show_subcat_desc\":\"1\",\"show_cat_num_articles\":\"0\",\"show_cat_tags\":\"1\",\"show_base_description\":\"1\",\"maxLevelcat\":\"-1\",\"show_empty_categories_cat\":\"0\",\"show_subcat_desc_cat\":\"1\",\"show_cat_num_articles_cat\":\"1\",\"num_leading_articles\":\"1\",\"num_intro_articles\":\"4\",\"num_columns\":\"2\",\"num_links\":\"4\",\"multi_column_order\":\"0\",\"show_subcategory_content\":\"0\",\"show_pagination_limit\":\"1\",\"filter_field\":\"hide\",\"show_headings\":\"1\",\"list_show_date\":\"0\",\"date_format\":\"\",\"list_show_hits\":\"1\",\"list_show_author\":\"1\",\"orderby_pri\":\"order\",\"orderby_sec\":\"rdate\",\"order_date\":\"published\",\"show_pagination\":\"2\",\"show_pagination_results\":\"1\",\"show_featured\":\"show\",\"show_feed_link\":\"1\",\"feed_summary\":\"0\",\"feed_show_readmore\":\"0\",\"sef_advanced\":0,\"sef_ids\":0,\"custom_fields_enable\":\"1\"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (23, 0, 'com_config', 'component', 'com_config', '', 1, 1, 0, 1, '{\"name\":\"com_config\",\"type\":\"component\",\"creationDate\":\"April 2006\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"COM_CONFIG_XML_DESCRIPTION\",\"group\":\"\"}', '{\"filters\":{\"1\":{\"filter_type\":\"NH\",\"filter_tags\":\"\",\"filter_attributes\":\"\"},\"6\":{\"filter_type\":\"BL\",\"filter_tags\":\"\",\"filter_attributes\":\"\"},\"7\":{\"filter_type\":\"NONE\",\"filter_tags\":\"\",\"filter_attributes\":\"\"},\"2\":{\"filter_type\":\"NH\",\"filter_tags\":\"\",\"filter_attributes\":\"\"},\"3\":{\"filter_type\":\"BL\",\"filter_tags\":\"\",\"filter_attributes\":\"\"},\"4\":{\"filter_type\":\"BL\",\"filter_tags\":\"\",\"filter_attributes\":\"\"},\"5\":{\"filter_type\":\"BL\",\"filter_tags\":\"\",\"filter_attributes\":\"\"},\"10\":{\"filter_type\":\"BL\",\"filter_tags\":\"\",\"filter_attributes\":\"\"},\"12\":{\"filter_type\":\"BL\",\"filter_tags\":\"\",\"filter_attributes\":\"\"},\"8\":{\"filter_type\":\"NONE\",\"filter_tags\":\"\",\"filter_attributes\":\"\"}}}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (24, 0, 'com_redirect', 'component', 'com_redirect', '', 1, 1, 0, 1, '{\"name\":\"com_redirect\",\"type\":\"component\",\"creationDate\":\"April 2006\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"COM_REDIRECT_XML_DESCRIPTION\",\"group\":\"\"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(25, 0, 'com_users', 'component', 'com_users', '', 1, 1, 0, 1, '{\"name\":\"com_users\",\"type\":\"component\",\"creationDate\":\"April 2006\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"COM_USERS_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"users\"}', '{\"allowUserRegistration\":\"0\",\"new_usertype\":\"2\",\"guest_usergroup\":\"9\",\"sendpassword\":\"1\",\"useractivation\":\"2\",\"mail_to_admin\":\"1\",\"captcha\":\"\",\"frontend_userparams\":\"1\",\"site_language\":\"0\",\"change_login_name\":\"0\",\"reset_count\":\"10\",\"reset_time\":\"1\",\"minimum_length\":\"4\",\"minimum_integers\":\"0\",\"minimum_symbols\":\"0\",\"minimum_uppercase\":\"0\",\"save_history\":\"1\",\"history_limit\":5,\"mailSubjectPrefix\":\"\",\"mailBodySuffix\":\"\"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(25, 0, 'com_users', 'component', 'com_users', '', 1, 1, 0, 1, '{\"name\":\"com_users\",\"type\":\"component\",\"creationDate\":\"April 2006\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"COM_USERS_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"users\"}', '{\"allowUserRegistration\":\"1\",\"new_usertype\":\"2\",\"guest_usergroup\":\"9\",\"sendpassword\":\"1\",\"useractivation\":\"2\",\"mail_to_admin\":\"1\",\"captcha\":\"\",\"frontend_userparams\":\"1\",\"site_language\":\"0\",\"change_login_name\":\"0\",\"reset_count\":\"10\",\"reset_time\":\"1\",\"minimum_length\":\"4\",\"minimum_integers\":\"0\",\"minimum_symbols\":\"0\",\"minimum_uppercase\":\"0\",\"save_history\":\"1\",\"history_limit\":5,\"mailSubjectPrefix\":\"\",\"mailBodySuffix\":\"\"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (27, 0, 'com_finder', 'component', 'com_finder', '', 1, 1, 0, 0, '{\"name\":\"com_finder\",\"type\":\"component\",\"creationDate\":\"August 2011\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"COM_FINDER_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"finder\"}', '{\"enabled\":\"0\",\"show_description\":\"1\",\"description_length\":255,\"allow_empty_query\":\"0\",\"show_url\":\"1\",\"show_autosuggest\":\"1\",\"show_suggested_query\":\"1\",\"show_explained_query\":\"1\",\"show_advanced\":\"1\",\"show_advanced_tips\":\"1\",\"expand_advanced\":\"0\",\"show_date_filters\":\"0\",\"sort_order\":\"relevance\",\"sort_direction\":\"desc\",\"highlight_terms\":\"1\",\"opensearch_name\":\"\",\"opensearch_description\":\"\",\"batch_size\":\"50\",\"memory_table_limit\":30000,\"title_multiplier\":\"1.7\",\"text_multiplier\":\"0.7\",\"meta_multiplier\":\"1.2\",\"path_multiplier\":\"2.0\",\"misc_multiplier\":\"0.3\",\"stem\":\"1\",\"stemmer\":\"snowball\",\"enable_logging\":\"0\"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (28, 0, 'com_joomlaupdate', 'component', 'com_joomlaupdate', '', 1, 1, 0, 1, '{\"name\":\"com_joomlaupdate\",\"type\":\"component\",\"creationDate\":\"February 2012\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.6.2\",\"description\":\"COM_JOOMLAUPDATE_XML_DESCRIPTION\",\"group\":\"\"}', '{\"updatesource\":\"default\",\"customurl\":\"\"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (29, 0, 'com_tags', 'component', 'com_tags', '', 1, 1, 1, 1, '{\"name\":\"com_tags\",\"type\":\"component\",\"creationDate\":\"December 2013\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.1.0\",\"description\":\"COM_TAGS_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"tags\"}', '{\"tag_layout\":\"_:default\",\"save_history\":\"1\",\"history_limit\":5,\"show_tag_title\":\"0\",\"tag_list_show_tag_image\":\"0\",\"tag_list_show_tag_description\":\"0\",\"tag_list_image\":\"\",\"tag_list_orderby\":\"title\",\"tag_list_orderby_direction\":\"ASC\",\"show_headings\":\"0\",\"tag_list_show_date\":\"0\",\"tag_list_show_item_image\":\"0\",\"tag_list_show_item_description\":\"0\",\"tag_list_item_maximum_characters\":0,\"return_any_or_all\":\"1\",\"include_children\":\"0\",\"maximum\":200,\"tag_list_language_filter\":\"all\",\"tags_layout\":\"_:default\",\"all_tags_orderby\":\"title\",\"all_tags_orderby_direction\":\"ASC\",\"all_tags_show_tag_image\":\"0\",\"all_tags_show_tag_descripion\":\"0\",\"all_tags_tag_maximum_characters\":20,\"all_tags_show_tag_hits\":\"0\",\"filter_field\":\"1\",\"show_pagination_limit\":\"1\",\"show_pagination\":\"2\",\"show_pagination_results\":\"1\",\"tag_field_ajax_mode\":\"1\",\"show_feed_link\":\"1\"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
@@ -1111,7 +1204,7 @@ INSERT INTO `arvie_extensions` (`extension_id`, `package_id`, `name`, `type`, `e
 (449, 0, 'plg_authentication_cookie', 'plugin', 'cookie', 'authentication', 0, 1, 1, 0, '{\"name\":\"plg_authentication_cookie\",\"type\":\"plugin\",\"creationDate\":\"July 2013\",\"author\":\"Joomla! Project\",\"copyright\":\"Copyright (C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"PLG_AUTH_COOKIE_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"cookie\"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (450, 0, 'plg_twofactorauth_yubikey', 'plugin', 'yubikey', 'twofactorauth', 0, 0, 1, 0, '{\"name\":\"plg_twofactorauth_yubikey\",\"type\":\"plugin\",\"creationDate\":\"September 2013\",\"author\":\"Joomla! Project\",\"copyright\":\"Copyright (C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.2.0\",\"description\":\"PLG_TWOFACTORAUTH_YUBIKEY_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"yubikey\"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (451, 0, 'plg_search_tags', 'plugin', 'tags', 'search', 0, 1, 1, 0, '{\"name\":\"plg_search_tags\",\"type\":\"plugin\",\"creationDate\":\"March 2014\",\"author\":\"Joomla! Project\",\"copyright\":\"Copyright (C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"PLG_SEARCH_TAGS_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"tags\"}', '{\"search_limit\":\"50\",\"show_tagged_items\":\"1\"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(452, 0, 'plg_system_updatenotification', 'plugin', 'updatenotification', 'system', 0, 1, 1, 0, '{\"name\":\"plg_system_updatenotification\",\"type\":\"plugin\",\"creationDate\":\"May 2015\",\"author\":\"Joomla! Project\",\"copyright\":\"Copyright (C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.5.0\",\"description\":\"PLG_SYSTEM_UPDATENOTIFICATION_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"updatenotification\"}', '{\"lastrun\":1513353555}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(452, 0, 'plg_system_updatenotification', 'plugin', 'updatenotification', 'system', 0, 1, 1, 0, '{\"name\":\"plg_system_updatenotification\",\"type\":\"plugin\",\"creationDate\":\"May 2015\",\"author\":\"Joomla! Project\",\"copyright\":\"Copyright (C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.5.0\",\"description\":\"PLG_SYSTEM_UPDATENOTIFICATION_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"updatenotification\"}', '{\"lastrun\":1524816768}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (453, 0, 'plg_editors-xtd_module', 'plugin', 'module', 'editors-xtd', 0, 1, 1, 0, '{\"name\":\"plg_editors-xtd_module\",\"type\":\"plugin\",\"creationDate\":\"October 2015\",\"author\":\"Joomla! Project\",\"copyright\":\"Copyright (C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.5.0\",\"description\":\"PLG_MODULE_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"module\"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (454, 0, 'plg_system_stats', 'plugin', 'stats', 'system', 0, 1, 1, 0, '{\"name\":\"plg_system_stats\",\"type\":\"plugin\",\"creationDate\":\"November 2013\",\"author\":\"Joomla! Project\",\"copyright\":\"Copyright (C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.5.0\",\"description\":\"PLG_SYSTEM_STATS_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"stats\"}', '{\"mode\":3,\"lastrun\":1510390090,\"unique_id\":\"199e5d050a00030cdab163a94dc8b4add88e1d04\",\"interval\":12}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (455, 0, 'plg_installer_packageinstaller', 'plugin', 'packageinstaller', 'installer', 0, 1, 1, 1, '{\"name\":\"plg_installer_packageinstaller\",\"type\":\"plugin\",\"creationDate\":\"May 2016\",\"author\":\"Joomla! Project\",\"copyright\":\"Copyright (C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.6.0\",\"description\":\"PLG_INSTALLER_PACKAGEINSTALLER_PLUGIN_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"packageinstaller\"}', '', '', '', 0, '0000-00-00 00:00:00', 1, 0),
@@ -1774,7 +1867,7 @@ CREATE TABLE `arvie_menu` (
 --
 
 INSERT INTO `arvie_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link`, `type`, `published`, `parent_id`, `level`, `component_id`, `checked_out`, `checked_out_time`, `browserNav`, `access`, `img`, `template_style_id`, `params`, `lft`, `rgt`, `home`, `language`, `client_id`) VALUES
-(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 97, 0, '*', 0),
+(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 125, 0, '*', 0),
 (2, 'main', 'com_banners', 'Banners', '', 'Banners', 'index.php?option=com_banners', 'component', 1, 1, 1, 4, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners', 0, '', 1, 10, 0, '*', 1),
 (3, 'main', 'com_banners', 'Banners', '', 'Banners/Banners', 'index.php?option=com_banners', 'component', 1, 2, 2, 4, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners', 0, '', 2, 3, 0, '*', 1),
 (4, 'main', 'com_banners_categories', 'Categories', '', 'Banners/Categories', 'index.php?option=com_categories&extension=com_banners', 'component', 1, 2, 2, 6, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners-cat', 0, '', 4, 5, 0, '*', 1),
@@ -1797,8 +1890,8 @@ INSERT INTO `arvie_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `l
 (22, 'main', 'com_associations', 'Multilingual Associations', '', 'Multilingual Associations', 'index.php?option=com_associations', 'component', 1, 1, 1, 34, 0, '0000-00-00 00:00:00', 0, 0, 'class:associations', 0, '', 39, 40, 0, '*', 1),
 (101, 'mainmenu', 'Home', 'home', '', 'home', 'index.php?option=com_content&view=featured', 'component', 0, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{\"featured_categories\":[\"\"],\"layout_type\":\"blog\",\"num_leading_articles\":\"1\",\"num_intro_articles\":\"3\",\"num_columns\":\"3\",\"num_links\":\"0\",\"multi_column_order\":\"1\",\"orderby_pri\":\"\",\"orderby_sec\":\"front\",\"order_date\":\"\",\"show_pagination\":\"2\",\"show_pagination_results\":\"1\",\"show_title\":\"\",\"link_titles\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_vote\":\"\",\"show_readmore\":\"\",\"show_readmore_title\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_hits\":\"\",\"show_noauth\":\"\",\"show_feed_link\":\"1\",\"feed_summary\":\"\",\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"page_title\":\"\",\"show_page_heading\":1,\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 41, 42, 0, '*', 0),
 (102, 'mainmenu', 'Bienvenue', 'bienvenue', '', 'bienvenue', 'index.php?option=com_content&view=article&id=1', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{\"show_title\":\"\",\"link_titles\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_vote\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_hits\":\"\",\"show_tags\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_image_css\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 43, 44, 1, '*', 0),
-(103, 'mainmenu', 'Publications', 'publications', '', 'publications', 'index.php?option=com_content&view=article&id=2', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{\"show_title\":\"\",\"link_titles\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_vote\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_hits\":\"\",\"show_tags\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_image_css\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 45, 46, 0, '*', 0),
-(104, 'mainmenu', 'Discussions', 'discussions', '', 'discussions', 'index.php?option=com_content&view=article&id=3', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 2, ' ', 0, '{\"show_title\":\"\",\"link_titles\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_vote\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_hits\":\"\",\"show_tags\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_image_css\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 47, 48, 0, '*', 0),
+(103, 'mainmenu', 'Publications', 'publications', '', 'publications', 'index.php?option=com_content&view=article&id=2', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 2, ' ', 0, '{\"show_title\":\"\",\"link_titles\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_vote\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_hits\":\"\",\"show_tags\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 45, 46, 0, '*', 0),
+(104, 'mainmenu', 'Evènements', 'discussions', '', 'discussions', 'index.php?option=com_content&view=article&id=3', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 2, ' ', 0, '{\"show_title\":\"\",\"link_titles\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_vote\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_hits\":\"\",\"show_tags\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 47, 48, 0, '*', 0),
 (105, 'mainmenu', 'BTS-SIO', 'bts-sio', '', 'bts-sio', 'index.php?option=com_content&view=article&id=4', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{\"show_title\":\"\",\"link_titles\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_vote\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_hits\":\"\",\"show_tags\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_image_css\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 49, 50, 0, '*', 0),
 (106, 'mainmenu', 'Louis-Armand', 'louis-armand', '', 'louis-armand', 'index.php?option=com_content&view=article&id=5', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{\"show_title\":\"\",\"link_titles\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_vote\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_hits\":\"\",\"show_tags\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_image_css\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 51, 52, 0, '*', 0),
 (107, 'mainmenu', 'Contact', 'contact', '', 'contact', 'index.php?option=com_contact&view=contact&id=1', 'component', 1, 1, 1, 8, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{\"presentation_style\":\"\",\"show_contact_category\":\"\",\"show_contact_list\":\"\",\"show_tags\":\"\",\"show_info\":\"\",\"show_name\":\"\",\"show_position\":\"\",\"show_email\":\"\",\"add_mailto_link\":\"\",\"show_street_address\":\"\",\"show_suburb\":\"\",\"show_state\":\"\",\"show_postcode\":\"\",\"show_country\":\"\",\"show_telephone\":\"\",\"show_mobile\":\"\",\"show_fax\":\"\",\"show_webpage\":\"\",\"show_image\":\"\",\"allow_vcard\":\"\",\"show_misc\":\"\",\"show_articles\":\"\",\"articles_display_num\":\"\",\"show_links\":\"\",\"linka_name\":\"\",\"linkb_name\":\"\",\"linkc_name\":\"\",\"linkd_name\":\"\",\"linke_name\":\"\",\"show_email_form\":\"\",\"show_email_copy\":\"\",\"banned_email\":\"\",\"banned_subject\":\"\",\"banned_text\":\"\",\"validate_session\":\"\",\"custom_reply\":\"\",\"redirect\":\"\",\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_image_css\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 53, 54, 0, '*', 0),
@@ -1822,7 +1915,21 @@ INSERT INTO `arvie_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `l
 (159, 'menu-arvie-direction', 'Publications', 'menu-arvie-direction-publications', '', 'menu-arvie-direction-publications', 'index.php?option=com_arvie&view=publications', 'component', 1, 1, 1, 10003, 0, '0000-00-00 00:00:00', 0, 7, ' ', 0, '{\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 89, 90, 0, '*', 0),
 (160, 'menu-arvie-direction', 'Evénements', 'menu-arvie-direction-evenements', '', 'menu-arvie-direction-evenements', 'index.php?option=com_arvie&view=evenements', 'component', 1, 1, 1, 10003, 0, '0000-00-00 00:00:00', 0, 7, ' ', 0, '{\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 91, 92, 0, '*', 0),
 (161, 'menu-arvie-direction', 'Discussions', 'menu-arvie-direction-discussions', '', 'menu-arvie-direction-discussions', 'index.php?option=com_arvie&view=discussions', 'component', 1, 1, 1, 10003, 0, '0000-00-00 00:00:00', 0, 7, ' ', 0, '{\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 93, 94, 0, '*', 0),
-(162, 'menu-arvie-direction', 'Messages', 'menu-arvie-direction-messages', '', 'menu-arvie-direction-messages', 'index.php?option=com_arvie&view=messages', 'component', 1, 1, 1, 10003, 0, '0000-00-00 00:00:00', 0, 7, ' ', 0, '{\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 95, 96, 0, '*', 0);
+(162, 'menu-arvie-direction', 'Messages', 'menu-arvie-direction-messages', '', 'menu-arvie-direction-messages', 'index.php?option=com_arvie&view=messages', 'component', 1, 1, 1, 10003, 0, '0000-00-00 00:00:00', 0, 7, ' ', 0, '{\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 95, 96, 0, '*', 0),
+(163, 'menu-arvie-professeur', 'Mes élèves', 'menu-arvie-professeur-mes-eleves', '', 'menu-arvie-professeur-mes-eleves', 'index.php?option=com_arvie&view=utilisateurs', 'component', 1, 1, 1, 10003, 0, '0000-00-00 00:00:00', 0, 11, ' ', 0, '{\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 97, 98, 0, '*', 0),
+(164, 'menu-arvie-professeur', 'Abonnements', 'menu-arvie-professeur-abonnements', '', 'menu-arvie-professeur-abonnements', 'index.php?option=com_arvie&view=abonnements', 'component', 1, 1, 1, 10003, 0, '0000-00-00 00:00:00', 0, 11, ' ', 0, '{\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 99, 100, 0, '*', 0),
+(165, 'menu-arvie-professeur', 'Groupes', 'menu-arvie-professeur-groupes', '', 'menu-arvie-professeur-groupes', 'index.php?option=com_arvie&view=groupes', 'component', 1, 1, 1, 10003, 0, '0000-00-00 00:00:00', 0, 11, ' ', 0, '{\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 101, 102, 0, '*', 0),
+(166, 'menu-arvie-professeur', 'Publications', 'menu-arvie-professeur-publications', '', 'menu-arvie-professeur-publications', 'index.php?option=com_arvie&view=publications', 'component', 1, 1, 1, 10003, 0, '0000-00-00 00:00:00', 0, 11, ' ', 0, '{\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 103, 104, 0, '*', 0),
+(167, 'menu-arvie-professeur', 'Evènements', 'menu-arvie-professeur-evenements', '', 'menu-arvie-professeur-evenements', 'index.php?option=com_arvie&view=evenements', 'component', 1, 1, 1, 10003, 0, '0000-00-00 00:00:00', 0, 11, ' ', 0, '{\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 105, 106, 0, '*', 0),
+(168, 'menu-arvie-professeur', 'Discussions', 'menu-arvie-professeur-discussions', '', 'menu-arvie-professeur-discussions', 'index.php?option=com_arvie&view=discussions', 'component', 1, 1, 1, 10003, 0, '0000-00-00 00:00:00', 0, 11, ' ', 0, '{\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 107, 108, 0, '*', 0),
+(169, 'menu-arvie-professeur', 'Messages', 'menu-arvie-professeur-messages', '', 'menu-arvie-professeur-messages', 'index.php?option=com_arvie&view=messages', 'component', 1, 1, 1, 10003, 0, '0000-00-00 00:00:00', 0, 11, ' ', 0, '{\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 109, 110, 0, '*', 0),
+(170, 'menu-arvie-eleve', 'Ma classe', 'menu-arvie-eleve-ma-classe', '', 'menu-arvie-eleve-ma-classe', 'index.php?option=com_arvie&view=utilisateurs', 'component', 1, 1, 1, 10003, 0, '0000-00-00 00:00:00', 0, 12, ' ', 0, '{\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 111, 112, 0, '*', 0),
+(171, 'menu-arvie-eleve', 'Abonnements', 'menu-arvie-eleve-abonnements', '', 'menu-arvie-eleve-abonnements', 'index.php?option=com_arvie&view=abonnements', 'component', 1, 1, 1, 10003, 0, '0000-00-00 00:00:00', 0, 12, ' ', 0, '{\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 113, 114, 0, '*', 0),
+(172, 'menu-arvie-eleve', 'Groupes', 'menu-arvie-eleve-groupes', '', 'menu-arvie-eleve-groupes', 'index.php?option=com_arvie&view=groupes', 'component', 1, 1, 1, 10003, 0, '0000-00-00 00:00:00', 0, 12, ' ', 0, '{\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 115, 116, 0, '*', 0),
+(173, 'menu-arvie-eleve', 'Publications', 'menu-arvie-eleve-publications', '', 'menu-arvie-eleve-publications', 'index.php?option=com_arvie&view=publications', 'component', 1, 1, 1, 10003, 0, '0000-00-00 00:00:00', 0, 12, ' ', 0, '{\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 117, 118, 0, '*', 0),
+(174, 'menu-arvie-eleve', 'Evènements', 'menu-arvie-eleve-evenements', '', 'menu-arvie-eleve-evenements', 'index.php?option=com_arvie&view=evenements', 'component', 1, 1, 1, 10003, 0, '0000-00-00 00:00:00', 0, 12, ' ', 0, '{\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 119, 120, 0, '*', 0),
+(175, 'menu-arvie-eleve', 'Discussions', 'menu-arvie-eleve-discussions', '', 'menu-arvie-eleve-discussions', 'index.php?option=com_arvie&view=discussions', 'component', 1, 1, 1, 10003, 0, '0000-00-00 00:00:00', 0, 12, ' ', 0, '{\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 121, 122, 0, '*', 0),
+(176, 'menu-arvie-eleve', 'Messages', 'menu-arvie-eleve-messages', '', 'menu-arvie-eleve-messages', 'index.php?option=com_arvie&view=messages', 'component', 1, 1, 1, 10003, 0, '0000-00-00 00:00:00', 0, 12, ' ', 0, '{\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 123, 124, 0, '*', 0);
 
 -- --------------------------------------------------------
 
@@ -1846,7 +1953,9 @@ CREATE TABLE `arvie_menu_types` (
 INSERT INTO `arvie_menu_types` (`id`, `asset_id`, `menutype`, `title`, `description`, `client_id`) VALUES
 (1, 0, 'mainmenu', 'Menu principal', 'Le menu principal du site', 0),
 (2, 62, 'menu-annuaire', 'Menu Annuaire', '', 0),
-(3, 68, 'menu-arvie-direction', 'Menu Arvie Direction', '', 0);
+(3, 68, 'menu-arvie-direction', 'Menu Arvie Direction', '', 0),
+(4, 70, 'menu-arvie-professeur', 'Menu Arvie Professeur', 'Menu du professeur', 0),
+(5, 71, 'menu-arvie-eleve', 'Menu Arvie Elève', 'Menu Arvie élève', 0);
 
 -- --------------------------------------------------------
 
@@ -1928,7 +2037,9 @@ INSERT INTO `arvie_modules` (`id`, `asset_id`, `title`, `note`, `content`, `orde
 (87, 55, 'Exemples de données', '', '', 0, 'cpanel', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_sampledata', 6, 1, '{}', 1, '*'),
 (88, 63, 'Annuaire', '', '', 1, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_menu', 9, 1, '{\"menutype\":\"menu-annuaire\",\"base\":\"\",\"startLevel\":\"1\",\"endLevel\":\"0\",\"showAllChildren\":\"1\",\"tag_id\":\"\",\"class_sfx\":\"\",\"window_open\":\"\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"1\",\"cache_time\":\"900\",\"cachemode\":\"itemid\",\"module_tag\":\"div\",\"bootstrap_size\":\"0\",\"header_tag\":\"h3\",\"header_class\":\"\",\"style\":\"0\"}', 0, '*'),
 (89, 64, 'Annuaire', '', '', 1, 'position-7', 0, '0000-00-00 00:00:00', '2017-11-12 16:04:09', '0000-00-00 00:00:00', -2, 'mod_menu', 1, 1, '{\"menutype\":\"menu-annuaire\",\"base\":\"\",\"startLevel\":\"1\",\"endLevel\":\"0\",\"showAllChildren\":\"1\",\"tag_id\":\"\",\"class_sfx\":\"\",\"window_open\":\"\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"1\",\"cache_time\":\"900\",\"cachemode\":\"itemid\",\"module_tag\":\"div\",\"bootstrap_size\":\"0\",\"header_tag\":\"h3\",\"header_class\":\"\",\"style\":\"0\"}', 0, '*'),
-(90, 69, 'Espace directeur', '', '', 0, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_menu', 7, 1, '{\"menutype\":\"menu-arvie-direction\",\"base\":\"\",\"startLevel\":\"1\",\"endLevel\":\"0\",\"showAllChildren\":\"1\",\"tag_id\":\"\",\"class_sfx\":\"\",\"window_open\":\"\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"1\",\"cache_time\":\"900\",\"cachemode\":\"itemid\",\"module_tag\":\"div\",\"bootstrap_size\":\"0\",\"header_tag\":\"h3\",\"header_class\":\"\",\"style\":\"0\"}', 0, '*');
+(90, 69, 'Espace directeur', '', '', 0, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_menu', 7, 1, '{\"menutype\":\"menu-arvie-direction\",\"base\":\"\",\"startLevel\":\"1\",\"endLevel\":\"0\",\"showAllChildren\":\"1\",\"tag_id\":\"\",\"class_sfx\":\"\",\"window_open\":\"\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"1\",\"cache_time\":\"900\",\"cachemode\":\"itemid\",\"module_tag\":\"div\",\"bootstrap_size\":\"0\",\"header_tag\":\"h3\",\"header_class\":\"\",\"style\":\"0\"}', 0, '*'),
+(91, 72, 'Espace professeur', '', '', 0, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_menu', 11, 1, '{\"menutype\":\"menu-arvie-professeur\",\"base\":\"\",\"startLevel\":\"1\",\"endLevel\":\"0\",\"showAllChildren\":\"1\",\"tag_id\":\"\",\"class_sfx\":\"\",\"window_open\":\"\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"1\",\"cache_time\":\"900\",\"cachemode\":\"itemid\",\"module_tag\":\"div\",\"bootstrap_size\":\"0\",\"header_tag\":\"h3\",\"header_class\":\"\",\"style\":\"0\"}', 0, '*'),
+(92, 73, 'Espace élève', '', '', 0, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_menu', 12, 1, '{\"menutype\":\"menu-arvie-eleve\",\"base\":\"\",\"startLevel\":\"1\",\"endLevel\":\"0\",\"showAllChildren\":\"1\",\"tag_id\":\"\",\"class_sfx\":\"\",\"window_open\":\"\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"1\",\"cache_time\":\"900\",\"cachemode\":\"itemid\",\"module_tag\":\"div\",\"bootstrap_size\":\"0\",\"header_tag\":\"h3\",\"header_class\":\"\",\"style\":\"0\"}', 0, '*');
 
 -- --------------------------------------------------------
 
@@ -1966,7 +2077,9 @@ INSERT INTO `arvie_modules_menu` (`moduleid`, `menuid`) VALUES
 (87, 0),
 (88, 0),
 (89, 0),
-(90, 0);
+(90, 0),
+(91, 0),
+(92, 0);
 
 -- --------------------------------------------------------
 
@@ -2113,7 +2226,8 @@ CREATE TABLE `arvie_session` (
 --
 
 INSERT INTO `arvie_session` (`session_id`, `client_id`, `guest`, `time`, `data`, `userid`, `username`) VALUES
-('qib8nb0q7eh4iqus01c0itoss3', 1, 0, '1513355416', 'joomla|s:992:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjoyOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjozOntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjM6e3M6NzoiY291bnRlciI7aToxODtzOjU6InRva2VuIjtzOjMyOiI3ZE8wMnpnRTlmMGRmTDdjOUJXYWNuRjJFVVBwV2pkRiI7czo1OiJ0aW1lciI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJzdGFydCI7aToxNTEzMzU1MTc4O3M6NDoibGFzdCI7aToxNTEzMzU1Mzg4O3M6Mzoibm93IjtpOjE1MTMzNTU0MTY7fX1zOjg6InJlZ2lzdHJ5IjtPOjI0OiJKb29tbGFcUmVnaXN0cnlcUmVnaXN0cnkiOjI6e3M6NzoiACoAZGF0YSI7Tzo4OiJzdGRDbGFzcyI6MTp7czo5OiJjb21fYXJ2aWUiO086ODoic3RkQ2xhc3MiOjM6e3M6NzoibWV0aWVycyI7Tzo4OiJzdGRDbGFzcyI6MTp7czo4OiJvcmRlcmNvbCI7czo1OiJsYWJlbCI7fXM6ODoicGFycmFpbnMiO086ODoic3RkQ2xhc3MiOjE6e3M6ODoib3JkZXJjb2wiO3M6NzoiZmlsbGV1bCI7fXM6NDoiZWRpdCI7Tzo4OiJzdGRDbGFzcyI6MTp7czoxMToicHVibGljYXRpb24iO086ODoic3RkQ2xhc3MiOjI6e3M6MjoiaWQiO2E6MDp7fXM6NDoiZGF0YSI7Tjt9fX19czo5OiJzZXBhcmF0b3IiO3M6MToiLiI7fXM6NDoidXNlciI7Tzo1OiJKVXNlciI6MTp7czoyOiJpZCI7czozOiI0MTYiO319fXM6OToic2VwYXJhdG9yIjtzOjE6Ii4iO30=\";', 416, 'SLAM');
+('if47bndc7ub8i769t9qqkkk6sa', 1, 0, '1524834946', 'joomla|s:1768:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjoyOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjo0OntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjM6e3M6NzoiY291bnRlciI7aToxNTY7czo1OiJ0aW1lciI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJzdGFydCI7aToxNTI0ODMzNDAxO3M6NDoibGFzdCI7aToxNTI0ODM0OTQzO3M6Mzoibm93IjtpOjE1MjQ4MzQ5NDY7fXM6NToidG9rZW4iO3M6MzI6IkJ1dlB4a2ZxMnE5VlpTSmx6WkN3enZNUm55eEZlN1lBIjt9czo4OiJyZWdpc3RyeSI7TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjoyOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjQ6e3M6MTM6ImNvbV9pbnN0YWxsZXIiO086ODoic3RkQ2xhc3MiOjI6e3M6NzoibWVzc2FnZSI7czowOiIiO3M6MTc6ImV4dGVuc2lvbl9tZXNzYWdlIjtzOjA6IiI7fXM6OToiY29tX21lbnVzIjtPOjg6InN0ZENsYXNzIjoyOntzOjU6Iml0ZW1zIjtPOjg6InN0ZENsYXNzIjozOntzOjg6Im1lbnV0eXBlIjtzOjg6Im1haW5tZW51IjtzOjEwOiJsaW1pdHN0YXJ0IjtpOjA7czo0OiJsaXN0IjthOjQ6e3M6OToiZGlyZWN0aW9uIjtzOjM6ImFzYyI7czo1OiJsaW1pdCI7czoyOiIyMCI7czo4OiJvcmRlcmluZyI7czo1OiJhLmxmdCI7czo1OiJzdGFydCI7ZDowO319czo0OiJlZGl0IjtPOjg6InN0ZENsYXNzIjoxOntzOjQ6Iml0ZW0iO086ODoic3RkQ2xhc3MiOjU6e3M6NDoiZGF0YSI7TjtzOjQ6InR5cGUiO047czo0OiJsaW5rIjtOO3M6MjoiaWQiO2E6MDp7fXM6ODoibWVudXR5cGUiO3M6MTY6Im1lbnUtYXJ2aWUtZWxldmUiO319fXM6NDoiaXRlbSI7Tzo4OiJzdGRDbGFzcyI6MTp7czo2OiJmaWx0ZXIiO086ODoic3RkQ2xhc3MiOjE6e3M6ODoibWVudXR5cGUiO3M6MTY6Im1lbnUtYXJ2aWUtZWxldmUiO319czoxMToiY29tX21vZHVsZXMiO086ODoic3RkQ2xhc3MiOjI6e3M6NDoiZWRpdCI7Tzo4OiJzdGRDbGFzcyI6MTp7czo2OiJtb2R1bGUiO086ODoic3RkQ2xhc3MiOjE6e3M6NDoiZGF0YSI7Tjt9fXM6MzoiYWRkIjtPOjg6InN0ZENsYXNzIjoxOntzOjY6Im1vZHVsZSI7Tzo4OiJzdGRDbGFzcyI6Mjp7czoxMjoiZXh0ZW5zaW9uX2lkIjtOO3M6NjoicGFyYW1zIjtOO319fX1zOjk6InNlcGFyYXRvciI7czoxOiIuIjt9czo0OiJ1c2VyIjtPOjU6IkpVc2VyIjoxOntzOjI6ImlkIjtzOjM6IjQxNiI7fXM6MTE6ImFwcGxpY2F0aW9uIjtPOjg6InN0ZENsYXNzIjoxOntzOjU6InF1ZXVlIjtOO319fXM6OToic2VwYXJhdG9yIjtzOjE6Ii4iO30=\";', 416, 'SLAM'),
+('tonrbhbffn9sq1789b0uq58iqf', 0, 1, '1524834935', 'joomla|s:996:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjoyOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjo0OntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjM6e3M6NzoiY291bnRlciI7aTo1O3M6NToidGltZXIiO086ODoic3RkQ2xhc3MiOjM6e3M6NToic3RhcnQiO2k6MTUyNDgzNDkwOTtzOjQ6Imxhc3QiO2k6MTUyNDgzNDkxODtzOjM6Im5vdyI7aToxNTI0ODM0OTM1O31zOjU6InRva2VuIjtzOjMyOiJ4c09SaVN0V0FoelVLdG9KTmo5ZmZxSjV1U21Kd1VSYiI7fXM6ODoicmVnaXN0cnkiO086MjQ6Ikpvb21sYVxSZWdpc3RyeVxSZWdpc3RyeSI6Mjp7czo3OiIAKgBkYXRhIjtPOjg6InN0ZENsYXNzIjoxOntzOjU6InVzZXJzIjtPOjg6InN0ZENsYXNzIjoxOntzOjU6ImxvZ2luIjtPOjg6InN0ZENsYXNzIjoxOntzOjQ6ImZvcm0iO086ODoic3RkQ2xhc3MiOjE6e3M6NDoiZGF0YSI7YToxOntzOjY6InJldHVybiI7czo4MjoiaHR0cDovL2xvY2FsaG9zdC9hcnZpZTM2Mi9pbmRleC5waHAvbWVudS1hcnZpZS1kaXJlY3Rpb24tdXRpbGlzYXRldXJzP2xpbWl0c3RhcnQ9MCI7fX19fX1zOjk6InNlcGFyYXRvciI7czoxOiIuIjt9czo0OiJ1c2VyIjtPOjU6IkpVc2VyIjoxOntzOjI6ImlkIjtpOjA7fXM6MTE6ImFwcGxpY2F0aW9uIjtPOjg6InN0ZENsYXNzIjoxOntzOjU6InF1ZXVlIjtOO319fXM6OToic2VwYXJhdG9yIjtzOjE6Ii4iO30=\";', 0, '');
 
 -- --------------------------------------------------------
 
@@ -2318,9 +2432,9 @@ CREATE TABLE `arvie_update_sites` (
 --
 
 INSERT INTO `arvie_update_sites` (`update_site_id`, `name`, `type`, `location`, `enabled`, `last_check_timestamp`, `extra_query`) VALUES
-(1, 'Joomla! Core', 'collection', 'https://update.joomla.org/core/list.xml', 1, 1513353585, ''),
-(2, 'Accredited Joomla! Translations', 'collection', 'https://update.joomla.org/language/translationlist_3.xml', 1, 0, ''),
-(3, 'Joomla! Update Component Update Site', 'extension', 'https://update.joomla.org/core/extensions/com_joomlaupdate.xml', 1, 0, '');
+(1, 'Joomla! Core', 'collection', 'https://update.joomla.org/core/list.xml', 1, 1524833416, ''),
+(2, 'Accredited Joomla! Translations', 'collection', 'https://update.joomla.org/language/translationlist_3.xml', 0, 0, ''),
+(3, 'Joomla! Update Component Update Site', 'extension', 'https://update.joomla.org/core/extensions/com_joomlaupdate.xml', 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -2410,8 +2524,21 @@ CREATE TABLE `arvie_users` (
 --
 
 INSERT INTO `arvie_users` (`id`, `name`, `username`, `email`, `password`, `block`, `sendEmail`, `registerDate`, `lastvisitDate`, `activation`, `params`, `lastResetTime`, `resetCount`, `otpKey`, `otep`, `requireReset`) VALUES
-(416, 'Super Utilisateur', 'SLAM', 'emmanuel.derome@gmail.com', '$2y$10$.3gLjjdoOIexzDzlyZFEFuZUKHtzOTMimdK.Adj85unSnx0gN/5f2', 0, 1, '2017-11-11 08:46:40', '2017-12-15 16:26:18', '0', '', '0000-00-00 00:00:00', 0, '', '', 0),
-(417, 'Marcel DUPOND', 'mdupond', 'mdupond@arvie.org', '$2y$10$qNixBrOwFditD9ZjCiyije6JZHlpuGdQM6RGSALtxyD/WO1nswCE2', 0, 0, '2017-11-11 09:07:41', '2017-12-14 09:50:12', '', '{\"admin_style\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"helpsite\":\"\",\"timezone\":\"\"}', '0000-00-00 00:00:00', 0, '', '', 0);
+(416, 'Super Utilisateur', 'SLAM', 'emmanuel.derome@gmail.com', '$2y$10$.3gLjjdoOIexzDzlyZFEFuZUKHtzOTMimdK.Adj85unSnx0gN/5f2', 0, 1, '2017-11-11 08:46:40', '2018-04-27 12:50:12', '0', '{\"admin_style\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"helpsite\":\"\",\"timezone\":\"\"}', '0000-00-00 00:00:00', 0, '', '', 0),
+(417, 'Hugo BOSS', 'hboss', 'hboss@arvie.org', '$2y$10$XYeuLYj1tU/kfJFCorR1/.a4dgZt9fGU7IGJFatz0wHgQovlHdEIu', 0, 0, '2017-11-11 09:07:41', '2018-04-27 13:15:08', '', '{\"admin_style\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"helpsite\":\"\",\"timezone\":\"\"}', '0000-00-00 00:00:00', 0, '', '', 0),
+(418, 'Ivan NOTE', 'inote', 'inote@arvie.org', '$2y$10$f2dIq5CTHI4hdDqA/QM7TeoXpb.FO6UPKyME/2hSDaHPS4xIlNLsW', 0, 0, '2018-04-16 17:25:09', '2018-04-27 13:04:42', '', '{\"admin_style\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"helpsite\":\"\",\"timezone\":\"\"}', '0000-00-00 00:00:00', 0, '', '', 0),
+(419, 'Jean CODE', 'jcode', 'jcode@arvie.org', '$2y$10$nxhQ0mwz6LOstrmLoIJep.7SHLB8HdLVYBLkDApYTpv0AHaIAKkMS', 0, 0, '2018-04-16 17:26:45', '2018-04-27 13:05:04', '', '{\"admin_style\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"helpsite\":\"\",\"timezone\":\"\"}', '0000-00-00 00:00:00', 0, '', '', 0),
+(420, 'Marie TUDOR', 'mtudor', 'mtudor@arvie.org', '$2y$10$IcsK4TFMxCM3Ziv/wY63Eue7HWYOga0St9ZuOBMWCZchlzG5evfn6', 0, 0, '2018-04-16 17:30:02', '0000-00-00 00:00:00', '', '{\"admin_style\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"helpsite\":\"\",\"timezone\":\"\"}', '0000-00-00 00:00:00', 0, '', '', 0),
+(421, 'Paul HOCHON', 'phochon', 'phochon@arvie.org', '$2y$10$tV4aoVr4CzmjOU4fd7bGZu9dpEpPNrrnjIqYXQcfYJalnsJrDY0mS', 0, 0, '2018-04-16 17:32:07', '0000-00-00 00:00:00', '', '{\"admin_style\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"helpsite\":\"\",\"timezone\":\"\"}', '0000-00-00 00:00:00', 0, '', '', 0),
+(422, 'André BRUN', 'abrun', 'abrun@arvie.org', '$2y$10$MKtogpKHSg0AZWKv/RxHi.OOCRVWghzpOzsRiKolcxtwQCnc2TtZa', 0, 0, '2018-04-17 08:17:10', '0000-00-00 00:00:00', '', '{\"admin_style\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"helpsite\":\"\",\"timezone\":\"\"}', '0000-00-00 00:00:00', 0, '', '', 0),
+(423, 'Albert PAGES', 'apages', 'apages@arvie.org', '$2y$10$ulOhHRDA.Y/HZF9OnqqwH.eKO/q3hNZixm.dryKf2c9zEZtvKfLoa', 0, 0, '2018-04-17 08:18:11', '0000-00-00 00:00:00', '', '{\"admin_style\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"helpsite\":\"\",\"timezone\":\"\"}', '0000-00-00 00:00:00', 0, '', '', 0),
+(424, 'Julie FERRAND', 'jferrand', 'jferrand@arvie.org', '$2y$10$2VaTfR6TOkVXnQfg0qMAuuinCmJrANGgrpZ4Qle7xGsxQMkRnEEaG', 0, 0, '2018-04-17 08:20:31', '0000-00-00 00:00:00', '', '{\"admin_style\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"helpsite\":\"\",\"timezone\":\"\"}', '0000-00-00 00:00:00', 0, '', '', 0),
+(425, 'Marius TRESOR', 'mtresor', 'mtresor@arvie.org', '$2y$10$uTrGLetHP2T426aKsL30KuYlFjotoF7h0RltI0cyYrk93yPoiQRp.', 0, 0, '2018-04-17 08:21:32', '0000-00-00 00:00:00', '', '{\"admin_style\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"helpsite\":\"\",\"timezone\":\"\"}', '0000-00-00 00:00:00', 0, '', '', 0),
+(426, 'Angel LESMAINS', 'alesmains', 'alesmains@arvie.org', '$2y$10$NHmrAAy9.R8HMSA7kRg5aOKVjkWyN8vPTtLGPkqRp4Upq2kftg8B.', 0, 0, '2018-04-17 08:22:24', '0000-00-00 00:00:00', '', '{\"admin_style\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"helpsite\":\"\",\"timezone\":\"\"}', '0000-00-00 00:00:00', 0, '', '', 0),
+(427, 'Victor MOULIN', 'vmoulin', 'vmoulin@arvie.org', '$2y$10$MGq9oScUCpW.eGA7sgqmXuT8mU49g7/q84B071lO8aFHWzmubnFuS', 0, 0, '2018-04-17 08:24:43', '0000-00-00 00:00:00', '', '{\"admin_style\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"helpsite\":\"\",\"timezone\":\"\"}', '0000-00-00 00:00:00', 0, '', '', 0),
+(428, 'Iris BARBIER', 'ibarbier', 'ibarbier@arvie.org', '$2y$10$ydJ6.weCb7H6ZymGtVIJeOGWa3UKRunExYP6AJUBNJZpYCxXVfoOW', 0, 0, '2018-04-17 08:27:04', '2018-04-17 08:28:43', '', '{\"admin_style\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"helpsite\":\"\",\"timezone\":\"\"}', '0000-00-00 00:00:00', 0, '', '', 0),
+(429, 'Sami FRAIS', 'sfrais', 'sfrais@arvie.org', '$2y$10$vwoMv9VChGu0tj1itT.hWerTjXjXi0ghz1SBeqEF1Ff42KaqgIn7.', 0, 0, '2018-04-17 10:04:52', '2018-04-17 10:34:41', '', '{\"admin_style\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"helpsite\":\"\",\"timezone\":\"\"}', '0000-00-00 00:00:00', 0, '', '', 0),
+(430, 'Karima BOULEZ', 'kboulez', 'kboulez@arvie.org', '$2y$10$CSGUKhFGznKIox35c7iyleEVoTIHWtGDDSSCvLT1S4DwxqwyU7KFq', 0, 0, '2018-04-17 10:32:34', '0000-00-00 00:00:00', '', '{\"admin_style\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"helpsite\":\"\",\"timezone\":\"\"}', '0000-00-00 00:00:00', 0, '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -2482,9 +2609,36 @@ CREATE TABLE `arvie_user_usergroup_map` (
 --
 
 INSERT INTO `arvie_user_usergroup_map` (`user_id`, `group_id`) VALUES
+(416, 2),
 (416, 8),
+(417, 2),
 (417, 12),
-(417, 17);
+(418, 2),
+(418, 14),
+(419, 2),
+(419, 15),
+(420, 2),
+(420, 15),
+(421, 2),
+(421, 15),
+(422, 2),
+(422, 12),
+(423, 2),
+(423, 14),
+(424, 2),
+(424, 14),
+(425, 2),
+(425, 15),
+(426, 2),
+(426, 15),
+(427, 2),
+(427, 15),
+(428, 2),
+(428, 15),
+(429, 2),
+(429, 15),
+(430, 2),
+(430, 15);
 
 -- --------------------------------------------------------
 
@@ -2541,9 +2695,26 @@ INSERT INTO `arvie_viewlevels` (`id`, `title`, `ordering`, `rules`) VALUES
 -- (Voir ci-dessous la vue réelle)
 --
 CREATE TABLE `arvie_vue_abonnements` (
-`abonne` varchar(40)
+`id` int(11)
+,`abonne` varchar(40)
 ,`suit` varchar(40)
 ,`depuis` datetime
+,`email` varchar(50)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Doublure de structure pour la vue `arvie_vue_groupes_util`
+-- (Voir ci-dessous la vue réelle)
+--
+CREATE TABLE `arvie_vue_groupes_util` (
+`id` int(11)
+,`groupe` varchar(40)
+,`groupe_parent` varchar(40)
+,`role` varchar(50)
+,`est_interet` tinyint(1)
+,`est_public` tinyint(1)
 ,`email` varchar(50)
 );
 
@@ -2554,7 +2725,16 @@ CREATE TABLE `arvie_vue_abonnements` (
 --
 DROP TABLE IF EXISTS `arvie_vue_abonnements`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `arvie_vue_abonnements`  AS  select `ua`.`nom` AS `abonne`,`us`.`nom` AS `suit`,`a`.`date` AS `depuis`,`ua`.`email` AS `email` from ((`arvie_arvie_abonnements` `a` join `arvie_arvie_utilisateurs` `ua` on((`a`.`abonne` = `ua`.`id`))) join `arvie_arvie_utilisateurs` `us` on((`a`.`suivi` = `us`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `arvie_vue_abonnements`  AS  select `a`.`id` AS `id`,`ua`.`nom` AS `abonne`,`us`.`nom` AS `suit`,`a`.`date` AS `depuis`,`ua`.`email` AS `email` from ((`arvie_arvie_abonnements` `a` join `arvie_arvie_utilisateurs` `ua` on((`a`.`abonne` = `ua`.`id`))) join `arvie_arvie_utilisateurs` `us` on((`a`.`suivi` = `us`.`id`))) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la vue `arvie_vue_groupes_util`
+--
+DROP TABLE IF EXISTS `arvie_vue_groupes_util`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `arvie_vue_groupes_util`  AS  select `g`.`id` AS `id`,`g`.`nom` AS `groupe`,`gp`.`nom` AS `groupe_parent`,`r`.`label` AS `role`,`g`.`est_groupe_interet` AS `est_interet`,`g`.`est_public` AS `est_public`,`u`.`email` AS `email` from ((((`arvie_arvie_groupe_utilisateur_map` `gu` join `arvie_arvie_roles` `r` on((`gu`.`role` = `r`.`id`))) join `arvie_arvie_utilisateurs` `u` on((`gu`.`utilisateur` = `u`.`id`))) join `arvie_arvie_groupes` `g` on((`gu`.`groupe` = `g`.`id`))) join `arvie_arvie_groupes` `gp` on((`g`.`groupe_parent` = `gp`.`id`))) ;
 
 --
 -- Index pour les tables déchargées
@@ -2612,7 +2792,8 @@ ALTER TABLE `arvie_arvie_discussions`
 -- Index pour la table `arvie_arvie_evenements`
 --
 ALTER TABLE `arvie_arvie_evenements`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `publication` (`publication`) USING BTREE;
 
 --
 -- Index pour la table `arvie_arvie_groupes`
@@ -3335,31 +3516,37 @@ ALTER TABLE `arvie_annuaire_typescontacts`
 -- AUTO_INCREMENT pour la table `arvie_arvie_abonnements`
 --
 ALTER TABLE `arvie_arvie_abonnements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `arvie_arvie_discussions`
 --
 ALTER TABLE `arvie_arvie_discussions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `arvie_arvie_evenements`
+--
+ALTER TABLE `arvie_arvie_evenements`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `arvie_arvie_groupes`
 --
 ALTER TABLE `arvie_arvie_groupes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `arvie_arvie_groupe_utilisateur_map`
 --
 ALTER TABLE `arvie_arvie_groupe_utilisateur_map`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT pour la table `arvie_arvie_messages`
 --
 ALTER TABLE `arvie_arvie_messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `arvie_arvie_metiers`
@@ -3377,43 +3564,43 @@ ALTER TABLE `arvie_arvie_metier_groupe_map`
 -- AUTO_INCREMENT pour la table `arvie_arvie_parrains`
 --
 ALTER TABLE `arvie_arvie_parrains`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `arvie_arvie_publications`
 --
 ALTER TABLE `arvie_arvie_publications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `arvie_arvie_roles`
 --
 ALTER TABLE `arvie_arvie_roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `arvie_arvie_utilisateurs`
 --
 ALTER TABLE `arvie_arvie_utilisateurs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT pour la table `arvie_arvie_utilisateur_discu_map`
 --
 ALTER TABLE `arvie_arvie_utilisateur_discu_map`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `arvie_arvie_utilisateur_even_map`
 --
 ALTER TABLE `arvie_arvie_utilisateur_even_map`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `arvie_assets`
 --
 ALTER TABLE `arvie_assets`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=70;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT pour la table `arvie_banners`
@@ -3509,13 +3696,13 @@ ALTER TABLE `arvie_languages`
 -- AUTO_INCREMENT pour la table `arvie_menu`
 --
 ALTER TABLE `arvie_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
 
 --
 -- AUTO_INCREMENT pour la table `arvie_menu_types`
 --
 ALTER TABLE `arvie_menu_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `arvie_messages`
@@ -3527,7 +3714,7 @@ ALTER TABLE `arvie_messages`
 -- AUTO_INCREMENT pour la table `arvie_modules`
 --
 ALTER TABLE `arvie_modules`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT pour la table `arvie_newsfeeds`
@@ -3599,7 +3786,7 @@ ALTER TABLE `arvie_usergroups`
 -- AUTO_INCREMENT pour la table `arvie_users`
 --
 ALTER TABLE `arvie_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=418;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=431;
 
 --
 -- AUTO_INCREMENT pour la table `arvie_user_keys`
@@ -3648,7 +3835,7 @@ ALTER TABLE `arvie_arvie_abonnements`
 -- Contraintes pour la table `arvie_arvie_evenements`
 --
 ALTER TABLE `arvie_arvie_evenements`
-  ADD CONSTRAINT `arvie_arvie_evenements_ibfk_1` FOREIGN KEY (`id`) REFERENCES `arvie_arvie_publications` (`id`);
+  ADD CONSTRAINT `arvie_arvie_evenements_ibfk_1` FOREIGN KEY (`publication`) REFERENCES `arvie_arvie_publications` (`id`);
 
 --
 -- Contraintes pour la table `arvie_arvie_groupes`
@@ -3704,8 +3891,8 @@ ALTER TABLE `arvie_arvie_utilisateur_discu_map`
 -- Contraintes pour la table `arvie_arvie_utilisateur_even_map`
 --
 ALTER TABLE `arvie_arvie_utilisateur_even_map`
-  ADD CONSTRAINT `arvie_arvie_utilisateur_even_map_ibfk_1` FOREIGN KEY (`evenement`) REFERENCES `arvie_arvie_evenements` (`id`),
-  ADD CONSTRAINT `arvie_arvie_utilisateur_even_map_ibfk_2` FOREIGN KEY (`participant`) REFERENCES `arvie_arvie_utilisateurs` (`id`);
+  ADD CONSTRAINT `arvie_arvie_utilisateur_even_map_ibfk_1` FOREIGN KEY (`participant`) REFERENCES `arvie_arvie_utilisateurs` (`id`),
+  ADD CONSTRAINT `arvie_arvie_utilisateur_even_map_ibfk_2` FOREIGN KEY (`evenement`) REFERENCES `arvie_arvie_evenements` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -10,19 +10,14 @@ class ArvieModelgroupe_utilisateur_maps extends JModelList
 		{
 			$config['filter_fields'] = array(
 				'id', 'gum.id',
-				'utilisateur', 'gum.utilisateur',
-				'groupe','gum.groupe',
-				'date_deb','gum.date_deb',
-				'date_fin','gum.date_fin',
-				'role','gum.role',
+				'utilisateur', 'u.nom',
+				'role', 'r.label',
+				'groupe','g.nom',
 				'published', 'gum.published',
 				'created','gum.created',
 				'modified', 'gum.modified',
 				'modified_by', 'gum.modified_by',
-				'hits', 'gum.hits',
-				'role_label','r.label',
-				'utilisateur_prenom','u.prenom',
-				'groupe_nom','g.nom'
+				'hits', 'gum.hits'
 			);
 		}
 		parent::__construct($config);
@@ -47,13 +42,13 @@ class ArvieModelgroupe_utilisateur_maps extends JModelList
 		$query->select('gum.id, gum.utilisateur, gum.groupe, gum.date_deb, gum.date_fin, gum.role, gum.published, gum.created, gum.modified, gum.modified_by, gum.hits');
 		$query->from('#__arvie_groupe_utilisateur_map gum');
 
-		// joint la table role pour les labels
+		// joint la table roles
 		$query->select('r.label AS role_label')->join('LEFT', '#__arvie_roles AS r ON gum.role=r.id');
 
-		// joint la table utilisateur pour les prenoms
-		$query->select('u.prenom AS utilisateur_prenom')->join('LEFT', '#__arvie_utilisateurs AS u ON gum.utilisateur=u.id');
+		// joint la table utilisateurs
+		$query->select('u.nom AS utilisateur_nom')->join('LEFT', '#__arvie_utilisateurs AS u ON gum.utilisateur=u.id');
 
-		// joint la table groupe pour les nom de groupe
+		// joint la table groupes
 		$query->select('g.nom AS groupe_nom')->join('LEFT', '#__arvie_groupes AS g ON gum.groupe=g.id');
 
 		// filtre de recherche rapide textuel
@@ -86,7 +81,7 @@ class ArvieModelgroupe_utilisateur_maps extends JModelList
 		}
 
 		// tri des colonnes
-		$orderCol = $this->state->get('list.ordering', 'id');
+		$orderCol = $this->state->get('list.ordering', 'u.nom');
 		$orderDirn = $this->state->get('list.direction', 'ASC');
 		$query->order($this->_db->escape($orderCol.' '.$orderDirn));
 

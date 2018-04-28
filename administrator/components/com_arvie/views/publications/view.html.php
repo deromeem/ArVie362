@@ -48,7 +48,7 @@ class ArvieViewPublications extends JViewLegacy
 		// affiche les boutons d'action
 		JToolBarHelper::addNew('publication.add');
 		JToolBarHelper::editList('publication.edit');
-		JToolBarHelper::deleteList('Etes vous sûr ?', 'publications.delete');
+		JToolBarHelper::deleteList('COM_ARVIE_DELETE_CONFIRM', 'publications.delete');
 		JToolbarHelper::publish('publications.publish', 'JTOOLBAR_PUBLISH', true);
 		JToolbarHelper::unpublish('publications.unpublish', 'JTOOLBAR_UNPUBLISH', true);
 		JToolbarHelper::archiveList('publications.archive');
@@ -73,12 +73,15 @@ class ArvieViewPublications extends JViewLegacy
 	{
 		// prépare l'affichage des colonnes de tri du calque
 		return array(
-			'p.publication_parent' => JText::_('COM_ARVIE_PUBLICATIONS_PARENT'),
-			'p.auteur' => JText::_('COM_ARVIE_PUBLICATIONS_AUTEUR'),
-			'p.texte' => JText::_('COM_ARVIE_PUBLICATIONS_TEXTE'),
-			'p.groupe' => JText::_('COM_ARVIE_PUBLICATIONS_GROUPE'),
+			'p.titre' => JText::_('COM_ARVIE_PUBLICATIONS_TITRE'),
+			'pp.titre' => JText::_('COM_ARVIE_PUBLICATIONS_PARENT'),
+			'g.nom' => JText::_('COM_ARVIE_PUBLICATIONS_GROUPE'),
+			'u.nom' => JText::_('COM_ARVIE_PUBLICATIONS_AUTEUR'),
+			'p.est_public' => JText::_('COM_ARVIE_PUBLICATIONS_EST_PUBLIC'),
 			'p.published' => JText::_('JSTATUS'),
-			'p.id' => "ID"
+			'p.date_publi' => JText::_('COM_ARVIE_PUBLICATIONS_DATE_PUBLI'),
+			'p.hits' => JText::_('JGLOBAL_HITS'),
+			'p.id' => JText::_('JGRID_HEADING_ID')
 		);
 	}
 

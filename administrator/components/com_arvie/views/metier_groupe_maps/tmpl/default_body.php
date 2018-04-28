@@ -28,7 +28,7 @@ if ($saveOrder)
 		<?= $item->groupe_nom ?>
 	</td>
 	<td align="center">
-		<?php echo JHtml::_('jgrid.published', $item->published, $i, 'parrains.', true); ?>
+		<?php echo JHtml::_('jgrid.published', $item->published, $i, 'metier_groupe_maps.', true); ?>
 	</td>
 	<td class="center hidden-phone">
 		<?php echo JHtml::_('date', $item->modified, $this->paramDateFmt); ?>

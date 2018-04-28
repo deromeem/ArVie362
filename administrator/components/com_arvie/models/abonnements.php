@@ -9,18 +9,19 @@ class ArvieModelAbonnements extends JModelList
 		if (empty($config['filter_fields']))
 		{
 			$config['filter_fields'] = array(
-				'abonne',       'a.abonne',
+				'id',			'a.id',
+				'abonne',		'a.abonne',
 				'suivi',        'a.suivi',
-				'nabonne',       'ua.nom',
-				'nsuivi',        'us.nom',
+				'nabonne',		'ua.nom',
+				'nsuivi',		'us.nom',
 				'date',         'a.date',
 				'alias',		'a.alias',
-				'published',      'a.published',
-				'created',        'a.created',
-				'created_by',     'a.created_by',
-				'modified',       'a.modified',
-				'modified_by',    'a.modified_by',
-				'hits',           'a.hits'
+				'published',	'a.published',
+				'created',		'a.created',
+				'created_by',	'a.created_by',
+				'modified',		'a.modified',
+				'modified_by',	'a.modified_by',
+				'hits',			'a.hits'
 			);
 		}
 		parent::__construct($config);
@@ -48,8 +49,7 @@ class ArvieModelAbonnements extends JModelList
 		$query->select('a.id, a.abonne, a.suivi, a.date, a.alias, a.published, a.created, a.created_by, a.modified, a.modified_by, a.hits');
 		$query->from('#__arvie_abonnements a');
 		
-		// joint la table users
-		//$query->select('ju.password')->join('LEFT', '#__users AS ju ON u.email = ju.email');
+		// joint les tables abonné et suivi
 		$query->select('ua.nom as nabonne')->join('LEFT', '#__arvie_utilisateurs AS ua ON a.abonne = ua.id');
 		$query->select('us.nom as nsuivi')->join('LEFT', '#__arvie_utilisateurs AS us ON a.suivi = us.id');
 
@@ -67,8 +67,6 @@ class ArvieModelAbonnements extends JModelList
 				$searches	= array();
 				$searches[]	= 'a.abonne LIKE '.$search;
 				$searches[]	= 'a.suivi LIKE '.$search;
-				//$searches[]	= 'u.fonction LIKE '.$search;
-				//$searches[]	= 'u.email LIKE '.$search;
 				// Ajoute les clauses à la requête
 				$query->where('('.implode(' OR ', $searches).')');
 			}

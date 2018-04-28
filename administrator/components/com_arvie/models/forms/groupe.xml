@@ -9,7 +9,6 @@
             description="Nom"
             size="40" class="input-large-text" default="" required="true"
         />
-
 		<field name="alias" type="text"
 			label="JFIELD_ALIAS_LABEL"
 			description="JFIELD_ALIAS_DESC"
@@ -31,7 +30,6 @@
 			query="SELECT id, nom FROM #__arvie_groupes ORDER BY nom" 
 			key_field="id" value_field="nom" required="false"
 		/>
-
 		
 		<field id="published" name="published" type="list"
 			label="JSTATUS"	description="JSTATUS"
@@ -46,14 +44,12 @@
 			<option value="-2">
 				JTRASHED</option>
 		</field>
-		
-		
+				
 		<field
 			name="hits" type="text" label="JGLOBAL_HITS"
 			description="JGLOBAL_HITS"
 			size="6" class="readonly" readonly="true" filter="unset"
-		/>
-		
+		/>		
 		<field
 			name="created" type="calendar" label="JGLOBAL_FIELD_CREATED_LABEL"
 			description="JGLOBAL_FIELD_CREATED_LABEL"
@@ -76,6 +72,5 @@
 			description="JGLOBAL_FIELD_MODIFIED_BY_DESC"
 			class="inputbox" default=""
 		/>
-
 	</fieldset>
 </form>

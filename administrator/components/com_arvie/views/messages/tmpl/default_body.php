@@ -7,7 +7,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 $saveOrder	= $listOrder == 'ordering';
 if ($saveOrder)
 {
-	$saveOrderingUrl = 'index.php?option=com_arvie&task=utilisateurs.saveOrderAjax&tmpl=component';
+	$saveOrderingUrl = 'index.php?option=com_arvie&task=messages.saveOrderAjax&tmpl=component';
 	JHtml::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 }
 ?>
@@ -19,34 +19,25 @@ if ($saveOrder)
 	</td>
 	<td class="wrap has-context">
 		<div class="pull-left">
-			<a href="<?php echo JRoute::_('index.php?option=com_arvie&task=utilisateur.edit&id='.(int) $item->id); ?>">
+			<a href="<?php echo JRoute::_('index.php?option=com_arvie&task=message.edit&id='.(int) $item->id); ?>">
 				<?php echo $this->escape($item->nom_auteur); ?>
 			</a>
-			<div class="small hidden-phone">
-				<?php // extrait description selon les paramètres de configuration
-				if ($this->paramDescShow) {
-					$desc = JFilterOutput::cleanText($item->activite);
-					echo substr($desc, 0, $this->paramDescSize);
-					echo (strlen($desc)>$this->paramDescSize?"...":"") ;
-				}
-				?>
-			</div>
 		</div>
 	</td>
 	<td align="small">
-		<?php echo $item->discussion; ?>
+		<?php echo $item->nom_discussion; ?>
 	</td>
 	<td align="small">
 		<?php echo $item->contenu; ?>
 	</td>
 	<td align="center">
-		<?php echo JHtml::_('jgrid.published', $item->published, $i, 'utilisateurs.', true); ?>
+		<?php echo JHtml::_('jgrid.published', $item->published, $i, 'messages.', true); ?>
 	</td>
 	<td class="center hidden-phone">
-		<?php echo JHtml::_('date', $item->modified, $this->paramDateFmt); ?>
+		<?php echo JHtml::_('date', $item->created, $this->paramDateFmt); ?>
 	</td>
 	<td class="center hidden-tablet hidden-phone">
-			<?php echo (int) $item->hits; ?>
+		<?php echo (int) $item->hits; ?>
 	</td>
 	<td class="center hidden-phone">
 		<?php echo (int) $item->id; ?>

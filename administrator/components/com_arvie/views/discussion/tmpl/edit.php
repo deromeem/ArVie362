@@ -18,22 +18,27 @@ JHtml::_('formbehavior.chosen', 'select');
 <form action="<?php echo JRoute::_('index.php?option=com_arvie&layout=edit&id='.(int) $this->item->id); ?>"
 	method="post" name="adminForm" id="arvie-form" class="form-validate">
 
-  <div class="control-group">
-	  <div class="control-label"><?php echo $this->form->getLabel('nom'); ?></div>
-	  <div class="controls"><?php echo $this->form->getInput('nom'); ?></div>
-  </div>										
-	
+	<div class="form-inline form-inline-header">
+		<div class="control-group">
+			<div class="control-label"><?php echo $this->form->getLabel('nom'); ?></div>
+			<div class="controls"><?php echo $this->form->getInput('nom'); ?></div>
+		</div>					
+		<div class="control-group">
+			<div class="control-label"><?php echo $this->form->getLabel('alias'); ?></div>
+			<div class="controls"><?php echo $this->form->getInput('alias'); ?></div>
+		</div>					
+	</div>						
 
 	<div class="form-horizontal">
 		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'publishing')); ?>
 		
 		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'publishing', JText::_('JGLOBAL_FIELDSET_PUBLISHING', true)); ?>
 		<div class="row-fluid form-horizontal-desktop">
-			<div class="form-vertical">
-				<?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
-
+			<div class="span9">
 				<?php echo JLayoutHelper::render('joomla.edit.publishingdata', $this); ?>
-
+			</div>
+			<div class="span3">
+				<?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
 				<?php echo JLayoutHelper::render('joomla.edit.metadata', $this); ?>
 			</div>
 		</div>

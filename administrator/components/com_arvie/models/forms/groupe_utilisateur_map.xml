@@ -5,16 +5,32 @@
 
 		<field name="asset_id" type="hidden" filter="unset" />
 
+		<field name="utilisateur" type="sql" default="" label="COM_ARVIE_UTILISATEUR"
+			description="COM_ARVIE_UTILISATEUR"
+			query="SELECT id, nom FROM #__arvie_utilisateurs ORDER BY nom" 
+			key_field="id" value_field="nom" required="true"
+		/>
+		<field name="role" type="sql" default="" label="COM_ARVIE_ROLE"
+			description="COM_ARVIE_ROLE"
+			query="SELECT id, label FROM #__arvie_roles ORDER BY label" 
+			key_field="id" value_field="label" required="true"
+		/>
 		<field name="groupe" type="sql" default="" label="COM_ARVIE_GROUPE"
 			description="COM_ARVIE_GROUPE"
 			query="SELECT id, nom FROM #__arvie_groupes ORDER BY nom" 
-			key_field="id" value_field="nom" required="false"
+			key_field="id" value_field="nom" required="true"
 		/>
-
-		<field name="utilisateur" type="sql" default="" label="COM_ARVIE_UTILISATEUR"
-			description="COM_ARVIE_UTILISATEUR"
-			query="SELECT id, prenom FROM #__arvie_utilisateurs ORDER BY label" 
-			key_field="id" value_field="prenom" required="false"
+		<field
+			name="date_deb" type="calendar" label="COM_ARVIE_GROUPE_UTILISATEUR_DATE_DEB"
+			description="COM_ARVIE_GROUPE_UTILISATEUR_DATE_DEB"
+			size="22" class="inputbox" default=""
+			format="%Y-%m-%d %H:%M:%S" filter="user_utc"
+		/>
+		<field
+			name="date_fin" type="calendar" label="COM_ARVIE_GROUPE_UTILISATEUR_DATE_FIN"
+			description="COM_ARVIE_GROUPE_UTILISATEUR_DATE_FIN"
+			size="22" class="inputbox" default=""
+			format="%Y-%m-%d %H:%M:%S" filter="user_utc"
 		/>
 		
 		<field name="alias" type="text"

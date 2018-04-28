@@ -10,8 +10,8 @@ class ArvieModelUtilisateur_discu_maps extends JModelList
 		{
 			$config['filter_fields'] = array(
 				'id',             'ud.id',
-				'utilisateur',    'ud.utilisateur',
-				'discussion',     'ud.discussion',
+				'utilisateur',    'u.nom',
+				'discussion',     'd.nom',
 				'admin',          'ud.est_admin',
 				'published',      'ud.published',
 				'created',        'ud.created',
@@ -44,10 +44,10 @@ class ArvieModelUtilisateur_discu_maps extends JModelList
 		$query->from('#__arvie_utilisateur_discu_map ud');
 
 		// joint la table utilisateurs pour les prenoms
-		$query->select('u.prenom AS utilisateurs')->join('INNER', '#__arvie_utilisateurs AS u ON ud.utilisateur=u.id');
+		$query->select('u.nom AS nom_utilisateur')->join('LEFT', '#__arvie_utilisateurs AS u ON ud.utilisateur=u.id');
 
 		// joint la table discussion pour les noms
-		$query->select('d.nom AS discussion')->join('INNER', '#__arvie_discussions AS d ON ud.discussion=d.id');
+		$query->select('d.nom AS nom_discussion')->join('INNER', '#__arvie_discussions AS d ON ud.discussion=d.id');
 
 
 		// filtre de recherche rapide textuel
@@ -80,7 +80,7 @@ class ArvieModelUtilisateur_discu_maps extends JModelList
 		}
 
 		// tri des colonnes
-		$orderCol = $this->state->get('list.ordering', 'id');
+		$orderCol = $this->state->get('list.ordering', 'u.nom');
 		$orderDirn = $this->state->get('list.direction', 'ASC');
 		$query->order($this->_db->escape($orderCol.' '.$orderDirn));
 

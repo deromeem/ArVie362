@@ -6,19 +6,19 @@ class ArvieHelper extends JHelperContent
 	public static function addSubmenu($vName)
 	{
 		JHtmlSidebar::addEntry(
-			JText::_('Abonnements'),
+			JText::_('COM_ARVIE_ABONNEMENTS'),
 			'index.php?option=com_arvie&view=abonnements',
 			$vName == 'abonnements'
 		);
 		
 		JHtmlSidebar::addEntry(
-			JText::_('Discussions'),
+			JText::_('COM_ARVIE_DISCUSSIONS'),
 			'index.php?option=com_arvie&view=discussions',
 			$vName == 'discussions'
 		);
 		
 		JHtmlSidebar::addEntry(
-			JText::_('Evénements'),
+			JText::_('COM_ARVIE_EVENEMENTS'),
 			'index.php?option=com_arvie&view=evenements',
 			$vName == 'evenements'
 		);
@@ -30,13 +30,13 @@ class ArvieHelper extends JHelperContent
 		);		
 	
 		JHtmlSidebar::addEntry(
-			JText::_('Groupes'),
+			JText::_('COM_ARVIE_GROUPES'),
 			'index.php?option=com_arvie&view=groupes',
 			$vName == 'groupes'
 		);
 		
 		JHtmlSidebar::addEntry(
-			JText::_('Messages'),
+			JText::_('COM_ARVIE_MESSAGES'),
 			'index.php?option=com_arvie&view=messages',
 			$vName == 'messages'
 		);
@@ -48,25 +48,25 @@ class ArvieHelper extends JHelperContent
 		);
 		
 		JHtmlSidebar::addEntry(
-			JText::_('Metiers'),
+			JText::_('COM_ARVIE_METIERS'),
 			'index.php?option=com_arvie&view=metiers',
 			$vName == 'metiers'
 		);
 
 		JHtmlSidebar::addEntry(
-			JText::_('Parrains'),
+			JText::_('COM_ARVIE_PARRAINS'),
 			'index.php?option=com_arvie&view=parrains',
 			$vName == 'parrains'
 		);
 		
 		JHtmlSidebar::addEntry(
-			JText::_('Publications'),
+			JText::_('COM_ARVIE_PUBLICATIONS'),
 			'index.php?option=com_arvie&view=publications',
 			$vName == 'publications'
 		);
 		
 		JHtmlSidebar::addEntry(
-			JText::_('Roles'),
+			JText::_('COM_ARVIE_ROLES'),
 			'index.php?option=com_arvie&view=roles',
 			$vName == 'roles'
 		);
@@ -84,7 +84,7 @@ class ArvieHelper extends JHelperContent
 		);		
 		
 		JHtmlSidebar::addEntry(
-			JText::_('Utilisateurs'),
+			JText::_('COM_ARVIE_UTILISATEURS'),
 			'index.php?option=com_arvie&view=utilisateurs',
 			$vName == 'utilisateurs'
 		);		

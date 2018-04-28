@@ -1,13 +1,13 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
  
-class ArvieControllergroupe_utilisateur_maps extends JControllerForm
+class ArvieControllerGroupe_utilisateur_maps extends JControllerAdmin
 {
-		function display($cachable = false, $urlparams = false) 
-        {
-                $input = JFactory::getApplication()->input;
-                $input->set('view', $input->getCmd('view', 'groupe_utilisateur_maps'));
- 
-                parent::display($cachable, $urlparams);
-        }
+	// surcharge pour gérer la suppression de utilisateurs par le modèle adéquat
+	public function getModel($name = 'Groupe_utilisateur_map', $prefix = 'ArvieModel') 
+	{
+		// récupèrer le modèle de détail ($name au sigulier) pour la suppression assistée d'un (des) enregistrement(s)
+		$model = parent::getModel($name, $prefix, array('ignore_request' => true));
+		return $model;
+	}
 }

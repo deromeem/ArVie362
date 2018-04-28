@@ -22,15 +22,6 @@ if ($saveOrder)
 			<a href="<?php echo JRoute::_('index.php?option=com_arvie&task=utilisateur.edit&id='.(int) $item->id); ?>">
 				<?php echo $this->escape($item->nom); ?>
 			</a>
-			<div class="small hidden-phone">
-				<?php // extrait description selon les paramètres de configuration
-				if ($this->paramDescShow) {
-					$desc = JFilterOutput::cleanText($item->activite);
-					echo substr($desc, 0, $this->paramDescSize);
-					echo (strlen($desc)>$this->paramDescSize?"...":"") ;
-				}
-				?>
-			</div>
 		</div>
 	</td>
 	<td align="small">
@@ -46,7 +37,7 @@ if ($saveOrder)
 		<?php echo JHtml::_('date', $item->modified, $this->paramDateFmt); ?>
 	</td>
 	<td class="center hidden-tablet hidden-phone">
-			<?php echo (int) $item->hits; ?>
+		<?php echo (int) $item->hits; ?>
 	</td>
 	<td class="center hidden-phone">
 		<?php echo (int) $item->id; ?>

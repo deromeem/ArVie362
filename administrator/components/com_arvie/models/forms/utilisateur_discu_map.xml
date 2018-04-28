@@ -5,11 +5,10 @@
 
 		<field name="asset_id" type="hidden" filter="unset" />
 		
-
         <field name="utilisateur" type="sql" label="COM_ARVIE_UTILISATEUR_DISCU_MAP_NOM" default="20"
             description="Utilisateur"
-            query="SELECT id, prenom FROM #__arvie_utilisateurs ORDER BY prenom" 
-			key_field="id" value_field="prenom" required="true"
+            query="SELECT id, nom FROM #__arvie_utilisateurs ORDER BY nom" 
+			key_field="id" value_field="nom" required="true"
         />
 
         <field name="discussion" type="sql" label="COM_ARVIE_UTILISATEUR_DISCU_MAP_DISCU"

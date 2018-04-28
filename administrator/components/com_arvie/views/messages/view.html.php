@@ -48,7 +48,7 @@ class ArvieViewMessages extends JViewLegacy
 		// affiche les boutons d'action
 		JToolBarHelper::addNew('message.add');
 		JToolBarHelper::editList('message.edit');
-		JToolBarHelper::deleteList('Etes vous sûr ?', 'messages.delete');
+		JToolBarHelper::deleteList('COM_ARVIE_DELETE_CONFIRM', 'messages.delete');
 		JToolbarHelper::publish('messages.publish', 'JTOOLBAR_PUBLISH', true);
 		JToolbarHelper::unpublish('messages.unpublish', 'JTOOLBAR_UNPUBLISH', true);
 		JToolbarHelper::archiveList('messages.archive');
@@ -73,10 +73,13 @@ class ArvieViewMessages extends JViewLegacy
 	{
 		// prépare l'affichage des colonnes de tri du calque
 		return array(
-			'u.nom' => JText::_('COM_ARVIE_UTILISATEURS_NOM'),
-			'u.prenom' => JText::_('COM_ARVIE_UTILISATEURS_PRENOM'),
-			'u.published' => JText::_('JSTATUS'),
-			'u.id' => "ID"
+			'u.nom' => JText::_('COM_ARVIE_MESSAGES_AUTEUR'),
+			'd.nom' => JText::_('COM_ARVIE_MESSAGES_DISCUSSION'),
+			'm.contenu' => JText::_('COM_ARVIE_MESSAGES_CONTENU'),
+			'm.published' => JText::_('JSTATUS'),
+			'm.created' => JText::_('COM_ARVIE_CREATED_DATE'),
+			'm.hits' => JText::_('JGLOBAL_HITS'),
+			'm.id' => JText::_('JGRID_HEADING_ID')
 		);
 	}
 }

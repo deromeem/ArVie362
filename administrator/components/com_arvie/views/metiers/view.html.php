@@ -75,7 +75,9 @@ class ArvieViewMetiers extends JViewLegacy
 		return array(
 			'm.label' => JText::_('COM_ARVIE_METIERS_LABEL'),
 			'm.published' => JText::_('JSTATUS'),
-			'id' => "ID"
+			'm.created' => JText::_('COM_ARVIE_CREATED_DATE'),
+			'm.hits' => JText::_('JGLOBAL_HITS'),
+			'm.id' => JText::_('JGRID_HEADING_ID')
 		);
 	}
 }

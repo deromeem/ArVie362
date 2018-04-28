@@ -46,8 +46,8 @@ class ArvieModelDiscussions extends JModelList
 		$query->from('#__arvie_discussions d');
 		
 		
-		//joint entre la table #__arvie_utilisateur_discu_map
-		$query->select('COUNT(*) AS nb_utilisateurs')->join('LEFT','#__arvie_utilisateur_discu_map AS ud ON ud.discussion = d.id');
+		//joint la table message
+		$query->select('COUNT(*) AS nb_messages')->join('LEFT','#__arvie_messages AS m ON m.discussion = d.id');
 		$query->group('d.id');
 
 		// filtre de recherche rapide textuel

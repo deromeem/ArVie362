@@ -75,7 +75,9 @@ class ArvieViewDiscussions extends JViewLegacy
 		return array(
 			'd.nom' => JText::_('COM_ARVIE_DISCUSSIONS_NOM'),
 			'd.published' => JText::_('JSTATUS'),
-			'd.id' => "ID"
+			'd.created' => JText::_('COM_ARVIE_CREATED_DATE'),
+			'p.hits' => JText::_('JGLOBAL_HITS'),
+			'd.id' => JText::_('JGRID_HEADING_ID')
 		);
 	}
 }

@@ -9,18 +9,17 @@ class ArvieModelMessages extends JModelList
 		if (empty($config['filter_fields']))
 		{
 			$config['filter_fields'] = array(
-				'id', 'm.id',
-				'auteur', 'm.auteur',
-				'discussion', 'm.discussion',
-				'contenu', 'm.contenu',
-				'alias', 'm.contact_id',                                
-				'created', 'm.created_id',
-				'created_by', 'm.created_by',
-				'published', 'm.published',
-				'hits', 'm.hits',
-				'modified', 'm.modified',
-				'modified_by', 'm.modified_by'
-				);
+				'id',			'm.id',
+				'auteur',		'u.nom',
+				'discussion',	'd.nom',
+				'contenu',		'm.contenu',
+				'published',	'm.published',
+				'created',		'm.created',
+				'created_by',	'm.created_by',
+				'modified',		'm.modified',
+				'modified_by',	'm.modified_by',
+				'hits',			'm.hits'
+			);
 		}
 		parent::__construct($config);
 	}
@@ -40,8 +39,7 @@ class ArvieModelMessages extends JModelList
 		$published = $this->getUserStateFromRequest($this->context.'.filter.published', 'filter_published', '');
 		$this->setState('filter.published', $published);
 
-		// parent::populateState('modified', 'desc');
-		parent::populateState('u.nom', 'ASC');
+		parent::populateState('m.created', 'DESC');
 	}
 	
 	protected function getListQuery()
@@ -51,14 +49,11 @@ class ArvieModelMessages extends JModelList
 		$query->select('m.id, m.auteur, m.discussion, m.contenu, m.alias, m.published, m.created, m.created_by, m.modified, m.modified_by, m.hits');
 		$query->from('#__arvie_messages m');
 
-		// joint la table utilisateurs
+		// joint la table utilisateurs pour l'auteur
 		$query->select('u.nom AS nom_auteur')->join('LEFT', '#__arvie_utilisateurs AS u ON m.auteur=u.id');
 
 		// joint la table discussions
-		$query->select('d.nom AS discussion')->join('LEFT', '#__arvie_discussions AS d ON m.discussion=d.id');
-
-		// joint la table _users de Joomla
-		// $query->select('ul.name AS linked_user')->join('LEFT', '#__users AS ul ON ul.id=a.affected_to');
+		$query->select('d.nom AS nom_discussion')->join('LEFT', '#__arvie_discussions AS d ON m.discussion=d.id');
 
 		// filtre de recherche rapide textuelle
 		$search = $this->getState('filter.search');
@@ -73,29 +68,22 @@ class ArvieModelMessages extends JModelList
 				// Compile les clauses de recherche
 				$searches	= array();
 				$searches[]	= 'u.nom LIKE '.$search;
-				$searches[]	= 'c.discussion LIKE '.$search;
-				$searches[]	= 't.alias LIKE '.$search;
-				$searches[]	= 'e.nom LIKE '.$search;
+				$searches[]	= 'm.discussion LIKE '.$search;
 				// Ajoute les clauses à la requête
 				$query->where('('.implode(' OR ', $searches).')');
 			}
 		}
 
-		// filtre selon l'état du filtre 'filter_alias'
-		$alias = $this->getState('filter.alias');
-		if (is_numeric($alias)) {
-			$query->where('m.typescontacts_id=' . (int) $alias);
-		}
 		// filtre selon l'état du filtre 'filter_created'
 		$created = $this->getState('filter.created');
 		if (is_numeric($created)) {
-			$query->where('m.createds_id=' . (int) $created);
+			$query->where('m.created=' . (int) $created);
 		}
 		// filtre selon l'état du filtre 'filter_published'
 		$published = $this->getState('filter.published');
 		if (is_numeric($published)) {
 			$query->where('m.published=' . (int) $published);
-		}
+		}	
 		elseif ($published === '') {
 			// si aucune sélection, on n'affiche que les publiés et dépubliés
 			$query->where('(m.published=0 OR m.published=1)');
@@ -106,7 +94,7 @@ class ArvieModelMessages extends JModelList
 		$orderDirn = $this->state->get('list.direction', 'ASC');
 		$query->order($this->_db->escape($orderCol.' '.$orderDirn));
 
-		//  echo nl2br(str_replace('#__','arvie_',$query));			// TEST/DEBUG
+		// echo nl2br(str_replace('#__','arvie_',$query));			// TEST/DEBUG
 		return $query;
 	}
 }

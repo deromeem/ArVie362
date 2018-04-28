@@ -9,7 +9,7 @@ class ArvieModelMetiers extends JModelList
 		if (empty($config['filter_fields']))
 		{
 			$config['filter_fields'] = array(
-				'id' =>             'id',
+				'id' =>             'm.id',
 				'label' =>        	'm.label',
 				'alias' =>    		'm.alias',
 				'published' =>      'm.published',
@@ -83,7 +83,7 @@ class ArvieModelMetiers extends JModelList
 		$orderDirn = $this->state->get('list.direction', 'ASC');
 		$query->order($this->_db->escape($orderCol.' '.$orderDirn));
 
-		//echo nl2br(str_replace('#__','arvie_',$query));			// TEST/DEBUG
+		// echo nl2br(str_replace('#__','arvie_',$query));			// TEST/DEBUG
 		return $query;
 	}
 }

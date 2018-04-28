@@ -48,7 +48,7 @@ class ArvieViewUtilisateurs extends JViewLegacy
 		// affiche les boutons d'action
 		JToolBarHelper::addNew('utilisateur.add');
 		JToolBarHelper::editList('utilisateur.edit');
-		JToolBarHelper::deleteList('Etes vous sûr ?', 'utilisateurs.delete');
+		JToolBarHelper::deleteList('COM_ARVIE_DELETE_CONFIRM', 'utilisateurs.delete');
 		JToolbarHelper::publish('utilisateurs.publish', 'JTOOLBAR_PUBLISH', true);
 		JToolbarHelper::unpublish('utilisateurs.unpublish', 'JTOOLBAR_UNPUBLISH', true);
 		JToolbarHelper::archiveList('utilisateurs.archive');
@@ -75,7 +75,10 @@ class ArvieViewUtilisateurs extends JViewLegacy
 		return array(
 			'u.nom' => JText::_('COM_ARVIE_UTILISATEURS_NOM'),
 			'u.prenom' => JText::_('COM_ARVIE_UTILISATEURS_PRENOM'),
+			'u.email' => JText::_('COM_ARVIE_UTILISATEURS_EMAIL'),
 			'u.published' => JText::_('JSTATUS'),
+			'u.modified' => JText::_('COM_ARVIE_MODIFIED_DATE'),
+			'u.hits' => JText::_('JGLOBAL_HITS'),
 			'u.id' => "ID"
 		);
 	}

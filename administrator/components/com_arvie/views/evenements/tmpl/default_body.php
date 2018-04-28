@@ -20,7 +20,7 @@ if ($saveOrder)
 	<td class="wrap has-context">
 		<div class="pull-left">
 			<a href="<?php echo JRoute::_('index.php?option=com_arvie&task=evenement.edit&id='.(int) $item->id); ?>">
-				<?php echo $this->escape($item->titre); ?>
+				<?php echo $this->escape($item->titre_publication); ?>
 			</a>
 			<div class="small hidden-phone">
 				<?php // extrait description selon les paramètres de configuration
@@ -46,7 +46,7 @@ if ($saveOrder)
 		<?php echo JHtml::_('date', $item->modified, $this->paramDateFmt); ?>
 	</td>
 	<td class="center hidden-tablet hidden-phone">
-			<?php echo (int) $item->hits; ?>
+		<?php echo (int) $item->hits; ?>
 	</td>
 	<td class="center hidden-phone">
 		<?php echo (int) $item->id; ?>

@@ -22,7 +22,8 @@ JHtml::_('formbehavior.chosen', 'select');
 		<div class="control-group">
 			<div class="control-label"><?php echo $this->form->getLabel('nom'); ?></div>
 			<div class="controls"><?php echo $this->form->getInput('nom'); ?></div>
-
+		</div>					
+		<div class="control-group">
 			<div class="control-label"><?php echo $this->form->getLabel('alias'); ?></div>
 			<div class="controls"><?php echo $this->form->getInput('alias'); ?></div>
 		</div>					
@@ -32,36 +33,40 @@ JHtml::_('formbehavior.chosen', 'select');
 		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'details')); ?>
 
 		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', JText::_('COM_ARVIE_GROUPE')); ?>
-		
-		<div class="control-group">
-			<div class="span3">
-				<div class="control-label"><?php echo $this->form->getLabel('groupe_parent'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('groupe_parent'); ?></div>
-			</div>
-		</div>
-
-		<div class="control-group">
-			<div class="span3">
-				<div class="control-label"><?php echo $this->form->getLabel('est_groupe_interet'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('est_groupe_interet'); ?></div>
-			</div>
-		</div>
-
-		<div class="control-group">
-			<div class="span3">
-				<div class="control-label"><?php echo $this->form->getLabel('est_public'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('est_public'); ?></div>
-			</div>
-		</div>
-		
 		<div class="row-fluid">
+			<div class="span9">
+				<div class="form-vertical">		
+					<div class="control-group">
+						<div class="span2">
+							<div class="control-label"><?php echo $this->form->getLabel('groupe_parent'); ?></div>
+						</div>					
+						<div class="span7">
+							<div class="controls"><?php echo $this->form->getInput('groupe_parent'); ?></div>
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="span2">
+							<div class="control-label"><?php echo $this->form->getLabel('est_groupe_interet'); ?></div>
+						</div>					
+						<div class="span7">
+							<div class="controls"><?php echo $this->form->getInput('est_groupe_interet'); ?></div>
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="span2">
+							<div class="control-label"><?php echo $this->form->getLabel('est_public'); ?></div>
+						</div>					
+						<div class="span7">
+							<div class="controls"><?php echo $this->form->getInput('est_public'); ?></div>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="span3">
 				<?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
 			</div>
 		</div>
 		<?php echo JHtml::_('bootstrap.endTab'); ?>
-
-
 
 		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'publishing', JText::_('JGLOBAL_FIELDSET_PUBLISHING', true)); ?>
 		<div class="row-fluid form-horizontal-desktop">

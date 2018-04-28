@@ -33,9 +33,6 @@ $sortFields = $this->getSortFields();
 		<div class="btn-group pull-left">
 			<button type="submit" class="btn hasTooltip" title="Recherche rapide">
 				<i class="icon-search"></i></button>
-			<button type="button" class="btn hasTooltip" title="Effacer" 
-				onclick="document.id('filter_search').value='';this.form.submit();">
-				<i class="icon-remove"></i></button>
 		</div>
 
 		<div class="btn-group pull-right hidden-phone">

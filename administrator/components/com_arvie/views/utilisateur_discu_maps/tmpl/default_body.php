@@ -7,7 +7,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 $saveOrder	= $listOrder == 'ordering';
 if ($saveOrder)
 {
-	$saveOrderingUrl = 'index.php?option=com_arvie&task=utilisateur_discu_map.saveOrderAjax&tmpl=component';
+	$saveOrderingUrl = 'index.php?option=com_arvie&task=utilisateur_discu_maps.saveOrderAjax&tmpl=component';
 	JHtml::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 }
 ?>
@@ -20,36 +20,27 @@ if ($saveOrder)
 		<td class="wrap has-context">
 			<div class="pull-left">
 				<a href="<?php echo JRoute::_('index.php?option=com_arvie&task=utilisateur_discu_map.edit&id='.(int) $item->id); ?>">
-					<?php echo $this->escape($item->id); ?>
+					<?php echo $this->escape($item->nom_utilisateur); ?>
 				</a>
-				<div class="small hidden-phone">
-					<?php // extrait description selon les paramètres de configuration
-					if ($this->paramDescShow) {
-						$desc = JFilterOutput::cleanText($item->id);
-						echo substr($desc, 0, $this->paramDescSize);
-						echo (strlen($desc)>$this->paramDescSize?"...":"") ;
-					}
-					?>
-				</div>
 			</div>
                 </td>
-                <td align="small">
-                        <?php echo $item->utilisateur; ?>
-		</td>
-
 		<td align="small">
-                        <?php echo $item->discussion; ?>
+                        <?php echo $item->nom_discussion; ?>
 		</td>
 		<td align="small">
                         <?php echo $item->est_admin; ?>
 		</td>
-
 		<td>
-			<?php echo JHtml::_('jgrid.published', $item->published, $i, 'utilisateur_discu_map.', true); ?>
+			<?php echo JHtml::_('jgrid.published', $item->published, $i, 'utilisateur_discu_maps.', true); ?>
 		</td>
-
-		<td class="hidden-tablet hidden-phone">
-				<?php echo (int) $item->hits; ?>
+		<td class="center hidden-phone">
+			<?php echo JHtml::_('date', $item->created, $this->paramDateFmt); ?>
+		</td>
+		<td class="center hidden-tablet hidden-phone">
+			<?php echo (int) $item->hits; ?>
+		</td>
+		<td class="center hidden-phone">
+			<?php echo (int) $item->id; ?>
 		</td>
         </tr>
 <?php endforeach; ?>

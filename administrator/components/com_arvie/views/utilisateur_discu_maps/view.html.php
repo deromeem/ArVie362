@@ -43,12 +43,12 @@ class ArvieViewUtilisateur_discu_maps extends JViewLegacy
 	protected function addToolBar() 
 	{
 		// affiche le titre de la page
-		JToolBarHelper::title(JText::_('COM_ARVIE')." : ".JText::_('COM_ARVIE_UTILISATEUR_DISCU_MAPS'));
+		JToolBarHelper::title(JText::_('COM_ARVIE')." : ".JText::_('COM_ARVIE_UTILISATEUR_DISCU_MAP'));
 		
 		// affiche les boutons d'action
-		JToolBarHelper::addNew('utilisateur_discu_map.add', 'Nouveau utilisateur_discu_map');
-		JToolBarHelper::editList('utilisateur_discu_map.edit', 'Modifier utilisateur_discu_map');
-		JToolBarHelper::deleteList('Etes vous sur ?', 'utilisateur_discu_map.delete', 'Supprimer utilisateur_discu_map');
+		JToolBarHelper::addNew('utilisateur_discu_map.add');
+		JToolBarHelper::editList('utilisateur_discu_map.edit');
+		JToolBarHelper::deleteList('COM_ARVIE_DELETE_CONFIRM', 'utilisateur_discu_map.delete');
 		JToolbarHelper::publish('utilisateur_discu_maps.publish', 'JTOOLBAR_PUBLISH', true);
 		JToolbarHelper::unpublish('utilisateur_discu_maps.unpublish', 'JTOOLBAR_UNPUBLISH', true);
 		JToolbarHelper::archiveList('utilisateur_discu_maps.archive');
@@ -73,11 +73,13 @@ class ArvieViewUtilisateur_discu_maps extends JViewLegacy
 	{
 		// prépare l'affichage des colonnes de tri du calque
 		return array(
+			'u.nom' => JText::_('COM_ARVIE_UTILISATEUR_DISCU_MAP_NOM'),
+			'd.nom' => JText::_('COM_ARVIE_UTILISATEUR_DISCU_MAP_DISCU'),
+			'ud.est_admin' => JText::_('COM_ARVIE_UTILISATEUR_DISCU_MAP_ADMIN'),
 			'ud.published' => JText::_('JSTATUS'),
-			'ud.utilisateur' => 'Utilisateur',
-			'ud.discussion' => 'Discussion',
-			'ud.id' => 'ID',
-			'ud.est_admin' => 'Admin',
+			'ud.created' => JText::_('COM_ARVIE_CREATED_DATE'),
+			'ud.hits' => JText::_('JGLOBAL_HITS'),
+			'ud.id' => JText::_('JGRID_HEADING_ID')
 		);
 	}
 

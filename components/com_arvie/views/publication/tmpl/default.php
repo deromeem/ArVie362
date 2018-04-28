@@ -27,14 +27,6 @@ $isDirector = (in_array('12', $user->groups));  // sets flag when user group is 
 			<tbody>
 				<tr>
 					<td width="20%" class="nowrap right">
-						<span class="label"><?php echo JText::_('COM_ARVIE_PUBLICATIONS_ID'); ?></span>
-					</td>
-					<td width="80%">
-						<h4><?php echo $this->item->id ?></h4>
-					</td>
-				</tr>
-				<tr>
-					<td width="20%" class="nowrap right">
 						<span class="label"><?php echo JText::_('COM_ARVIE_PUBLICATIONS_PARENT'); ?></span>
 					</td>
 					<td width="80%">

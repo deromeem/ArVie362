@@ -11,14 +11,13 @@ class ArvieModelEvenements extends JModelList
 			$config['filter_fields'] = array(
 				'id',              'e.id',
 				'titre',           'p.titre',
-				'texte',           'p.texte',
 				'date_event',      'e.date_event',
 				'lieu',            'e.lieu',
 				'alias',           'e.alias',
 				'published',       'e.published',
 				'created',         'e.created',
 				'created_by',      'e.created_by',
-				'modified',        'e.modifed',
+				'modified',        'e.modified',
 				'modified_by',     'e.modified_by',
 				'hits',            'e.hits'
 			);
@@ -48,8 +47,8 @@ class ArvieModelEvenements extends JModelList
 		$query->select('e.id, e.date_event, e.lieu, e.alias, e.published, e.created, e.created_by, e.modified, e.modified_by, e.hits');
 		$query->from('#__arvie_evenements e');
 		
-		// joint la table users
-		$query->select('p.titre, p.texte')->join('INNER', '#__arvie_publications AS p ON e.id = p.id');
+		// joint la table publications
+		$query->select('p.titre AS titre_publication')->join('INNER', '#__arvie_publications AS p ON e.publication = p.id');
 		
 
 		// filtre de recherche rapide textuel
@@ -88,7 +87,7 @@ class ArvieModelEvenements extends JModelList
 		$orderDirn = $this->state->get('list.direction', 'ASC');
 		$query->order($this->_db->escape($orderCol.' '.$orderDirn));
 
-		// echo nl2br(str_replace('#__','egs_',$query));			// TEST/DEBUG
+		// echo nl2br(str_replace('#__','arvie_',$query));			// TEST/DEBUG
 		return $query;
 	}
 }

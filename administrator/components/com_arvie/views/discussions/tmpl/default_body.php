@@ -35,13 +35,13 @@ if ($saveOrder)
 	</td>
 	
 	<td class="center">
-		<?php echo (int) $item->nb_utilisateurs; ?>
+		<?php echo (int) $item->nb_messages; ?>
 	</td>
 	<td width="5%" align="center">
 		<?php echo JHtml::_('jgrid.published', $item->published, $i, 'discussions.', true); ?>
 	</td>
 	<td class="center hidden-phone">
-		<?php echo JHtml::_('date', $item->modified, $this->paramDateFmt); ?>
+		<?php echo JHtml::_('date', $item->created, $this->paramDateFmt); ?>
 	</td>
 	<td class="center hidden-tablet hidden-phone">
 			<?php echo (int) $item->hits; ?>

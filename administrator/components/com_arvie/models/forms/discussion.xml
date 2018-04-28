@@ -9,6 +9,12 @@
             description="COM_ARVIE_DISCUSSIONS_NOM"
             size="40" class="inputbox" default="" required="true"
         />
+		<field name="alias" type="text"
+			label="JFIELD_ALIAS_LABEL"
+			description="JFIELD_ALIAS_DESC"
+			hint="JFIELD_ALIAS_PLACEHOLDER"
+			class="inputbox" size="45"
+		/>
 		
 		<field id="published" name="published" type="list"
 			label="JSTATUS"	description="JSTATUS"

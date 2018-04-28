@@ -46,9 +46,9 @@ class ArvieViewGroupes extends JViewLegacy
 		JToolBarHelper::title('Arvie : Groupes');
 		
 		// affiche les boutons d'action
-		JToolBarHelper::addNew('groupe.add', 'Nouveau groupe');
-		JToolBarHelper::editList('groupe.edit', 'Modifier groupe');
-		JToolBarHelper::deleteList('Etes vous sur ?', 'groupes.delete', 'Supprimer groupes');
+		JToolBarHelper::addNew('groupe.add');
+		JToolBarHelper::editList('groupe.edit');
+		JToolBarHelper::deleteList('COM_ARVIE_DELETE_CONFIRM', 'groupes.delete');
 		JToolbarHelper::publish('groupes.publish', 'JTOOLBAR_PUBLISH', true);
 		JToolbarHelper::unpublish('groupes.unpublish', 'JTOOLBAR_UNPUBLISH', true);
 		JToolbarHelper::archiveList('groupes.archive');

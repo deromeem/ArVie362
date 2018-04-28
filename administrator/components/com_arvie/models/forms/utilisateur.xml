@@ -7,25 +7,31 @@
 		
         <field name="nom" type="text" label="COM_ARVIE_UTILISATEURS_NOM"
             description="COM_ARVIE_UTILISATEURS_NOM"
-            size="40" class="inputbox" default="" required="true"
+            size="40" class="input-large-text" default="" required="true"
         />
-
         <field name="prenom" type="text" label="COM_ARVIE_UTILISATEURS_PRENOM"
             description="COM_ARVIE_UTILISATEURS_PRENOM"
-            size="40" class="inputbox" default="" required="true"
+            size="40" class="input-large-text" default="" required="true"
         />
+		<field name="alias" type="text"
+			label="JFIELD_ALIAS_LABEL"
+			description="JFIELD_ALIAS_DESC"
+			hint="JFIELD_ALIAS_PLACEHOLDER"
+			class="inputbox" size="45"
+		/>
 
         <field name="email" type="email" label="COM_ARVIE_UTILISATEURS_EMAIL"
             description="COM_ARVIE_UTILISATEURS_EMAIL"
-            size="40" class="inputbox" default=""
+            size="40" class="inputbox" default="" required="true"
         />
 		<field name="mobile" type="mobile" label="COM_ARVIE_UTILISATEURS_MOBILE"
             description="COM_ARVIE_UTILISATEURS_MOBILE"
-            size="40" class="inputbox" default=""
+            size="40" class="inputbox" default="" required="false"
         />
-		<field name="date_naiss" type="date_naiss" label="COM_ARVIE_UTILISATEURS_DATE_NAISS"
+		<field name="date_naiss" type="calendar" label="COM_ARVIE_UTILISATEURS_DATE_NAISS"
             description="COM_ARVIE_UTILISATEURS_DATE_NAISS"
-            size="40" class="inputbox" default=""
+			class="inputbox" default="" required="false" filter="user_utc" format="%Y-%m-%d"
+			showtime="false" todaybutton="false" filltable="false" translateformat="true"
         />
 		
 		<field id="published" name="published" type="list"
@@ -41,8 +47,7 @@
 			<option value="-2">
 				JTRASHED</option>
 		</field>
-		
-		
+				
 		<field
 			name="hits" type="text" label="JGLOBAL_HITS"
 			description="JGLOBAL_HITS"

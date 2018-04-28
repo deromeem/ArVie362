@@ -5,22 +5,28 @@
 
 		<field name="asset_id" type="hidden" filter="unset" />
 		
-        <field name="titre" type="text" label="COM_ARVIE_PUBLICATIONS_TITRE"
-            description="COM_ARVIE_EVENEMENTS_NOM"
-            size="40" class="inputbox" default="" required="true"
-        />
+	    <field name="publication" type="sql" default="" label="COM_ARVIE_EVENEMENTS_TITRE" 
+			description="COM_ARVIE_EVENEMENTS_TITRE"
+			query="SELECT id, titre FROM #__arvie_publications ORDER BY titre" 
+			key_field="id" value_field="titre" required="true"
+		/>
 
-        <field name="date_event" type="text" label="COM_ARVIE_EVENEMENTS_DATE_EVENT"
-            description="COM_ARVIE_EVENEMENTS_DATE_EVENT"
-            size="40" class="inputbox" default="" required="true"
-        />
-
+		<field
+			name="date_event" type="calendar" label="COM_ARVIE_EVENEMENTS_DATE_EVENT"
+			description="COM_ARVIE_EVENEMENTS_DATE_EVENT"
+			size="22" class="inputbox" default=""
+			format="%Y-%m-%d %H:%M:%S" filter="user_utc"
+		/>
         <field name="lieu" type="lieu" label="COM_ARVIE_EVENEMENTS_LIEU"
             description="COM_ARVIE_EVENEMENTS_LIEU"
             size="40" class="inputbox" default=""
         />
-
-        
+		<field name="alias" type="text"
+			label="JFIELD_ALIAS_LABEL"
+			description="JFIELD_ALIAS_DESC"
+			hint="JFIELD_ALIAS_PLACEHOLDER"
+			class="inputbox" size="45"
+		/>
 		
 		<field id="published" name="published" type="list"
 			label="JSTATUS"	description="JSTATUS"
