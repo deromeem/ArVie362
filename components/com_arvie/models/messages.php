@@ -65,7 +65,7 @@ class ArvieModelMessages extends JModelList
 		if (!empty($search)) {
 			// recherche prefixée par 'id:'
 			if (stripos($search, 'id:') === 0) {
-				$query->where('c.id = '.(int) substr($search, 3));
+				$query->where('m.id = '.(int) substr($search, 3));
 			}
 			else {
 				// recherche textuelle classique (sans préfixe)
@@ -73,9 +73,9 @@ class ArvieModelMessages extends JModelList
 				// Compile les clauses de recherche
 				$searches	= array();
 				$searches[]	= 'u.nom LIKE '.$search;
-				$searches[]	= 'c.discussion LIKE '.$search;
-				$searches[]	= 't.alias LIKE '.$search;
-				$searches[]	= 'e.nom LIKE '.$search;
+				$searches[]	= 'm.discussion LIKE '.$search;
+				$searches[]	= 'm.alias LIKE '.$search;
+				$searches[]	= 'u.nom LIKE '.$search;
 				// Ajoute les clauses à la requête
 				$query->where('('.implode(' OR ', $searches).')');
 			}
@@ -106,7 +106,7 @@ class ArvieModelMessages extends JModelList
 		$orderDirn = $this->state->get('list.direction', 'ASC');
 		$query->order($this->_db->escape($orderCol.' '.$orderDirn));
 
-		// echo nl2br(str_replace('#__','arvie_',$query));			// TEST/DEBUG
+		//echo nl2br(str_replace('#__','arvie_',$query));			// TEST/DEBUG
 		return $query;
 	}
 }

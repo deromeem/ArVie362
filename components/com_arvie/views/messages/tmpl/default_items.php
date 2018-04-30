@@ -42,15 +42,15 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 	<table class="table table-striped" id="articleList">
 		<thead>
 			<tr>
-				<th class="title">
+				<!--<th class="title">
 					<?php echo JHtml::_('grid.sort', JText::_('Id'), 'id', $listDirn, $listOrder) ?>
-				</th>
+				</th>-->
 				<!-- <th class="title">Publié</th> -->
 				<th class="title">
-					<?php echo JHtml::_('grid.sort', JText::_('Auteur'), 'auteur', $listDirn, $listOrder) ?>
+					<?php echo JHtml::_('grid.sort', JText::_('Auteur'), 'u.nom', $listDirn, $listOrder) ?>
 				</th>
 				<th class="title">
-					<?php echo JHtml::_('grid.sort', JText::_('Discussion'), 'discussion', $listDirn, $listOrder) ?>
+					<?php echo JHtml::_('grid.sort', JText::_('Discussion'), 'm.discussion', $listDirn, $listOrder) ?>
 				</th>
 				<th class="title">
 					<?php echo JHtml::_('grid.sort', JText::_('Contenu'), 'contenu', $listDirn, $listOrder) ?>
@@ -65,11 +65,11 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 		<tbody>
 			<?php foreach($this->items as $i => $item) : ?>
 				<tr class="row<?php echo $i % 2; ?>">
-					<td>
+					<!--<td>
 						<a href="<?php echo $uriCompoDetail.$item->id ?>"><?php echo $item->id ?></a>
-					</td>
+					</td>-->
 					<td>
-						<a href="<?php echo $uriCompoDetail.$item->id ?>"><?php echo $item->auteur ?></a>
+						<a href="<?php echo $uriCompoDetail.$item->id ?>"><?php echo $item->nom_auteur ?></a>
 					</td>
 					<td>
 						<a href="<?php echo $uriCompoDetail.$item->id ?>"><?php echo $item->discussion ?></a>
