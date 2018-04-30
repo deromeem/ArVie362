@@ -9,9 +9,9 @@
 	<fields name="request">
 		<fieldset name="request">
 			<field name="id" type="text"
-				label="ID entreprise"
-				description="Saisir l'ID du utilisateur à lier à ce menu"
-				required="true" edit="false" clear="true"                         
+				label="ID utilisateur"
+				description="Saisir l'ID du utilisateur à lier à ce menu (si vide, prendra l'id de l'utilisateur connecté)"
+				required="false" edit="false" clear="true"                         
 			/>
 		</fieldset>
 	</fields>
