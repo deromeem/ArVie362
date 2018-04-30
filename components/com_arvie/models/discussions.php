@@ -84,7 +84,7 @@ class ArvieModelDiscussions extends JModelList
 		$query->where('d.published=1');
 
 		// filtre les elements est_admin
-		$query->where('ud.est_admin=1');
+		$query->where('ud.est_admin=0');
 
 		
 		// tri des colonnes
