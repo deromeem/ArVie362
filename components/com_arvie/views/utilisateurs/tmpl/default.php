@@ -12,7 +12,7 @@ $isEleve = (in_array('15', $user->groups));		// sets flag when user group is '12
 $isAncien = (in_array('16', $user->groups));	// sets flag when user group is '12' that is 'ArVie Direction'
 ?>
 
-<?php if ( !$isAdmin && !$isDirector && !$isProf) : ?>
+<?php if ( !$isAdmin && !$isDirector && !$isProf && !$isEleve) : ?>
 	<?php echo JError::raiseWarning( 100, JText::_('COM_ARVIE_RESTRICTED_ACCESS') ); ?>
 <?php else : ?>
 

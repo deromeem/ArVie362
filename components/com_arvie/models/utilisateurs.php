@@ -57,7 +57,7 @@ class ArvieModelUtilisateurs extends JModelList
 		$query->select('u.id, u.nom, u.prenom, u.email, u.mobile, u.published, u.hits, u.modified');
 		$query->from('#__arvie_utilisateurs AS u');
 		$query->join('LEFT', "#__arvie_utilisateurs AS cuser ON cuser.email = '$user->email'");
-		if ($isProf) {
+		if ($isProf || $isEleve) {
 			$query->join('LEFT', "#__arvie_groupe_utilisateur_map gup ON gup.utilisateur=cuser.id");
 			$query->join('LEFT', "#__arvie_groupes AS g ON g.id = gup.groupe");
 			$query->select('gue.role')->join('INNER', "#__arvie_groupe_utilisateur_map AS gue ON gue.groupe=gup.groupe AND gue.utilisateur = u.id");
@@ -84,7 +84,7 @@ class ArvieModelUtilisateurs extends JModelList
 		// filtre les elements publies
 		$query->where('u.published = 1');
 		$query->where('u.id != cuser.id');
-		if ($isProf) {
+		if ($isProf || $isEleve) {
 			$query->where('gue.role IN(2,4)'); // est eleve / delegué / suppléant
 			$query->where('g.est_groupe_interet = 0');
 			$query->where('g.published = 1');
