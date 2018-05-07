@@ -52,6 +52,11 @@ class ArvieModelGroupes extends JModelList
 
 	protected function _getListQuery()
 	{
+
+		$user = JFactory::getUser();					// gets current user object
+		$isProf = (in_array('14', $user->groups));		// sets flag when user group is '14' that is 'ArVie Professeur'
+		$isEleve = (in_array('15', $user->groups));		// sets flag when user group is '15' that is 'ArVie Eleve'
+
 		// construit la requ�te d'affichage de la liste
 		$query	= $this->_db->getQuery(true);
 		$query->select('g.id, g.nom,g.groupe_parent, g.est_groupe_interet,g.est_public, g.published, g.hits, g.modified');
