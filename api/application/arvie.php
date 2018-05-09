@@ -36,16 +36,16 @@ class AppArvieWeb extends JApplicationWeb
 	
 	public function doExecute()
 	{
-		// Initialisation du tableau pour la r�ponse JSON :
+		// Initialisation du tableau pour la réponse JSON :
 		$response = array();
-		// Initialisation des param�tres de l'url :
+		// Initialisation des paramètres de l'url :
 		$login = "";
 		$pwd = "";
 		$task = "";
 		$id = 0;
 		$email = "";
 		
-		// R�cup�ration des param�tres de connexion de l'url (en GET ou POST) :
+		// Récupération des paramètres de connexion de l'url (en GET ou POST) :
 		if ((isset($_GET["login"])) and (isset($_GET["pwd"]))) {
 			$login = $_GET['login'];
 			$pwd = $_GET['pwd'];
@@ -53,13 +53,13 @@ class AppArvieWeb extends JApplicationWeb
 			$login = $_POST['login'];
 			$pwd = $_POST['pwd'];
 		}
-		// R�cup�ration du param�tre d'action, si existant, de l'url (en GET ou POST) :
+		// Récupération du paramètre d'action, si existant, de l'url (en GET ou POST) :
 		if (isset($_GET["task"])) {
 			$task = $_GET['task'];
 		} elseif (isset($_POST["task"])) {
 			$task = $_POST['task'];
 		}
-		// R�cup�ration du param�tre id, si existant, de l'url (en GET ou POST) :
+		// Récupération du paramètre id, si existant, de l'url (en GET ou POST) :
 		if (isset($_GET["id"])) {
 			$id = $_GET['id'];
 		} elseif (isset($_POST["id"])) {
@@ -86,11 +86,11 @@ class AppArvieWeb extends JApplicationWeb
 				$response["user"] = "";		
 				echo json_encode($response);
 			}else{
-				// Connexion r�ussie !
+				// Connexion réussie !
 				$response["success"] = 1;
 				$response["message"] = "Connexion reussie";
 				
-				// Recherche le nom et l'email de l'utilisateur connect� :
+				// Recherche le nom et l'email de l'utilisateur connecté :
 				$this->_db = JFactory::getDBO();
 				$query = $this->_db->getQuery(true);
 				$query->select('name, email');
@@ -100,9 +100,9 @@ class AppArvieWeb extends JApplicationWeb
 				$response["user"] = $this->_db->loadObject();
 				$email = $response["user"]->email;
 				
-				// Recherche la vue �ventuellement demand�e :
+				// Recherche la vue éventuellement demandée :
 				if ($task !== ""){
-					if ($task == "modeles"){
+					if (($task == "publications") or ($task == "evenements")){
 						$response[$task] = $this->LoadViewResult($task, $id);
 					} else {
 						$response[$task] = $this->LoadViewResult($task, $id, $email);
@@ -112,7 +112,7 @@ class AppArvieWeb extends JApplicationWeb
 			}
 			
 		} else {
-			// Param�tre(s) de connexion manquant(s) :
+			// Paramètre(s) de connexion manquant(s) :
 			$response["success"] = 0;
 			$response["message"] = "Echec de connexion";
 			$response["user"] = "";
@@ -123,7 +123,7 @@ class AppArvieWeb extends JApplicationWeb
 	
 	public function isAdmin()
 	{
-		// fonction appel� quand l'utilisateur est connect�
+		// fonction appelée quand l'utilisateur est connecté
 		return false;
     }
 

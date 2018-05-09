@@ -46,8 +46,8 @@ class ArvieViewgroupe_utilisateur_maps extends JViewLegacy
 		JToolBarHelper::title(JText::_('COM_ARVIE')." : ".JText::_('COM_ARVIE_GROUPE_UTILISATEUR_MAP'));
 		
 		// affiche les boutons d'action
-		JToolBarHelper::addNew('groupe_utilisateur_maps.add');
-		JToolBarHelper::editList('groupe_utilisateur_maps.edit');
+		JToolBarHelper::addNew('groupe_utilisateur_map.add');
+		JToolBarHelper::editList('groupe_utilisateur_map.edit');
 		JToolBarHelper::deleteList('COM_ARVIE_DELETE_CONFIRM', 'groupe_utilisateur_maps.delete');
 		JToolbarHelper::publish('groupe_utilisateur_maps.publish', 'JTOOLBAR_PUBLISH', true);
 		JToolbarHelper::unpublish('groupe_utilisateur_maps.unpublish', 'JTOOLBAR_UNPUBLISH', true);

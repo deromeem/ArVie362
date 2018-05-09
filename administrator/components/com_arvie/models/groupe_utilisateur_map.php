@@ -10,7 +10,7 @@ class ArvieModelGroupe_utilisateur_map extends JModelAdmin
 	// Surcharges des méthodes de la classe mère pour :
 	
 	// 1) définir la table de soutien à utiliser
-	public function getTable($type = 'groupe_utilisateur_map', $prefix = 'ArvieTable', $config = array()) 
+	public function getTable($type = 'Groupe_utilisateur_map', $prefix = 'ArvieTable', $config = array()) 
 	{
 		return JTable::getInstance($type, $prefix, $config);
 	}

@@ -48,7 +48,7 @@ class ArvieViewMetier_groupe_maps extends JViewLegacy
 		// affiche les boutons d'action
 		JToolBarHelper::addNew('metier_groupe_map.add');
 		JToolBarHelper::editList('metier_groupe_map.edit');
-		JToolBarHelper::deleteList('Etes vous sûr ?', 'metier_groupe_maps.delete');
+		JToolBarHelper::deleteList('COM_ARVIE_DELETE_CONFIRM', 'metier_groupe_maps.delete');
 		JToolbarHelper::publish('metier_groupe_maps.publish', 'JTOOLBAR_PUBLISH', true);
 		JToolbarHelper::unpublish('metier_groupe_maps.unpublish', 'JTOOLBAR_UNPUBLISH', true);
 		JToolbarHelper::archiveList('metier_groupe_maps.archive');

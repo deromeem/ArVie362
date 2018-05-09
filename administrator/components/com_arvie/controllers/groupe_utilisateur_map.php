@@ -6,7 +6,7 @@ class ArvieControllerGroupe_Utilisateur_map extends JControllerForm
         function display($cachable = false, $urlparams = false) 
         {
                 $input = JFactory::getApplication()->input;
-                $input->set('view', $input->getCmd('view', 'Groupe'));
+                $input->set('view', $input->getCmd('view', 'Groupe_Utilisateur_map'));
 
                 parent::display($cachable, $urlparams);
         }
