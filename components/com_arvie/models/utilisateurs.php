@@ -85,7 +85,7 @@ class ArvieModelUtilisateurs extends JModelList
 		$query->where('u.published = 1');
 		if ($isProf || $isEleve) {
 			$query->where('u.id != cuser.id');
-			$query->where('gue.role IN(2,4)'); // est eleve / delegué / suppléant
+			$query->where('gue.role IN(2,3,4)'); // est eleve / delegué / suppléant
 			$query->where('g.est_groupe_interet = 0');
 			$query->where('g.published = 1');
 		}
