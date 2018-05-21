@@ -5,6 +5,9 @@ $uriCompoDetail = JURI::base(true)."/index.php?option=com_arvie&view=groupe&id="
 
 $listOrder	= $this->escape($this->state->get('list.ordering'));
 $listDirn	= $this->escape($this->state->get('list.direction'));
+
+$user = JFactory::getUser();               		// gets current user object
+$isDirector = (in_array('12', $user->groups));  // sets flag when user group is '12' that is 'ArVie Direction'
 ?>
 
 <form action="<?php echo JUri::getInstance()->toString(); ?>" method="post" name="adminForm" id="adminForm">
@@ -49,9 +52,12 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 				<th class="title">
 					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_GROUPES_GROUPE_PARENT'), 'groupe_parent_nom', $listDirn, $listOrder) ?>
 				</th>
-				<th class="title">
-					<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_GROUPES_EST_GROUPE_INTERET_FRONTEND'), 'est_groupe_interet', $listDirn, $listOrder) ?>
-				</th>
+				<?php
+				if(!$isDirector) :?>
+					<th class="title">
+						<?php echo JHtml::_('grid.sort', JText::_('COM_ARVIE_GROUPES_ROLE'), 'est_groupe_interet', $listDirn, $listOrder) ?>
+					</th>
+				<?php endif; ?>
 				<!-- <th class="title"><?php echo JHtml::_('grid.sort', 'Date', 'created', $listDirn, $listOrder) ?></th> -->
 			</tr>
 		</thead>
@@ -60,14 +66,16 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 			<?php foreach($this->items as $i => $item) : ?>
 				<tr class="row<?php echo $i % 2; ?>">
 					<td>
-						<a href="<?php echo $uriCompoDetail.$item->id ?>"><?php echo $item->nom ?></a>
-					</td>
+						<a href="<?php echo $uriCompoDetail.$item->id ?>"><?php echo $item->nom ?></a>					</td>
+
 					<!-- <td><?php echo JHtml::_('jgrid.published', $item->published, $i, 'groupes.', true); ?></td> -->
 					<td><?php echo $item->groupe_parent_nom ?></td>
-					<td><?php if($item->est_groupe_interet)
-										{echo 'Interêt';} 
-									else{echo 'Classe';}
-						?></td>
+
+					<?php
+					if(!$isDirector) :?>
+						<td><?php echo $item->role ?></td>
+					<?php endif; ?>
+
 					<!-- <td><?php echo JHtml::_('date', $item->created, 'j F Y'); ?></td> -->
 				</tr>			
 			<?php endforeach; ?>

@@ -6,9 +6,11 @@ JHtml::_('behavior.framework'); 				// javascript Joomla object for grid.sort !
 $user = JFactory::getUser();               		// gets current user object
 $isAdmin = (in_array('11', $user->groups));		// sets flag when user group is '11' that is 'ArVie Administrateur' 
 $isDirector = (in_array('12', $user->groups));  // sets flag when user group is '12' that is 'ArVie Direction'
+$isEleve = (in_array('15', $user->groups));		// sets flag when user group is '15' that is 'ArVie Eleve'
+$isProf = (in_array('14', $user->groups));		// sets flag when user group is '14' that is 'ArVie Professeur'
 ?>
 
-<?php if ( !$isAdmin && !$isDirector ) : ?>
+<?php if ( !$isAdmin && !$isDirector && !$isEleve && !$isProf) : ?>
 	<?php echo JError::raiseWarning( 100, JText::_('COM_ARVIE_RESTRICTED_ACCESS') ); ?>
 <?php else :
 
@@ -23,7 +25,7 @@ $isDirector = (in_array('12', $user->groups));  // sets flag when user group is 
 			</a>
 		</h2>
 	<?php }
-	elseif ($egi == 0){ ?>
+	else{ ?>
 		<h2><?php echo JText::_('COM_ARVIE')." : ".JText::_('COM_ARVIE_GROUPES_CLASSES')." - "; ?>
 			<a style="font-size:75%;" href="<?php echo JRoute::_('index.php?option=com_arvie&view=groupes&estGroupeInteret=1'); ?>">
 				<?php echo JText::_('COM_ARVIE_GROUPES_INTERETS'); ?>

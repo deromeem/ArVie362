@@ -4,9 +4,11 @@ defined('_JEXEC') or die('Restricted access');
 $user = JFactory::getUser();               		// gets current user object
 $isAdmin = (in_array('11', $user->groups));		// sets flag when user group is '11' that is 'ArVie Administrateur' 
 $isDirector = (in_array('12', $user->groups));  // sets flag when user group is '12' that is 'ArVie Direction'
+$isEleve = (in_array('15', $user->groups));		// sets flag when user group is '15' that is 'ArVie Eleve
+$isProf = (in_array('14', $user->groups));		// sets flag when user group is '14' that is 'ArVie Professeur'
 ?>
 
-<?php if ( !$isAdmin && !$isDirector ) : ?>
+<?php if ( !$isAdmin && !$isDirector && !$isEleve && !$isProf) : ?>
 	<?php echo JError::raiseWarning( 100, JText::_('COM_ARVIE_RESTRICTED_ACCESS') ); ?>
 <?php else : ?>
 	<div class="form-inline form-inline-header">

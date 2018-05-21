@@ -19,7 +19,8 @@ class ArvieModelGroupes extends JModelList
 				'published', 'g.published',
 				'hits', 'g.hits',
 				'modified', 'g.modified',
-				'groupe_parent_nom','gp.nom'
+				'groupe_parent_nom','gp.nom',
+				'role','r.label'
 			);
 		}
 		parent::__construct($config);
@@ -59,11 +60,15 @@ class ArvieModelGroupes extends JModelList
 
 		// construit la requ�te d'affichage de la liste
 		$query	= $this->_db->getQuery(true);
-		$query->select('g.id, g.nom,g.groupe_parent, g.est_groupe_interet,g.est_public, g.published, g.hits, g.modified');
+		$query->select('g.id, g.nom,g.groupe_parent, g.est_groupe_interet,g.est_public, g.published, g.hits, g.modified,gp.nom AS groupe_parent_nom');
 		$query->from('#__arvie_groupes g');
-
-		// joint la table parent
-		$query->select('gp.nom AS groupe_parent_nom')->join('LEFT', '#__arvie_groupes AS gp ON g.groupe_parent=gp.id');	
+		$query->join('LEFT', '#__arvie_groupes AS gp ON g.groupe_parent=gp.id');
+		if ($isProf || $isEleve):
+			$query->join('INNER','#__arvie_groupe_utilisateur_map AS gum ON g.id = gum.groupe');
+			$query->join('INNER','#__arvie_utilisateurs AS u ON u.id = gum.utilisateur');
+			$query->select('r.label AS role')->join('INNER','#__arvie_roles AS r ON r.id = gum.role');
+			$query->where('u.email = "'.$user->email.'"');
+		endif;
 
 		// filtre de recherche rapide textuelle
 		$search = $this->getState('filter.search');
@@ -84,14 +89,22 @@ class ArvieModelGroupes extends JModelList
 		}
 
 		// filtre les éléments publiés
-		$app = JFactory::getApplication();
-		
-		// Charge et mémorise le type de groupe(interêt/classe) depuis le contexte
-		$egi = $app->input->getInt('estGroupeInteret');
 		$query->where('g.published=1');
 
+		// Charge et mémorise le type de groupe(interêt/classe) depuis le contexte
+		$app = JFactory::getApplication();		
+		$egi = $app->input->getInt('estGroupeInteret');
+
+
 		if (isset($egi)){
+			if ($egi != 0 && $egi != 1):
+				$egi = 0;
+			endif;
+
 			$query->where('g.est_groupe_interet='.$egi);
+		}
+		else{
+			$query->where('g.est_groupe_interet=0');
 		}
 
 		// tri des colonnes
@@ -99,7 +112,7 @@ class ArvieModelGroupes extends JModelList
 		$orderDirn = $this->getState('list.direction', 'ASC');
 		$query->order($this->_db->escape($orderCol.' '.$orderDirn));
 
-		// echo nl2br(str_replace('#__','arvie_',$query));			// TEST/DEBUG
+		echo nl2br(str_replace('#__','arvie_',$query));			// TEST/DEBUG
 		return $query;
 	}
 }
